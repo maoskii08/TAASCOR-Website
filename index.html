@@ -1,12 +1,21 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TAASCOR — Powering Business with the Right People</title>
-<meta name="description" content="TAASCOR Management &amp; General Services Corp. — DOLE-registered manpower outsourcing, recruitment, payroll administration and HRIS technology for Philippine business.">
+<meta name="description" content="TAASCOR connects employers, candidates and workforce operations through manpower solutions, recruitment services and workforce technology.">
+<meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#050A16">
+<meta property="og:site_name" content="TAASCOR">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TAASCOR — Powering Business with the Right People">
+<meta property="og:description" content="TAASCOR connects employers, candidates and workforce operations through manpower solutions, recruitment services and workforce technology.">
+<meta name="twitter:card" content="summary">
+<!-- TAASCOR_CANONICAL_META -->
+<!-- TAASCOR_ORGANIZATION_DATA -->
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -46,6 +55,9 @@ body{
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.skip-link{position:fixed;top:10px;left:10px;z-index:100;padding:11px 16px;background:var(--yellow);color:#071020;
+  font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.08em;transform:translateY(-150%);transition:transform .2s}
+.skip-link:focus{transform:translateY(0)}
 
 /* ---------- fixed layers ---------- */
 #field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
@@ -82,7 +94,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   background:linear-gradient(var(--void2),var(--void2)) padding-box,var(--grad) border-box;
   border:1px solid transparent;transition:box-shadow .35s,transform .35s;display:inline-block}
 .hcta:hover{box-shadow:0 0 26px rgba(191,30,44,.42);transform:translateY(-1px)}
-@media(max-width:960px){.readout,.hnav a.nl{display:none}.lockup .lk-sub{display:none}}
+.home-menu{display:none;position:relative}
+.home-menu summary{min-height:44px;display:flex;align-items:center;list-style:none;cursor:pointer;font-family:var(--mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink);padding:10px 14px;border:1px solid var(--line);border-radius:99px;background:rgba(5,10,22,.78)}
+.home-menu summary::-webkit-details-marker{display:none}
+.home-menu summary::after{content:" +";color:var(--gold)}
+.home-menu[open] summary::after{content:" −"}
+.home-menu nav{position:absolute;top:calc(100% + 10px);right:0;width:min(78vw,280px);display:grid;padding:10px;
+  background:rgba(5,10,22,.97);border:1px solid var(--line);border-radius:14px;box-shadow:0 22px 70px rgba(0,0,0,.5)}
+.home-menu nav a{min-height:44px;display:flex;align-items:center;padding:12px 13px;border-radius:8px;color:var(--dim);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+.home-menu nav a:hover,.home-menu nav a:focus-visible{color:var(--ink);background:rgba(247,162,15,.09)}
+.home-menu nav a:last-child{color:var(--gold)}
+.motion-toggle{display:none;min-height:44px;position:fixed;right:clamp(16px,3vw,38px);bottom:clamp(16px,3vw,34px);z-index:30;
+  padding:9px 13px;border:1px solid var(--line);border-radius:99px;color:var(--dim);background:rgba(5,10,22,.82);
+  backdrop-filter:blur(12px);font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.motion-ready .motion-toggle{display:inline-flex}
+.motion-toggle:hover,.motion-toggle:focus-visible{color:var(--ink);border-color:rgba(247,162,15,.55)}
+.motion-toggle[aria-pressed="true"]{color:var(--gold);border-color:rgba(247,162,15,.48)}
+.motion-paused *{animation-play-state:paused!important}
+@media(max-width:960px){.readout,.hnav{display:none}.lockup .lk-sub{display:none}.home-menu{display:block}}
 
 /* ---------- shared type ---------- */
 .kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
@@ -118,6 +148,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #b-hero .tagline{margin-top:22px;font-size:clamp(1.02rem,1.8vw,1.3rem);color:var(--ink);font-weight:500}
 #b-hero .tagline em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 #b-hero .status{margin-top:20px}
+.journey-doors{display:flex;align-items:stretch;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:26px;pointer-events:auto}
+.journey-door{min-width:178px;padding:13px 18px;border:1px solid var(--line2);background:rgba(8,16,31,.68);
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;text-align:left;
+  transition:transform .25s,border-color .25s,background .25s}
+.journey-door span{display:block;margin-top:4px;color:var(--faint);font-family:var(--body);font-size:.73rem;letter-spacing:0;text-transform:none}
+.journey-door:hover{transform:translateY(-2px);border-color:var(--gold);background:rgba(12,24,48,.9)}
+.journey-door:nth-child(2){border-color:rgba(229,56,74,.5)}
+.journey-door:nth-child(3){border-color:rgba(76,123,232,.5)}
+html.no-js #b-hero,html.js:not(.motion-ready) #b-hero{opacity:1;visibility:visible;pointer-events:auto}
 #cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);text-align:center;z-index:3;
   font-family:var(--mono);font-size:.6rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;
   transition:opacity .5s;pointer-events:none}
@@ -158,6 +197,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .feed div{opacity:0;transform:translateX(-8px);will-change:opacity,transform;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .feed b{color:var(--gold);font-weight:500}
 .feed .fg{color:var(--blue-lt)}
+.ops-disclosure{max-width:760px;margin:18px auto 0;padding:12px 16px;border:1px solid rgba(247,162,15,.3);
+  border-radius:12px;background:rgba(247,162,15,.08);color:var(--dim);font-size:.78rem;text-align:center}
 .donut-v{position:absolute;left:0;right:0;bottom:0;top:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
 .donut-v .dv{font-family:var(--disp);font-weight:800;font-size:1.1rem}
 .donut-v .dl{font-family:var(--mono);font-size:.49rem;letter-spacing:.14em;color:var(--dim);margin-top:3px}
@@ -218,6 +259,30 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .plat-portal b{font-weight:400;color:var(--gold);transition:transform .35s}
 .plat-portal:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(247,162,15,.3)}
 .plat-portal:hover b{transform:translateX(5px)}
+
+/* ---------- governed opportunities ---------- */
+#opportunities{position:relative;z-index:2;padding:3vh 6vw 13vh}
+.opp-wrap{max-width:1240px;margin:0 auto;padding:clamp(28px,5vw,58px);border:1px solid var(--line);
+  border-radius:28px;background:linear-gradient(135deg,rgba(12,20,44,.9),rgba(7,12,26,.72));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04),0 28px 80px rgba(0,0,0,.24)}
+.opp-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex-wrap:wrap;margin-bottom:30px}
+.opp-head .h-sec{margin-top:15px;max-width:18ch}
+.opp-head .sub{max-width:52ch}
+.opp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.opp-card{display:flex;min-height:218px;flex-direction:column;padding:24px;border:1px solid var(--line);
+  border-radius:18px;background:rgba(5,10,22,.56);transition:transform .3s,border-color .3s,background .3s}
+.opp-card:hover{transform:translateY(-3px);border-color:rgba(247,162,15,.55);background:rgba(10,17,36,.84)}
+.opp-card .opp-tag{font-family:var(--mono);font-size:.54rem;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.opp-card h3{font-family:var(--disp);font-size:clamp(1.12rem,2vw,1.45rem);line-height:1.16;margin-top:17px}
+.opp-card p{color:var(--dim);font-size:.88rem;margin-top:12px}
+.opp-card .opp-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:22px}
+.opp-card .opp-meta span{font-family:var(--mono);font-size:.52rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:7px 10px;border-radius:99px;border:1px solid var(--line2);color:var(--dim)}
+.opp-empty{padding:26px;border:1px dashed var(--line2);border-radius:16px;color:var(--dim)}
+.opp-demo{display:flex;gap:10px;align-items:flex-start;margin-bottom:18px;padding:12px 14px;border-radius:12px;
+  background:rgba(247,162,15,.08);border:1px solid rgba(247,162,15,.22);color:var(--dim);font-size:.78rem}
+.opp-demo strong{font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+@media(max-width:900px){.opp-grid{grid-template-columns:1fr}.opp-card{min-height:0}}
 
 /* ---------- protocol ---------- */
 #protocol{position:relative;z-index:2;padding:14vh 6vw 16vh}
@@ -299,14 +364,32 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
   .feed div{opacity:1!important;transform:none!important}
   #lines .stage{display:block;overflow-x:auto}
   .l-track{transform:none!important;padding:4vh 6vw}
+  #coverage .stage{display:block}
   #orbit-field,#nucleus{display:none}
   .ms{opacity:1!important;transform:none!important}
   .tl-spine i{transform:scaleY(1)!important}
   #b-hero .wordmark span{transform:none!important}
 }
+:is(html.no-js,html.motion-unavailable) #film,:is(html.no-js,html.motion-unavailable) #ops,:is(html.no-js,html.motion-unavailable) #coverage{height:auto}
+:is(html.no-js,html.motion-unavailable) .stage{position:static;height:auto;min-height:0;overflow:visible;padding:14vh 0 6vh}
+:is(html.no-js,html.motion-unavailable) .beat{position:static;opacity:1!important;visibility:visible!important;transform:none!important;padding:7vh 6vw;pointer-events:auto}
+:is(html.no-js,html.motion-unavailable) #cue,:is(html.no-js,html.motion-unavailable) .vignette{display:none}
+:is(html.no-js,html.motion-unavailable) .ops-wrap{position:static;height:auto;display:flex;flex-direction:column;gap:14px;max-height:none;margin:6vh auto 0}
+:is(html.no-js,html.motion-unavailable) .panel{position:static!important;opacity:1!important;transform:none!important;width:100%!important}
+:is(html.no-js,html.motion-unavailable) .feed div{opacity:1!important;transform:none!important}
+:is(html.no-js,html.motion-unavailable) #lines .stage{display:block;overflow-x:auto}
+:is(html.no-js,html.motion-unavailable) .l-track{transform:none!important;padding:4vh 6vw}
+:is(html.no-js,html.motion-unavailable) #coverage .stage{display:block}
+:is(html.no-js,html.motion-unavailable) #orbit-field,:is(html.no-js,html.motion-unavailable) #nucleus{display:none}
+:is(html.no-js,html.motion-unavailable) .ms{opacity:1!important;transform:none!important}
+:is(html.no-js,html.motion-unavailable) .tl-spine i{transform:scaleY(1)!important}
+:is(html.no-js,html.motion-unavailable) #b-hero .wordmark span{transform:none!important}
+@media(max-width:640px){.journey-doors{display:grid;grid-template-columns:1fr;width:min(88vw,360px)}.journey-door{min-width:0}}
 </style>
 </head>
-<body>
+<body id="top">
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <canvas id="field" aria-hidden="true"></canvas>
 <div id="grain" aria-hidden="true"></div>
@@ -327,45 +410,65 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
     <div class="ro-bar"><i id="ro-fill"></i></div>
   </div>
   <nav class="hnav" aria-label="Primary">
-    <a class="nl" href="#lines" data-to="#lines">Services</a>
-    <a class="nl nl-hris" href="#platform" data-to="#platform">HRIS</a>
-    <a class="nl" href="#protocol" data-to="#protocol">Process</a>
-    <a class="nl" href="#trust" data-to="#trust">Compliance</a>
-    <a class="hcta" href="#coda" data-to="#coda">Request Manpower</a>
+    <a class="nl" href="/solutions/">Solutions</a>
+    <a class="nl" href="/jobs/">Jobs</a>
+    <a class="nl nl-hris" href="/platform/">HRIS</a>
+    <a class="nl" href="/proof/">Proof</a>
+    <a class="hcta" href="/workforce/">Build a workforce</a>
   </nav>
+  <details class="home-menu">
+    <summary>Menu</summary>
+    <nav aria-label="Mobile primary">
+      <a href="/solutions/">Solutions</a>
+      <a href="/industries/">Industries</a>
+      <a href="/jobs/">Jobs</a>
+      <a href="/platform/">Platform</a>
+      <a href="/proof/">Proof</a>
+      <a href="/about/">About</a>
+      <a href="/portal/">Access TAASCOR</a>
+    </nav>
+  </details>
 </header>
 
+<button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
+
+<main id="main-content">
 <!-- ============ FILM I · POOL → SCREENING → CORE ============ -->
 <section id="film" class="scene" aria-label="From talent pool to workforce core">
   <div class="stage">
     <div class="beat" id="b-hero" data-in="-0.1" data-peak="0" data-out="0.11">
-      <div class="kicker">Management &amp; General Services Corp.</div>
+      <div class="kicker">WORKFORCE NETWORK · PRE-RELEASE EXPERIENCE</div>
       <h1 class="wordmark" aria-label="TAASCOR"><span>T</span><span>A</span><span>A</span><span>S</span><span>C</span><span>O</span><span>R</span></h1>
       <p class="tagline">Powering business with <em>the right people</em>.</p>
-      <div class="legal">SEC CS201212925 · DOLE D.O. 18-A REGISTERED</div>
-      <div class="kicker status"><span class="kdot"></span>ACCEPTING MANPOWER REQUISITIONS</div>
+      <div class="legal">MANPOWER SOLUTIONS · RECRUITMENT · WORKFORCE TECHNOLOGY</div>
+      <div class="kicker status"><span class="kdot"></span>ONE NETWORK · THREE CLEAR JOURNEYS</div>
+      <nav class="journey-doors" aria-label="Choose your TAASCOR journey">
+        <a class="journey-door" href="/workforce/">Build a workforce<span>Plan roles, sites and deployment needs</span></a>
+        <a class="journey-door" href="/jobs/">Find work<span>Explore roles and apply with context</span></a>
+        <a class="journey-door" href="/portal/">Access TAASCOR<span>Applicant, employee, client and staff access</span></a>
+      </nav>
     </div>
 
     <div class="beat" data-in="0.16" data-peak="0.24" data-out="0.34">
       <div class="kicker">SCENE 01 · <b>THE TALENT POOL</b></div>
       <h2 class="h-film">Talent is everywhere.<br>Readiness is not.</h2>
-      <p class="sub">A hire is easy to find and hard to trust. Every unvetted worker you place on a floor is a compliance exposure waiting to surface.</p>
+      <p class="sub">A hire can be easy to find and hard to trust. An unvetted placement can become an avoidable operating and compliance exposure.</p>
     </div>
 
     <div class="beat" data-in="0.36" data-peak="0.45" data-out="0.55">
       <div class="kicker">SCENE 02 · <b>SCREENING &amp; VETTING</b></div>
       <h2 class="h-film">We narrow the field<br>before you ever meet it.</h2>
-      <p class="sub">Sourcing, credential checks, NBI and medical clearance, statutory registration — every candidate passes the same gate.</p>
+      <p class="sub">Sourcing begins with the role. Verification and regulated checks are requested at the approved hiring stage—only when the work and process require them.</p>
     </div>
 
     <div class="beat" data-in="0.58" data-peak="0.68" data-out="0.79">
       <div class="kicker">SCENE 03 · <b>THE WORKFORCE CORE</b></div>
-      <h2 class="h-film">Six disciplines.<br>One accountable partner.</h2>
+      <h2 class="h-film">Six disciplines.<br>One governed experience.</h2>
       <div class="chips">
-        <div class="chip"><div class="cv"><span class="cnt" data-v="2012" data-raw="1">0</span></div><div class="cl">Incorporated</div></div>
-        <div class="chip"><div class="cv"><span class="cnt" data-v="6">0</span></div><div class="cl">Service lines</div></div>
-        <div class="chip"><div class="cv"><span class="cnt" data-v="18" data-suf="-A">0</span></div><div class="cl">DOLE D.O.</div></div>
-        <div class="chip"><div class="cv"><span class="cnt" data-v="1">0</span></div><div class="cl">HRIS platform</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="3">0</span></div><div class="cl">Audience journeys</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="6">0</span></div><div class="cl">Solution areas</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="7">0</span></div><div class="cl">Lifecycle stages</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="1">0</span></div><div class="cl">Connected experience</div></div>
       </div>
     </div>
 
@@ -380,15 +483,16 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
 </section>
 
 <!-- ============ FILM II · OPERATIONS FLOOR ============ -->
-<section id="ops" class="scene" aria-label="Operations floor">
+<section id="ops" class="scene" aria-label="Operations floor" aria-describedby="ops-disclosure">
   <div class="stage">
     <div class="ops-head">
       <div class="kicker">SCENE 04 · <b>OPERATIONS FLOOR</b></div>
       <h2 class="h-sec" style="margin-top:16px">Deployment is not a handshake.<br>It is a running system.</h2>
+      <p class="ops-disclosure" id="ops-disclosure"><strong>Synthetic interface demonstration.</strong> Every figure, site, event and status in this scene is illustrative—not live client, payroll, compliance or performance data.</p>
     </div>
     <div class="ops-wrap">
       <div class="panel" id="p-line">
-        <div class="p-t"><span>Deployed headcount · requisition vs filled</span><i></i></div>
+        <div class="p-t"><span>Sample headcount · requisition vs filled</span><i></i></div>
         <svg viewBox="0 0 320 140" preserveAspectRatio="none" aria-hidden="true">
           <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#BF1E2C" stop-opacity=".3"/><stop offset="1" stop-color="#BF1E2C" stop-opacity="0"/>
@@ -402,7 +506,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
         </svg>
       </div>
       <div class="panel" id="p-donut">
-        <div class="p-t"><span>Attendance</span><i></i></div>
+        <div class="p-t"><span>Sample attendance</span><i></i></div>
         <svg viewBox="0 0 120 120" aria-hidden="true">
           <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(140,170,240,.12)" stroke-width="8"/>
           <circle id="donut" cx="60" cy="60" r="44" fill="none" stroke="url(#dg)" stroke-width="8" stroke-linecap="round"
@@ -412,7 +516,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
         <div class="donut-v"><div class="dv"><span class="cnt" data-v="96.8" data-d="1" data-suf="%">0</span></div><div class="dl">TARGET 95.0</div></div>
       </div>
       <div class="panel" id="p-bars">
-        <div class="p-t"><span>Headcount · by site</span><i></i></div>
+        <div class="p-t"><span>Sample headcount · by site</span><i></i></div>
         <svg viewBox="0 0 150 132" aria-hidden="true">
           <g class="bars" fill="url(#bg1)">
             <rect x="6"   y="40" width="14" height="80" rx="2"/>
@@ -424,7 +528,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
           </g>
           <g font-family="IBM Plex Mono,monospace" font-size="8" fill="#8FA0C4" text-anchor="middle">
             <text x="13" y="130">CAB</text><text x="37" y="130">CAI</text><text x="61" y="130">PAS</text>
-            <text x="85" y="130">LAG</text><text x="109" y="130">RIZ</text><text x="133" y="130">NCR</text>
+            <text x="81" y="130">SITE A</text><text x="108" y="130">SITE B</text><text x="135" y="130">SITE C</text>
           </g>
           <defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4C7BE8"/><stop offset="1" stop-color="#BF1E2C"/></linearGradient></defs>
         </svg>
@@ -433,10 +537,10 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
         <div class="p-t"><span>Compliance &amp; payroll feed</span><i></i></div>
         <div class="feed">
           <div>08:12:04 <b>DTR</b> biometric intake reconciled · 6 sites <span class="fg">✓</span></div>
-          <div>08:31:47 <b>SSS</b> contribution schedule posted · cut-off 1</div>
-          <div>09:05:22 <b>PHILHEALTH</b> premium remittance filed <span class="fg">✓</span></div>
-          <div>09:44:10 <b>PAG-IBIG</b> MCRF generated · 0 exceptions <span class="fg">✓</span></div>
-          <div>10:20:39 <b>PAYSLIP</b> release approved · cycle locked <span class="fg">✓</span></div>
+          <div>08:31:47 <b>SSS</b> checkpoint queued · sample cycle</div>
+          <div>09:05:22 <b>PHILHEALTH</b> validation checkpoint · sample state</div>
+          <div>09:44:10 <b>PAG-IBIG</b> exception review · sample state</div>
+          <div>10:20:39 <b>PAYSLIP</b> release gate · sample state</div>
         </div>
       </div>
       <div class="panel" id="p-kpi">
@@ -460,32 +564,32 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
       <div class="l-intro">
         <div class="kicker">SCENE 05 · <b>SERVICE LINES</b></div>
         <h2 class="h-sec">Six vertices.<br><span class="grad-text">One hexagon.</span></h2>
-        <p class="sub" style="margin-top:18px">The six points of our mark are the six things we take off your plate — from the first sourcing call to the last statutory filing.</p>
+        <p class="sub" style="margin-top:18px">The six points of the mark frame the solution areas under owner validation—from workforce planning through the final governed checkpoint.</p>
       </div>
       <article class="l-card"><div class="l-idx">LINE / 01</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="15" r="6"/><path d="M5 36c0-6.1 4.9-11 11-11s11 4.9 11 11"/><path d="M30 14h9M34.5 9.5v9"/></svg>
-        <h3>Contractual Staffing</h3><p>Project-based, seasonal and ramp manpower deployed under a legitimate contracting arrangement — the workers are our employees, the output is yours.</p>
+        <h3>Contractual Staffing</h3><p>A proposed engagement model for project, seasonal and ramp requirements, with employment, supervision, output and legal responsibilities confirmed in approved scope.</p>
         <div class="l-meta">Production · Ramp · Seasonal peaks</div></article>
       <article class="l-card"><div class="l-idx">LINE / 02</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="19" cy="19" r="12"/><path d="M28 28l9 9"/><path d="M14 19h10M19 14v10"/></svg>
-        <h3>Recruitment &amp; Sourcing</h3><p>A live pipeline instead of a scramble. Position profiling, sourcing, behavioural and technical screening, reference and NBI verification.</p>
+        <h3>Recruitment &amp; Sourcing</h3><p>Position profiling, sourcing and role-appropriate screening can move through defined stages; reference or regulated checks require an approved purpose and hiring trigger.</p>
         <div class="l-meta">Pipeline · Screening · Verification</div></article>
       <article class="l-card"><div class="l-idx">LINE / 03</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="9" width="30" height="26" rx="3"/><path d="M7 17h30"/><path d="M13 24h8M13 29h14"/><circle cx="30" cy="25" r="3.5"/></svg>
-        <h3>Payroll &amp; Benefits</h3><p>Timekeeping to payslip, on cycle. SSS, PhilHealth, Pag-IBIG and BIR computed, remitted and filed — with the receipts to prove it.</p>
+        <h3>Payroll &amp; Benefits</h3><p>Timekeeping, payroll basis, payslip and statutory evidence organized into owned checkpoints—with scope and calendar confirmed for the engagement.</p>
         <div class="l-meta">SSS · PhilHealth · Pag-IBIG · BIR</div></article>
       <article class="l-card"><div class="l-idx">LINE / 04</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 5l14 6v10c0 9-6 15-14 18C14 36 8 30 8 21V11z"/><path d="M16 22l4 4 8-8"/></svg>
-        <h3>HR Administration</h3><p>201 files, contracts, employee relations, disciplinary process and DOLE-ready documentation maintained as a standing record, not a fire drill.</p>
+        <h3>HR Administration</h3><p>A governed administration model can organize contracts, approved personnel records, employee-relations steps and accountable documentation checkpoints.</p>
         <div class="l-meta">201 files · ER · Labour compliance</div></article>
       <article class="l-card"><div class="l-idx">LINE / 05</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 34h32"/><path d="M11 34V20l11-9 11 9v14"/><path d="M18 34v-8h8v8"/></svg>
-        <h3>General &amp; Facility Services</h3><p>Janitorial, utility, warehouse and production support crews — supervised, equipped and scheduled against your operating hours.</p>
+        <h3>General &amp; Facility Services</h3><p>Potential scope includes janitorial, utility, warehouse and production support, with supervision, equipment and scheduling responsibilities defined per engagement.</p>
         <div class="l-meta">Janitorial · Utility · Warehouse</div></article>
       <article class="l-card"><div class="l-idx">LINE / 06</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M15 36h14M22 30v6"/><path d="M12 22l5-6 5 4 4-7 6 9" stroke-linecap="round"/></svg>
-        <h3>HRIS Technology</h3><p>Our own workforce platform runs underneath every deployment — DTR intake, payroll basis, payslip release and data-quality checks in one system.</p>
-        <div class="l-meta">In-house platform · Client visibility</div></article>
+        <h3>HRIS Technology</h3><p>A connected platform experience for DTR intake, payroll basis, payslip delivery and data-quality checks through role-based workflow.</p>
+        <div class="l-meta">Platform story · Owner verification required</div></article>
     </div>
   </div>
 </section>
@@ -498,11 +602,11 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
     </div>
     <div class="beat g-beats" data-in="0.05" data-peak="0.16" data-out="0.32">
       <div class="kicker">SCENE 06 · <b>COVERAGE</b></div>
-      <h2 class="h-film">Deployed where<br>the work actually is.</h2>
-      <p class="sub">NCR, Rizal and the Laguna manufacturing belt — staffed from offices inside the same catchment as your site.</p>
+      <h2 class="h-film">Coverage grounded<br>in verified operating reach.</h2>
+      <p class="sub">Locations, service areas and office details will publish from one owner-approved register. Explore the verification framework while that evidence is assembled.</p>
     </div>
     <div class="beat g-beats" data-in="0.56" data-peak="0.70" data-out="0.83">
-      <h2 class="h-film">Every industry,<br><span class="grad-text">one system of record.</span></h2>
+      <h2 class="h-film">Across industries,<br><span class="grad-text">one governed handoff.</span></h2>
     </div>
     <div class="beat g-beats" id="b-hand" data-in="0.86" data-peak="0.94" data-out="2">
       <div class="kicker">DOCKING · <b>HRIS PLATFORM</b></div>
@@ -516,10 +620,27 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
 <!-- ============ HRIS PLATFORM ============ -->
 <section id="platform" aria-label="TAASCOR HRIS platform">
   <div class="plat-head">
-    <div class="kicker"><span class="kdot"></span>TAASCOR HRIS · IN PRODUCTION</div>
-    <h2 class="h-sec">The platform your deployment <span class="grad-text">actually runs on.</span></h2>
-    <p class="sub" style="margin-top:16px">Most manpower agencies hand you a spreadsheet. We built the system instead — timekeeping, payroll basis and compliance evidence in one governed workflow.</p>
-    <a class="plat-portal" href="https://taascor.visiotechsolutions.com/hris/login/" target="_blank" rel="noopener noreferrer">Open the HRIS portal <b>→</b></a>
+    <div class="kicker"><span class="kdot"></span>TAASCOR HRIS · WORKFORCE LIFECYCLE</div>
+    <h2 class="h-sec">One connected view of <span class="grad-text">the work behind the workforce.</span></h2>
+    <p class="sub" style="margin-top:16px">Explore how recruitment, time records, payroll preparation and employee service can connect through governed handoffs—without mixing live employee data into the public experience.</p>
+    <a class="plat-portal" href="/platform/">Explore the platform journey <b>→</b></a>
+  </div>
+</section>
+
+<!-- ============ GOVERNED OPPORTUNITIES ============ -->
+<section id="opportunities" aria-label="Current opportunities">
+  <div class="opp-wrap">
+    <div class="opp-head">
+      <div>
+        <div class="kicker">LIVE SOURCE · <b>OPPORTUNITIES</b></div>
+        <h2 class="h-sec">One job source.<br><span class="grad-text">Every candidate touchpoint.</span></h2>
+      </div>
+      <p class="sub">Approved openings appear here and in Careers from the same governed job register. No role is published from duplicated page copy.</p>
+    </div>
+    <!-- TAASCOR_JOB_PREVIEW_START -->
+    <div class="opp-empty">No approved openings are published in this static preview. Visit Careers for the current governed listing.</div>
+    <!-- TAASCOR_JOB_PREVIEW_END -->
+    <a class="plat-portal" href="/jobs/">View all opportunities <b>→</b></a>
   </div>
 </section>
 
@@ -528,22 +649,22 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
   <div class="pr-wrap">
     <div class="pr-head">
       <div class="kicker">SCENE 07 · <b>DEPLOYMENT PROTOCOL</b></div>
-      <h2 class="h-sec">From requisition to first shift — <span class="grad-text">a fixed sequence.</span></h2>
+      <h2 class="h-sec">From requisition to first shift — <span class="grad-text">a proposed governed sequence.</span></h2>
     </div>
     <div class="tl">
       <div class="tl-spine"><i id="spine-fill"></i></div>
       <div class="ms"><div class="ms-q">STEP 01 · REQUISITION</div><h3>Manpower Planning</h3>
-        <p>We size the requirement with you — headcount, shift pattern, skill profile, site conditions and the date it has to be standing on the floor.</p></div>
+        <p>The planning step frames headcount, shift pattern, skill profile, site conditions and target timing for owner review.</p></div>
       <div class="ms"><div class="ms-q">STEP 02 · SOURCING</div><h3>Sourcing &amp; Screening</h3>
-        <p>Candidates are drawn from a maintained pipeline, screened against the position profile, then verified — references, NBI clearance, medical.</p></div>
+        <p>A governed recruitment design matches candidates to an approved position profile and requests checks only at the authorized stage.</p></div>
       <div class="ms"><div class="ms-q">STEP 03 · COMPLIANCE</div><h3>Statutory Onboarding</h3>
-        <p>Contracts issued, 201 file opened, SSS, PhilHealth, Pag-IBIG and BIR registration completed before deployment — not after the first payroll run.</p></div>
+        <p>Approved onboarding requirements, contracts and statutory records are completed through owned checkpoints before the first assigned shift.</p></div>
       <div class="ms"><div class="ms-q">STEP 04 · DEPLOYMENT</div><h3>Site Orientation</h3>
-        <p>Workers report with site orientation, safety briefing and a named TAASCOR supervisor as the single point of escalation for your operations team.</p></div>
+        <p>The deployment plan defines orientation, safety briefing, site ownership and a clear escalation path for the operating team.</p></div>
       <div class="ms"><div class="ms-q">STEP 05 · CYCLE</div><h3>Timekeeping &amp; Payroll</h3>
-        <p>DTR flows into the HRIS, validation gates the payroll basis, payslips release on cycle and statutory remittances are filed with evidence retained.</p></div>
+        <p>Time records move through validation and approval gates before they become a payroll basis, with exceptions kept visible for the responsible owner.</p></div>
       <div class="ms"><div class="ms-q">STEP 06 · SUSTAIN</div><h3>Performance &amp; Retention</h3>
-        <p>Attendance, turnover and employee relations reviewed with your account owner — replacements sourced ahead of the gap, not after it.</p></div>
+        <p>A governed review can bring attendance, turnover, employee relations and replacement planning into one owner-defined operating rhythm.</p></div>
     </div>
   </div>
 </section>
@@ -553,38 +674,38 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
   <div class="tr-wrap">
     <div class="tr-head">
       <div class="kicker">SCENE 08 · <b>COMPLIANCE</b></div>
-      <h2 class="h-sec">The paperwork that keeps <span class="grad-text">your name clean.</span></h2>
-      <p class="sub" style="margin-top:16px">Engaging an unregistered contractor makes the principal solidarily liable. Ours is on the record and available on request.</p>
+      <h2 class="h-sec">Proof before <span class="grad-text">promise.</span></h2>
+      <p class="sub" style="margin-top:16px">Corporate, labor, operating and privacy claims move to the public site only after their current source, owner and review date are established.</p>
     </div>
     <div class="tr-grid">
       <div class="cred">
-        <div class="cr-k">Incorporation</div>
-        <h3>SEC Registered</h3>
-        <p>Incorporated in 2012 and managed by HR outsourcing professionals with decades of combined experience across the field.</p>
-        <div class="cr-no">SEC No. CS201212925</div>
+        <div class="cr-k">Corporate identity</div>
+        <h3>Current entity evidence</h3>
+        <p>Legal name, registration details and authorized corporate profile publish only after they reconcile to a current owner-approved record.</p>
+        <div class="cr-no">Owner · Corporate / Legal</div>
       </div>
       <div class="cred">
         <div class="cr-k">Labour</div>
-        <h3>DOLE Registered Contractor</h3>
-        <p>Registered with the Department of Labor and Employment under Department Order No. 18-A, Series of 2011.</p>
-        <div class="cr-no">Cert. No. NCR-PFO-7491-101712-098</div>
+        <h3>D.O. 174 current-status verification gate</h3>
+        <p>Certificate, legal-entity match, issuing region, issue date and expiry require documentary verification before a current-status badge appears.</p>
+        <div class="cr-no">Status · Verification required</div>
       </div>
       <div class="cred">
         <div class="cr-k">Governance</div>
-        <h3>Statutory Remittance</h3>
-        <p>SSS, PhilHealth, Pag-IBIG and BIR obligations computed, remitted and filed on cycle, with supporting records retained for audit.</p>
-        <div class="cr-no">Evidence available on request</div>
+        <h3>Control evidence</h3>
+        <p>Payroll and statutory claims require a named control owner, defined scope, approved calendar and reconciled evidence for the stated period.</p>
+        <div class="cr-no">Status · Owner approval required</div>
       </div>
       <div class="cred">
         <div class="cr-k">Coverage</div>
-        <h3>NCR · Rizal · Laguna</h3>
-        <p>Operating from Cainta, Rizal, with deployment coverage across Metro Manila and the Laguna manufacturing corridor.</p>
-        <div class="cr-no">Mon–Sat · 9:00 AM – 6:00 PM</div>
+        <h3>Operating footprint</h3>
+        <p>Offices, service areas, contact channels and hours publish from one maintained location register rather than duplicated page copy.</p>
+        <div class="cr-no">Status · Location review required</div>
       </div>
     </div>
 
     <div class="ind">
-      <h3>Industries we staff</h3>
+      <h3>Industry patterns under validation</h3>
       <ul class="ind-list">
         <li>Manufacturing</li>
         <li>Logistics &amp; Warehousing</li>
@@ -601,19 +722,21 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
 
 <!-- ============ CODA ============ -->
 <section id="coda" aria-label="Contact TAASCOR">
-  <div class="kicker"><span class="kdot"></span>REQUISITION DESK OPEN</div>
-  <h2 style="margin-top:26px">Tell us the headcount.<br><span class="grad-text">We will staff it.</span></h2>
-  <p class="sub">Send us the position, the shift pattern and the date you need people standing on the floor. You will get a costed manpower proposal, not a brochure.</p>
+  <div class="kicker"><span class="kdot"></span>WORKFORCE BRIEF · GOVERNED FIRST STEP</div>
+  <h2 style="margin-top:26px">Turn workforce demand into a <span class="grad-text">reviewable brief.</span></h2>
+  <p class="sub">Share the roles, sites, scale, shifts and target timing TAASCOR should evaluate. Availability, scope, controls and commercial terms are confirmed by accountable owners before any commitment.</p>
   <div class="cta-row">
-    <a class="btn-p" href="mailto:JayVillanueva@taascor.visiotechsolutions.com?subject=Manpower%20Requisition%20Enquiry">Request Manpower</a>
-    <a class="btn-g" href="tel:+639175119011">Call (+63) 917 511 9011</a>
+    <a class="btn-p" href="/workforce/">Shape a workforce brief</a>
+    <a class="btn-g" href="/contact/">Review contact routes</a>
   </div>
   <div class="coda-contact">
-    <a href="mailto:JayVillanueva@taascor.visiotechsolutions.com">JayVillanueva@taascor.visiotechsolutions.com</a>
-    <span>Cainta, Rizal</span>
-    <span>Mon–Sat · 9AM–6PM</span>
+    <span>Contact owner · approval required</span>
+    <span>Location register · pending</span>
+    <span>Service hours · pending</span>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="f-in">
@@ -628,43 +751,42 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px
         </svg>
         <span><span class="lk-name">TAASCOR</span><br><span class="lk-sub">Manpower Solutions</span></span>
       </a>
-      <p style="max-width:34ch">TAASCOR Management &amp; General Services Corp. — DOLE-registered manpower outsourcing for Philippine business.</p>
+      <p style="max-width:34ch">TAASCOR is shaping one governed experience for employers, candidates and workforce operations.</p>
     </div>
     <div class="f-col">
       <h4>Services</h4>
       <nav class="f-nav" aria-label="Footer services">
-        <a href="#lines" data-to="#lines">Contractual Staffing</a>
-        <a href="#lines" data-to="#lines">Recruitment &amp; Sourcing</a>
-        <a href="#lines" data-to="#lines">Payroll &amp; Benefits</a>
-        <a href="#lines" data-to="#lines">HR Administration</a>
-        <a href="#lines" data-to="#lines">General &amp; Facility Services</a>
+        <a href="/solutions/">Workforce solutions</a>
+        <a href="/jobs/">Find work</a>
+        <a href="/platform/">TAASCOR HRIS</a>
+        <a href="/proof/">Proof and compliance</a>
       </nav>
     </div>
     <div class="f-col">
       <h4>Company</h4>
       <nav class="f-nav" aria-label="Footer company">
-        <a href="#platform" data-to="#platform">HRIS Platform</a>
-        <a href="#protocol" data-to="#protocol">Deployment Process</a>
-        <a href="#trust" data-to="#trust">Compliance</a>
+        <a href="/about/">About TAASCOR</a>
+        <a href="/portal/">Access TAASCOR</a>
+        <a href="/legal/privacy/">Privacy</a>
+        <a href="/legal/accessibility/">Accessibility</a>
         <a href="https://taascor.visiotechsolutions.com/hris/login/" target="_blank" rel="noopener noreferrer">Employee Portal</a>
       </nav>
     </div>
     <div class="f-col">
       <h4>Contact</h4>
-      <a href="mailto:JayVillanueva@taascor.visiotechsolutions.com">JayVillanueva@taascor<br>.visiotechsolutions.com</a>
-      <a href="tel:+639175119011">(+63) 917 511 9011</a>
-      <p>Lot 1 Block 2, Phase 2E Area 4,<br>#7 Peach St., Greenwoods Executive Village,<br>San Andres, Cainta, Rizal</p>
+      <a href="/contact/">Contact and routing framework</a>
+      <p>Official channels, locations and service hours publish only after owner verification.</p>
     </div>
   </div>
   <div class="f-fine">
-    © <span id="yr">2026</span> TAASCOR Management &amp; General Services Corp. · SEC CS201212925 · DOLE Cert. NCR-PFO-7491-101712-098<br>
-    Operational figures shown on the Operations Floor are illustrative and do not represent client data.
+    © <span id="yr">2026</span> TAASCOR · Corporate identity and compliance details publish through current-owner verification.<br>
+    Operations Floor figures, sites, events and statuses are synthetic interface demonstrations—not live client, payroll, compliance or performance data.
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" integrity="sha384-g4NTh/Iv5PPU4xPyhEWqPcwtNXOvdaDI8LLnyYfyNZOjKJeYQyjzQ9X5275eBjpt" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" integrity="sha384-Z3REaz79l2IaAZqJsSABtTbhjgOUYyV3p90XNnAPCSHg3EMTz1fouunq9WZRtj3d" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" integrity="sha384-O55L/6rhHr9CFvrxqv5luxOCcmVaBmETbZbJDP+Do8T0pztTACsFBD/IXCNkj7DV" crossorigin="anonymous"></script>
 <script>
 (function(){
 'use strict';
@@ -681,6 +803,12 @@ var params=new URLSearchParams(location.search);
 var JUMP=params.get('jump');
 var PRM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var TOUCH=matchMedia('(pointer: coarse)').matches;
+var motionPaused=false;
+var pageVisible=!document.hidden;
+document.addEventListener('visibilitychange',function(){
+  pageVisible=!document.hidden;
+  if(pageVisible)lastT=performance.now();
+});
 if(JUMP!==null){history.scrollRestoration='manual'}
 
 var yr=qs('#yr');if(yr)yr.textContent=new Date().getFullYear();
@@ -1153,11 +1281,9 @@ function boot(){
             'Construction','BPO &amp; Shared Services','Food Processing','Distribution'];
   var fld=qs('#orbit-field');
   chips=inds.map(function(nm,i){
-    var el=document.createElement('button');
-    el.className='g-chip';el.type='button';
+    var el=document.createElement('span');
+    el.className='g-chip';
     el.innerHTML='<i></i>'+nm;
-    el.setAttribute('aria-label','See the HRIS platform');
-    el.addEventListener('click',function(){scrollToSel('#platform')});
     fld.appendChild(el);
     return {el:el,ring:i%3,base:(i/inds.length)*TAU};
   });
@@ -1165,7 +1291,25 @@ function boot(){
 
   if(PRM){bootPRM();return}
 
+  if(!window.gsap||!window.ScrollTrigger||!window.Lenis){
+    document.documentElement.classList.add('motion-unavailable');
+    bootPRM();
+    return;
+  }
+
+  document.documentElement.classList.add('motion-ready');
   gsap.registerPlugin(ScrollTrigger);
+
+  var motionToggle=qs('#motion-toggle');
+  if(motionToggle){
+    motionToggle.addEventListener('click',function(){
+      motionPaused=!motionPaused;
+      document.documentElement.classList.toggle('motion-paused',motionPaused);
+      motionToggle.setAttribute('aria-pressed',motionPaused?'true':'false');
+      motionToggle.textContent=motionPaused?'Resume motion':'Pause motion';
+      lastT=performance.now();
+    });
+  }
 
   var lenis=null;
   if(JUMP===null){
@@ -1224,7 +1368,7 @@ function boot(){
   function frame(dt){
     runActive();
     skew+=(skewT-skew)*0.08;skewT*=0.9;
-    field.render(dt);
+    if(!motionPaused&&pageVisible)field.render(dt);
     var doc=document.documentElement;
     roFill.style.transform='scaleX('+clamp(scrollY/((doc.scrollHeight-innerHeight)||1),0,1).toFixed(4)+')';
   }

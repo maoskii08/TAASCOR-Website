@@ -1,0 +1,54 @@
+# TAASCOR integrated experience implementation coverage — 2026-09-02
+
+## Decision
+
+The isolated local implementation scope is complete, supported by the fresh verification recorded in `LOCAL_READINESS_2026-09-02.md`. No open P0/P1 local implementation defect remains; all remaining P0/P1 items are external production, business, legal, infrastructure, accessibility or release-qualification gates. Read against `Planning/TAASCOR_WEBSITE_INTEGRATION_PLAN_2026-09-01.md`, every required capability is implemented with synthetic local evidence, deliberately evidence-gated, code-locked from production, or assigned to a named external approval/integration gate. No unclassified Render capability is being treated as silently complete.
+
+This is a **local completion record**, not approval to commit the feature branch, publish content, enable collection, package, deploy, migrate data, or create production test records.
+
+## Status definitions
+
+| Status | Meaning |
+| --- | --- |
+| Implemented locally | Runnable and covered by source-level or browser evidence using disposable synthetic state. |
+| Production code-locked | Present for synthetic local QA, but production activation is refused by source until a future reviewed qualification release. |
+| Evidence-gated | The route and honest empty/verification state exist; real claims or records are withheld until an owner supplies current evidence and permission. |
+| External gate | Requires approved business logic, legal/privacy decision, credentials, provider, live source, or production-like infrastructure. |
+
+## Requirement-to-implementation matrix
+
+| Plan capability | Current coverage | Status / boundary |
+| --- | --- | --- |
+| Preserve the cinematic public front door | The original scroll-film remains the homepage, with progressive enhancement, dependency failure fallback, native mobile navigation, visible audience doors, reduced-motion handling, pause/resume control, page-visibility pausing, SRI, landmark/skip support, and evidence-safe copy. | Implemented locally. Homepage remains intentionally authored dark; task surfaces support dark/light preference. |
+| Three audience journeys | Build a Workforce, Find Work, and Access TAASCOR are first-class native routes from the homepage and shared public shell. | Implemented locally. |
+| Modular public information architecture | Shared shell plus About, Contact, Platform, Proof, Portal, Solutions, Industries, Jobs, company/evidence routes, legal/support routes, Insights, and Resources. | Implemented locally. Dynamic detail routes are limited to evidence-safe structures. |
+| Six service lines with deeper pages | Six dedicated solution routes document intended scope, responsibility split, sequence, evidence, constraints, and planner handoff without unverified delivery claims. | Implemented locally; real scope and commitments remain owner-approved content. |
+| Industry context | Four evidence-safe operating-context lenses cover production throughput, distribution/fulfilment, office/service support, and facilities/site support. | Implemented locally. They are fit-assessment patterns, not claims of current client capacity or coverage. |
+| Jobs catalogue | One governed job source powers homepage previews, keyword search, location/type/function/shift filters, sorting, active/closing state, result counts, and clear reset/shareable queries. | Implemented locally with synthetic jobs. Production publication remains a separate explicit flag and approved-job data gate. Saved-search notifications are an external product/provider decision. |
+| Canonical job detail | Clean `/jobs/{slug}/` routes include job context, requirements, published/closing state, anti-fraud guidance, related jobs, canonical metadata, and governed `JobPosting` output for eligible records. | Implemented locally. No real role is approved or seeded. |
+| Correct job-to-application handoff | Clean `/apply/{slug}/` keeps the path slug authoritative even when a conflicting query is supplied; compatibility query routes remain available. | Implemented locally and regression-tested. |
+| Responsive staged application | Two-stage minimum-data flow supports draft creation, job snapshot/hash, re-confirmation when terms change, save/resume, optional private resume quarantine, certification, submission receipt, and exact application reference. | Implemented locally. The broader five-stage/later-sensitive-field model remains an external Recruitment/DPO decision. |
+| Applicant identity and self-service | Registration, login/logout, password change, strict sessions, application cards, candidate-facing timeline, assigned tasks, task completion, withdrawal, profile controls, and notice history. | Implemented locally with synthetic records; applicant collection is production code-locked pending notice/DSR, email verification/recovery, provider, and identity controls. |
+| Orientation/medical and later-stage records | No generic sensitive fields or fabricated workflow was copied from Render. The task model can carry approved next actions without creating universal medical/orientation fields. | External gate. Requires confirmed trigger, owner, minimum fields, purpose, lawful basis, access, retention, candidate language, and UAT. |
+| Staff workspace | Separate staff login, job administration, application queue/detail, controlled transitions, task assignment, optimistic/concurrency controls, immutable snapshots, and audit history. | Implemented locally for workflow qualification; production code-locked pending MFA, scoped role/assignment matrix, PII-read audit, provisioning, and maker-checker. |
+| Resume/document handling | One-resume invariant, extension/MIME/signature/size checks, randomized names, content hash, storage quota, private path, quarantine state, transactional ownership, and cleanup-on-write-failure. | Implemented as local quarantine only; production code-locked pending malware scanning, authorized retrieval/read audit, retention/legal hold/deletion, and reconciliation. |
+| Employer conversion | Workforce Planner captures a structured, minimum-data operating brief with CSRF, honeypot, throttling, privacy acknowledgement, local receipt, and clear non-commitment language. | Implemented locally; production code-locked pending approved notice, owned CRM/advisor queue, routing, monitoring, response policy, retention, and deletion. |
+| Client/proof library | Clients, case studies, proof, leadership, locations, contact, insights, and resources render useful evidence requirements and honest unavailable states. | Evidence-gated. No logo, relationship, outcome, leader, address, channel, certificate, or publication is fabricated. Detail records await owner-approved source material and permissions. |
+| TAASCOR HRIS story and portal handoff | Platform route explains the lifecycle and public-data boundary; Access TAASCOR separates Applicant, Employee/HRIS, Client, and Staff destinations without copying employee/payroll data into marketing. | Implemented locally as narrative/routing. Product modules, client portal, authenticated HRIS behavior, and advisor/demo integration remain external gates. |
+| Privacy, accessibility, terms, and anti-fraud | Dedicated routes, collection-specific draft notice, content minimization, explicit prohibited-data guidance, accessible form patterns, scam warnings, and evidence-gated official channels. | Implemented locally; legal text and monitored channels remain unapproved and non-production. |
+| Search/social/indexing foundation | Canonicals, titles/descriptions, Open Graph/Twitter metadata, organization/job structured data, dynamic robots/sitemap, branded 404, and noindex defaults. | Implemented locally. Canonical production domain, share image, approved channels, and indexing activation remain external gates. |
+| Security and runtime foundation | Environment allowlist, strict production origin/MySQL/key/cookie/upload rules, trusted-proxy allowlist, HTTPS/HSTS path, CSP/SRI/headers, CSRF, encoding, prepared queries, authorization, throttles, session rotation/expiry/version, route/internal/archive denial, migration pre/post checks, audit and concurrency controls. | Implemented locally. Hosting, MySQL, central monitoring, backups/restore, vulnerability management, and penetration testing remain external qualification gates. |
+| Production capability containment | Applicant/workforce collection, resume upload, and staff workflows cannot be enabled in production by environment flags in this release. | Production code-locked. A future reviewed commit must implement the missing controls and change the corresponding qualification gate. |
+| Verification and release governance | Static governance/security/PHP/link/secret checks, Playwright public/recruitment/security/lifecycle/accessibility/responsive/visual suites, disposable migrations, release checklist, known-gaps register, and manual Hostinger boundary. | Implemented locally. Clean-checkout/exact-commit qualification starts only after separate feature commit/push approval. |
+
+## Deliberate plan deltas
+
+- The application uses a two-stage minimum-data first application, not the plan's complete future five-stage model. The missing later stages depend on Recruitment and DPO decisions and are not safe to invent.
+- Email verification, resend, recovery, MFA, notifications, malware scanning, CRM/advisor delivery, analytics, and external HRIS/client integrations are not simulated as if operational. Their providers, data maps, retry/failure behavior, credentials, and owners remain external gates.
+- Platform-module, case-study-detail, resource-detail, approved client mosaic, leadership, organization-chart, and real location records are withheld until current source evidence and permissions exist.
+- Render's excessive first-touch fields, ambiguous shared login, broken job handoff, generic PHP URLs, client-card duplication, and weak mobile/security behavior were intentionally not copied.
+- Production MySQL/edge behavior, Core Web Vitals, authenticated live smoke, and backup/restore cannot be established from the isolated SQLite/loopback profile.
+
+## Completion rule
+
+Local completion means there is no remaining unclassified feature requirement and no open P0/P1 defect in the isolated implementation. It does **not** mean the external gates above have passed. The exact test evidence and remaining risks are recorded in `LOCAL_READINESS_2026-09-02.md` and `KNOWN_GAPS_2026-09-02.md`.
