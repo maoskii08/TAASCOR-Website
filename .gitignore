@@ -1,0 +1,49 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+!.env.template
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+.npmrc
+
+# Dependencies and build outputs
+node_modules/
+vendor/
+dist/
+build/
+.astro/
+.vite/
+
+# Framework runtime files
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*.php
+*.sqlite
+*.sqlite3
+*.db
+
+# Local backups and temporary artifacts
+Backups/
+*.zip
+*.tmp
+*.temp
+
+# Test and coverage output
+coverage/
+playwright-report/
+test-results/
+.phpunit.result.cache
+
+# Editors and operating systems
+.idea/
+.vscode/
+.claude/settings.local.json
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAASCOR — Powering Business with the Right People</title>
+<meta name="description" content="TAASCOR Management &amp; General Services Corp. — DOLE-registered manpower outsourcing, recruitment, payroll administration and HRIS technology for Philippine business.">
+<meta name="theme-color" content="#050A16">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<style>
+/* ============ TAASCOR — THE DEPLOYMENT ============
+   One particle workforce, six formations, zero cuts.
+   Palette derived from the TMGS hexagon mark: navy, crimson, gold. */
+:root{
+  --void:#050A16;
+  --void2:#08101F;
+  --ink:#EAF1FF;
+  --dim:#8FA0C4;
+  --faint:#5D6C90;
+  --blue:#27489B;
+  --blue-lt:#4C7BE8;
+  --crimson:#BF1E2C;
+  --red:#E5384A;
+  --gold:#F7A20F;
+  --yellow:#FEDD21;
+  --line:rgba(140,170,240,.14);
+  --line2:rgba(140,170,240,.28);
+  --grad:linear-gradient(100deg,var(--yellow),var(--red) 50%,var(--blue-lt));
+  --disp:'Archivo',system-ui,sans-serif;
+  --body:'Switzer',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+html,body{background:var(--void)}
+body{
+  font-family:var(--body);color:var(--ink);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  line-height:1.6;font-size:16px;
+}
+::selection{background:rgba(191,30,44,.45);color:#fff}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ---------- fixed layers ---------- */
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#grain{position:fixed;inset:-40px;z-index:6;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");}
+
+/* ---------- header ---------- */
+#hdr{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(18px,3.4vw,44px);
+  transition:background .5s,border-color .5s,backdrop-filter .5s;
+  border-bottom:1px solid transparent;
+}
+#hdr.scrolled{background:rgba(5,10,22,.66);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
+.lockup{display:flex;align-items:center;gap:12px}
+.lockup svg{width:30px;height:30px;flex:none}
+.lockup .lk-name{font-family:var(--disp);font-weight:800;font-size:.94rem;letter-spacing:.1em}
+.lockup .lk-sub{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:2px}
+.readout{position:absolute;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none}
+.readout .ro-chap{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;white-space:nowrap}
+.readout .ro-chap b{color:var(--gold);font-weight:500}
+.readout .ro-bar{width:88px;height:1px;background:rgba(140,170,240,.18);margin:7px auto 0;position:relative;overflow:hidden}
+.readout .ro-bar i{position:absolute;inset:0;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+.hnav{display:flex;align-items:center;gap:26px}
+.hnav a.nl{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);transition:color .3s}
+.hnav a.nl:hover{color:var(--ink)}
+.hnav a.nl-hris{font-weight:500;transition:filter .3s;
+  background:linear-gradient(100deg,var(--yellow),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hnav a.nl-hris:hover{color:transparent;filter:brightness(1.22)}
+.hcta{font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:10px 18px;border-radius:99px;position:relative;color:var(--ink);
+  background:linear-gradient(var(--void2),var(--void2)) padding-box,var(--grad) border-box;
+  border:1px solid transparent;transition:box-shadow .35s,transform .35s;display:inline-block}
+.hcta:hover{box-shadow:0 0 26px rgba(191,30,44,.42);transform:translateY(-1px)}
+@media(max-width:960px){.readout,.hnav a.nl{display:none}.lockup .lk-sub{display:none}}
+
+/* ---------- shared type ---------- */
+.kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
+.kicker b{color:var(--gold);font-weight:500}
+.kicker .kdot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:10px;vertical-align:1px;box-shadow:0 0 10px var(--gold);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.h-film{font-family:var(--disp);font-weight:800;font-size:clamp(1.7rem,4.4vw,3.3rem);line-height:1.12;letter-spacing:-.015em}
+.h-sec{font-family:var(--disp);font-weight:800;font-size:clamp(1.55rem,3.4vw,2.6rem);line-height:1.16;letter-spacing:-.015em}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--dim);font-size:clamp(.98rem,1.4vw,1.12rem);max-width:54ch}
+
+/* ---------- film scenes (sticky stages) ---------- */
+.scene{position:relative;z-index:1}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#film{height:580vh}
+#ops{height:340vh}
+#coverage{height:360vh}
+.vignette{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 120% 90% at 50% 46%,transparent 55%,rgba(2,4,11,.58) 100%)}
+
+/* beats */
+.beat{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 6vw;opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform}
+.beat .kicker{margin-bottom:22px}
+.beat .sub{margin-top:18px}
+
+/* hero */
+#b-hero .wordmark{font-family:var(--disp);font-weight:900;font-size:clamp(2.5rem,10.4vw,8.4rem);
+  line-height:.95;letter-spacing:-.02em;display:flex;justify-content:center;overflow:hidden;
+  background:linear-gradient(180deg,#fff 28%,#9FB4E6);-webkit-background-clip:text;background-clip:text;color:transparent}
+#b-hero .wordmark span{display:inline-block;will-change:transform}
+#b-hero .legal{font-family:var(--mono);font-size:.58rem;letter-spacing:.26em;color:var(--faint);text-transform:uppercase;margin-top:16px}
+#b-hero .tagline{margin-top:22px;font-size:clamp(1.02rem,1.8vw,1.3rem);color:var(--ink);font-weight:500}
+#b-hero .tagline em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+#b-hero .status{margin-top:20px}
+#cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);text-align:center;z-index:3;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;
+  transition:opacity .5s;pointer-events:none}
+#cue .cue-line{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);margin:12px auto 0;
+  animation:cueDrop 2.1s cubic-bezier(.6,0,.3,1) infinite;transform-origin:top}
+@keyframes cueDrop{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* stat chips */
+.chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+.chip{background:rgba(10,16,34,.8);border:1px solid var(--line);border-radius:14px;padding:14px 20px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);min-width:132px}
+.chip .cv{font-family:var(--disp);font-weight:800;font-size:1.3rem;background:var(--grad);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.chip .cl{font-family:var(--mono);font-size:.55rem;letter-spacing:.16em;color:var(--dim);text-transform:uppercase;margin-top:6px}
+
+/* ---------- operations floor ---------- */
+#ops .stage{display:flex;align-items:center;justify-content:center}
+.ops-head{position:absolute;top:11vh;left:0;right:0;text-align:center;padding:0 6vw;z-index:3}
+.ops-wrap{position:relative;width:min(1180px,94vw);height:min(62vh,600px);margin-top:14vh}
+.panel{position:absolute;background:rgba(10,16,34,.82);border:1px solid var(--line);border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 18px 60px rgba(0,0,0,.45);
+  padding:18px 20px;opacity:0;will-change:transform,opacity}
+.panel .p-t{font-family:var(--mono);font-size:.57rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px}
+.panel .p-t i{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite;flex:none}
+.panel svg{display:block;width:100%;height:auto}
+#p-line{left:0;top:6%;width:44%}
+#p-donut{left:47%;top:0;width:20%}
+#p-bars{right:0;top:4%;width:26%}
+#p-feed{left:4%;bottom:4%;width:40%}
+#p-kpi{right:2%;bottom:6%;width:48%}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kpi .kv{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.8vw,1.5rem)}
+.kpi:nth-child(1) .kv{color:var(--gold)}.kpi:nth-child(2) .kv{color:var(--ink)}
+.kpi:nth-child(3) .kv{color:var(--red)}.kpi:nth-child(4) .kv{color:var(--blue-lt)}
+.kpi .kl{font-family:var(--mono);font-size:.51rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;margin-top:5px}
+.feed{font-family:var(--mono);font-size:.63rem;line-height:1.9;color:var(--dim)}
+.feed div{opacity:0;transform:translateX(-8px);will-change:opacity,transform;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feed b{color:var(--gold);font-weight:500}
+.feed .fg{color:var(--blue-lt)}
+.donut-v{position:absolute;left:0;right:0;bottom:0;top:30px;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.donut-v .dv{font-family:var(--disp);font-weight:800;font-size:1.1rem}
+.donut-v .dl{font-family:var(--mono);font-size:.49rem;letter-spacing:.14em;color:var(--dim);margin-top:3px}
+@media(max-width:960px){
+  .ops-wrap{height:auto;display:flex;flex-direction:column;gap:14px;margin-top:15vh;max-height:66vh;overflow:hidden}
+  .panel{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%!important;transform:none}
+  #p-donut,#p-bars{display:none}
+}
+
+/* ---------- service lines (horizontal) ---------- */
+#lines{position:relative;z-index:1}
+#lines .stage{display:flex;align-items:center}
+.l-track{display:flex;align-items:center;gap:clamp(20px,3vw,44px);width:max-content;
+  padding:0 clamp(20px,7vw,110px);will-change:transform}
+.l-intro{width:min(560px,82vw);flex:none;padding-right:2vw}
+.l-intro .h-sec{margin-top:18px}
+.l-card{position:relative;flex:none;width:min(400px,78vw);border-radius:20px;padding:30px 28px 26px;
+  background:rgba(10,16,34,.8);border:1px solid var(--line);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);transition:border-color .5s;min-height:268px}
+.l-card::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  box-shadow:0 0 44px rgba(191,30,44,.22);opacity:0;transition:opacity .5s}
+.l-card.live{border-color:rgba(229,56,74,.5)}
+.l-card.live::after{opacity:1}
+.l-card .l-idx{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;color:var(--faint)}
+.l-card .l-glyph{width:44px;height:44px;margin:20px 0 16px;color:var(--gold)}
+.l-card:nth-child(even) .l-glyph{color:var(--blue-lt)}
+.l-card h3{font-family:var(--disp);font-weight:800;font-size:1.12rem;line-height:1.3;letter-spacing:-.01em}
+.l-card p{color:var(--dim);font-size:.95rem;margin-top:12px}
+.l-card .l-meta{font-family:var(--mono);font-size:.55rem;letter-spacing:.14em;color:var(--faint);
+  text-transform:uppercase;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+
+/* ---------- coverage ---------- */
+#coverage .stage{display:flex;align-items:center;justify-content:center}
+#orbit-field{position:absolute;inset:0;overflow:hidden}
+.g-chip{position:absolute;top:46%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+  padding:8px 14px;border-radius:99px;background:rgba(9,15,32,.86);border:1px solid var(--line2);
+  color:var(--ink);opacity:0;will-change:transform,opacity;cursor:pointer;pointer-events:auto}
+.g-chip i{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--gold);margin-right:8px;vertical-align:1px;box-shadow:0 0 8px var(--gold)}
+.g-chip:hover{border-color:var(--red)}
+#nucleus{position:absolute;top:46%;left:50%;width:120px;height:120px;transform:translate(-50%,-50%);
+  border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(circle,rgba(255,255,255,.9),rgba(247,162,15,.5) 32%,rgba(39,72,155,.24) 62%,transparent 72%);
+  filter:blur(2px)}
+.g-beats .h-film{max-width:17ch}
+#b-hand .down{width:1px;height:52px;background:linear-gradient(var(--gold),transparent);margin:26px auto 0}
+
+/* ---------- platform ---------- */
+#platform{position:relative;z-index:2;padding:16vh 6vw 12vh;
+  background:linear-gradient(180deg,transparent,rgba(7,12,26,.84) 18%,rgba(7,12,26,.84) 88%,transparent)}
+.plat-head{max-width:1240px;margin:0 auto}
+.plat-head .h-sec{margin-top:18px;max-width:28ch}
+.plat-portal{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:12px;margin-top:38px;padding:17px 32px;border-radius:99px;
+  color:var(--ink);border:1px solid transparent;
+  background:linear-gradient(var(--void2),var(--void2)) padding-box,var(--grad) border-box;
+  transition:box-shadow .35s,transform .35s}
+.plat-portal b{font-weight:400;color:var(--gold);transition:transform .35s}
+.plat-portal:hover{transform:translateY(-2px);box-shadow:0 0 32px rgba(247,162,15,.3)}
+.plat-portal:hover b{transform:translateX(5px)}
+
+/* ---------- protocol ---------- */
+#protocol{position:relative;z-index:2;padding:14vh 6vw 16vh}
+.pr-wrap{max-width:980px;margin:0 auto}
+.pr-head{margin-bottom:70px}
+.pr-head .h-sec{margin-top:18px}
+.tl{position:relative;padding-left:clamp(30px,5vw,54px)}
+.tl-spine{position:absolute;left:0;top:6px;bottom:6px;width:1px;background:rgba(140,170,240,.14)}
+.tl-spine i{position:absolute;inset:0;background:var(--grad);transform-origin:0 0;transform:scaleY(0);will-change:transform}
+.ms{position:relative;padding:0 0 58px}
+.ms:last-child{padding-bottom:0}
+.ms::before{content:'';position:absolute;left:calc(-1 * clamp(30px,5vw,54px));top:8px;width:11px;height:11px;
+  transform:translateX(-5px);border-radius:50%;background:var(--void);border:2px solid var(--red);box-shadow:0 0 14px rgba(191,30,44,.6)}
+.ms .ms-q{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;color:var(--gold);text-transform:uppercase}
+.ms h3{font-family:var(--disp);font-weight:800;font-size:clamp(1.2rem,2.5vw,1.7rem);margin-top:12px;letter-spacing:-.015em}
+.ms p{color:var(--dim);margin-top:12px;max-width:58ch}
+.ms{opacity:0;transform:translateY(36px);will-change:transform,opacity}
+
+/* ---------- trust / credentials ---------- */
+#trust{position:relative;z-index:2;padding:6vh 6vw 12vh}
+.tr-wrap{max-width:1240px;margin:0 auto}
+.tr-head{margin-bottom:44px}
+.tr-head .h-sec{margin-top:16px}
+.tr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:18px}
+.cred{border-radius:18px;padding:26px 24px;background:rgba(10,16,34,.62);border:1px solid var(--line);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.cred .cr-k{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+.cred h3{font-family:var(--disp);font-weight:800;font-size:1rem;margin-top:14px;letter-spacing:-.01em}
+.cred p{color:var(--dim);font-size:.88rem;margin-top:10px}
+.cred .cr-no{font-family:var(--mono);font-size:.72rem;color:var(--ink);margin-top:14px;
+  padding-top:12px;border-top:1px solid var(--line);word-break:break-all}
+.ind{margin-top:48px;padding-top:36px;border-top:1px solid var(--line)}
+.ind h3{font-family:var(--mono);font-size:.6rem;letter-spacing:.24em;color:var(--faint);
+  text-transform:uppercase;font-weight:400;margin-bottom:20px}
+.ind-list{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.ind-list li{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 16px;border-radius:99px;border:1px solid var(--line2);color:var(--dim);
+  background:rgba(9,15,32,.5);transition:color .3s,border-color .3s}
+.ind-list li:hover{color:var(--ink);border-color:var(--gold)}
+
+/* ---------- coda + footer ---------- */
+#coda{position:relative;z-index:2;min-height:88vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:12vh 6vw}
+#coda h2{font-family:var(--disp);font-weight:900;font-size:clamp(2rem,6.2vw,4.4rem);line-height:1.1;max-width:17ch;letter-spacing:-.025em}
+#coda .sub{margin:26px auto 40px}
+.cta-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn-p{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  padding:16px 30px;border-radius:99px;background:var(--grad);box-shadow:0 0 34px rgba(191,30,44,.42);
+  transition:transform .35s,box-shadow .35s;display:inline-block;font-weight:500}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 0 54px rgba(191,30,44,.66)}
+.btn-g{font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);
+  padding:16px 30px;border-radius:99px;border:1px solid var(--line2);background:rgba(9,15,32,.5);
+  transition:border-color .35s,transform .35s;display:inline-block}
+.btn-g:hover{border-color:var(--gold);transform:translateY(-2px)}
+.coda-contact{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;margin-top:44px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.coda-contact a:hover{color:var(--ink)}
+footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:44px 6vw 34px;background:rgba(5,10,22,.72)}
+.f-in{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:34px;flex-wrap:wrap}
+.f-col h4{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;margin-bottom:14px}
+.f-col p,.f-col a{display:block;font-size:.86rem;color:var(--dim);margin-bottom:7px;transition:color .3s}
+.f-col a:hover{color:var(--ink)}
+.f-nav{display:flex;flex-direction:column;gap:2px}
+.f-fine{max-width:1240px;margin:34px auto 0;padding-top:22px;border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;color:var(--faint);line-height:2}
+
+/* ---------- reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  #film,#ops,#coverage{height:auto}
+  .stage{position:static;height:auto;min-height:0;overflow:visible;padding:14vh 0 6vh}
+  .beat{position:static;opacity:1!important;visibility:visible!important;transform:none!important;padding:7vh 6vw;pointer-events:auto}
+  #cue,.vignette{display:none}
+  .ops-wrap{position:static;height:auto;display:flex;flex-direction:column;gap:14px;max-height:none;margin:6vh auto 0}
+  .panel{position:static!important;opacity:1!important;transform:none!important;width:100%!important}
+  .panel svg{max-width:340px}
+  #p-donut svg{max-width:170px}
+  .donut-v{position:static;margin-top:12px;align-items:flex-start}
+  .feed div{opacity:1!important;transform:none!important}
+  #lines .stage{display:block;overflow-x:auto}
+  .l-track{transform:none!important;padding:4vh 6vw}
+  #orbit-field,#nucleus{display:none}
+  .ms{opacity:1!important;transform:none!important}
+  .tl-spine i{transform:scaleY(1)!important}
+  #b-hero .wordmark span{transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<canvas id="field" aria-hidden="true"></canvas>
+<div id="grain" aria-hidden="true"></div>
+
+<header id="hdr">
+  <a class="lockup" href="#top" data-to="0" aria-label="TAASCOR home">
+    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M29.2 16 22.6 27.43H9.4L2.8 16 9.4 4.57h13.2z" fill="rgba(39,72,155,.42)" stroke="url(#hx1)" stroke-width="1.6"/>
+      <circle cx="29.2" cy="16" r="2" fill="#BF1E2C"/><circle cx="2.8" cy="16" r="2" fill="#BF1E2C"/>
+      <circle cx="22.6" cy="4.57" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="4.57" r="2" fill="#BF1E2C"/>
+      <circle cx="22.6" cy="27.43" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="27.43" r="2" fill="#BF1E2C"/>
+      <defs><linearGradient id="hx1" x1="3" y1="5" x2="29" y2="27"><stop stop-color="#FEDD21"/><stop offset="1" stop-color="#F7A20F"/></linearGradient></defs>
+    </svg>
+    <span><span class="lk-name">TAASCOR</span><br><span class="lk-sub">Manpower Solutions</span></span>
+  </a>
+  <div class="readout" aria-hidden="true">
+    <div class="ro-chap">SYS <b id="ro-num">01</b> · <span id="ro-name">THE TALENT POOL</span></div>
+    <div class="ro-bar"><i id="ro-fill"></i></div>
+  </div>
+  <nav class="hnav" aria-label="Primary">
+    <a class="nl" href="#lines" data-to="#lines">Services</a>
+    <a class="nl nl-hris" href="#platform" data-to="#platform">HRIS</a>
+    <a class="nl" href="#protocol" data-to="#protocol">Process</a>
+    <a class="nl" href="#trust" data-to="#trust">Compliance</a>
+    <a class="hcta" href="#coda" data-to="#coda">Request Manpower</a>
+  </nav>
+</header>
+
+<!-- ============ FILM I · POOL → SCREENING → CORE ============ -->
+<section id="film" class="scene" aria-label="From talent pool to workforce core">
+  <div class="stage">
+    <div class="beat" id="b-hero" data-in="-0.1" data-peak="0" data-out="0.11">
+      <div class="kicker">Management &amp; General Services Corp.</div>
+      <h1 class="wordmark" aria-label="TAASCOR"><span>T</span><span>A</span><span>A</span><span>S</span><span>C</span><span>O</span><span>R</span></h1>
+      <p class="tagline">Powering business with <em>the right people</em>.</p>
+      <div class="legal">SEC CS201212925 · DOLE D.O. 18-A REGISTERED</div>
+      <div class="kicker status"><span class="kdot"></span>ACCEPTING MANPOWER REQUISITIONS</div>
+    </div>
+
+    <div class="beat" data-in="0.16" data-peak="0.24" data-out="0.34">
+      <div class="kicker">SCENE 01 · <b>THE TALENT POOL</b></div>
+      <h2 class="h-film">Talent is everywhere.<br>Readiness is not.</h2>
+      <p class="sub">A hire is easy to find and hard to trust. Every unvetted worker you place on a floor is a compliance exposure waiting to surface.</p>
+    </div>
+
+    <div class="beat" data-in="0.36" data-peak="0.45" data-out="0.55">
+      <div class="kicker">SCENE 02 · <b>SCREENING &amp; VETTING</b></div>
+      <h2 class="h-film">We narrow the field<br>before you ever meet it.</h2>
+      <p class="sub">Sourcing, credential checks, NBI and medical clearance, statutory registration — every candidate passes the same gate.</p>
+    </div>
+
+    <div class="beat" data-in="0.58" data-peak="0.68" data-out="0.79">
+      <div class="kicker">SCENE 03 · <b>THE WORKFORCE CORE</b></div>
+      <h2 class="h-film">Six disciplines.<br>One accountable partner.</h2>
+      <div class="chips">
+        <div class="chip"><div class="cv"><span class="cnt" data-v="2012" data-raw="1">0</span></div><div class="cl">Incorporated</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="6">0</span></div><div class="cl">Service lines</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="18" data-suf="-A">0</span></div><div class="cl">DOLE D.O.</div></div>
+        <div class="chip"><div class="cv"><span class="cnt" data-v="1">0</span></div><div class="cl">HRIS platform</div></div>
+      </div>
+    </div>
+
+    <div class="beat" data-in="0.81" data-peak="0.88" data-out="0.96">
+      <div class="kicker">TRANSIT · <b>OPERATIONS FLOOR</b></div>
+      <h2 class="h-film grad-text">Entering the<br>Operations Floor</h2>
+    </div>
+
+    <div id="cue">Scroll to enter<div class="cue-line"></div></div>
+    <div class="vignette"></div>
+  </div>
+</section>
+
+<!-- ============ FILM II · OPERATIONS FLOOR ============ -->
+<section id="ops" class="scene" aria-label="Operations floor">
+  <div class="stage">
+    <div class="ops-head">
+      <div class="kicker">SCENE 04 · <b>OPERATIONS FLOOR</b></div>
+      <h2 class="h-sec" style="margin-top:16px">Deployment is not a handshake.<br>It is a running system.</h2>
+    </div>
+    <div class="ops-wrap">
+      <div class="panel" id="p-line">
+        <div class="p-t"><span>Deployed headcount · requisition vs filled</span><i></i></div>
+        <svg viewBox="0 0 320 140" preserveAspectRatio="none" aria-hidden="true">
+          <defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#BF1E2C" stop-opacity=".3"/><stop offset="1" stop-color="#BF1E2C" stop-opacity="0"/>
+          </linearGradient></defs>
+          <g stroke="rgba(140,170,240,.1)" stroke-width="1">
+            <line x1="0" y1="35" x2="320" y2="35"/><line x1="0" y1="70" x2="320" y2="70"/><line x1="0" y1="105" x2="320" y2="105"/>
+          </g>
+          <path id="area1" d="M0,96 C20,90 34,70 52,74 S86,96 104,84 S138,48 158,56 S196,76 214,60 S252,30 272,38 S304,26 320,30 L320,140 L0,140 Z" fill="url(#ag)" opacity="0"/>
+          <path id="line1" d="M0,96 C20,90 34,70 52,74 S86,96 104,84 S138,48 158,56 S196,76 214,60 S252,30 272,38 S304,26 320,30" fill="none" stroke="#E5384A" stroke-width="2"/>
+          <path id="line2" d="M0,104 C24,98 40,84 60,86 S96,100 116,92 S150,62 170,66 S204,84 222,70 S258,44 278,48 S306,36 320,40" fill="none" stroke="rgba(247,162,15,.8)" stroke-width="1.4"/>
+        </svg>
+      </div>
+      <div class="panel" id="p-donut">
+        <div class="p-t"><span>Attendance</span><i></i></div>
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(140,170,240,.12)" stroke-width="8"/>
+          <circle id="donut" cx="60" cy="60" r="44" fill="none" stroke="url(#dg)" stroke-width="8" stroke-linecap="round"
+            transform="rotate(-90 60 60)" stroke-dasharray="276.5" stroke-dashoffset="276.5"/>
+          <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FEDD21"/><stop offset="1" stop-color="#BF1E2C"/></linearGradient></defs>
+        </svg>
+        <div class="donut-v"><div class="dv"><span class="cnt" data-v="96.8" data-d="1" data-suf="%">0</span></div><div class="dl">TARGET 95.0</div></div>
+      </div>
+      <div class="panel" id="p-bars">
+        <div class="p-t"><span>Headcount · by site</span><i></i></div>
+        <svg viewBox="0 0 150 132" aria-hidden="true">
+          <g class="bars" fill="url(#bg1)">
+            <rect x="6"   y="40" width="14" height="80" rx="2"/>
+            <rect x="30"  y="56" width="14" height="64" rx="2"/>
+            <rect x="54"  y="32" width="14" height="88" rx="2"/>
+            <rect x="78"  y="62" width="14" height="58" rx="2"/>
+            <rect x="102" y="48" width="14" height="72" rx="2"/>
+            <rect x="126" y="70" width="14" height="50" rx="2"/>
+          </g>
+          <g font-family="IBM Plex Mono,monospace" font-size="8" fill="#8FA0C4" text-anchor="middle">
+            <text x="13" y="130">CAB</text><text x="37" y="130">CAI</text><text x="61" y="130">PAS</text>
+            <text x="85" y="130">LAG</text><text x="109" y="130">RIZ</text><text x="133" y="130">NCR</text>
+          </g>
+          <defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#4C7BE8"/><stop offset="1" stop-color="#BF1E2C"/></linearGradient></defs>
+        </svg>
+      </div>
+      <div class="panel" id="p-feed">
+        <div class="p-t"><span>Compliance &amp; payroll feed</span><i></i></div>
+        <div class="feed">
+          <div>08:12:04 <b>DTR</b> biometric intake reconciled · 6 sites <span class="fg">✓</span></div>
+          <div>08:31:47 <b>SSS</b> contribution schedule posted · cut-off 1</div>
+          <div>09:05:22 <b>PHILHEALTH</b> premium remittance filed <span class="fg">✓</span></div>
+          <div>09:44:10 <b>PAG-IBIG</b> MCRF generated · 0 exceptions <span class="fg">✓</span></div>
+          <div>10:20:39 <b>PAYSLIP</b> release approved · cycle locked <span class="fg">✓</span></div>
+        </div>
+      </div>
+      <div class="panel" id="p-kpi">
+        <div class="p-t"><span>Workforce KPIs · illustrative</span><i></i></div>
+        <div class="kpi-row">
+          <div class="kpi"><div class="kv"><span class="cnt" data-v="96.8" data-d="1" data-suf="%">0</span></div><div class="kl">Attendance</div></div>
+          <div class="kpi"><div class="kv"><span class="cnt" data-v="94.1" data-d="1" data-suf="%">0</span></div><div class="kl">Fill rate</div></div>
+          <div class="kpi"><div class="kv"><span class="cnt" data-v="5" data-suf="d">0</span></div><div class="kl">Time to deploy</div></div>
+          <div class="kpi"><div class="kv"><span class="cnt" data-v="100" data-suf="%">0</span></div><div class="kl">Statutory filing</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="vignette"></div>
+  </div>
+</section>
+
+<!-- ============ FILM III · SERVICE LINES (horizontal) ============ -->
+<section id="lines" class="scene" aria-label="Service lines">
+  <div class="stage">
+    <div class="l-track" id="l-track">
+      <div class="l-intro">
+        <div class="kicker">SCENE 05 · <b>SERVICE LINES</b></div>
+        <h2 class="h-sec">Six vertices.<br><span class="grad-text">One hexagon.</span></h2>
+        <p class="sub" style="margin-top:18px">The six points of our mark are the six things we take off your plate — from the first sourcing call to the last statutory filing.</p>
+      </div>
+      <article class="l-card"><div class="l-idx">LINE / 01</div>
+        <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="15" r="6"/><path d="M5 36c0-6.1 4.9-11 11-11s11 4.9 11 11"/><path d="M30 14h9M34.5 9.5v9"/></svg>
+        <h3>Contractual Staffing</h3><p>Project-based, seasonal and ramp manpower deployed under a legitimate contracting arrangement — the workers are our employees, the output is yours.</p>
+        <div class="l-meta">Production · Ramp · Seasonal peaks</div></article>
+      <article class="l-card"><div class="l-idx">LINE / 02</div>
+        <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="19" cy="19" r="12"/><path d="M28 28l9 9"/><path d="M14 19h10M19 14v10"/></svg>
+        <h3>Recruitment &amp; Sourcing</h3><p>A live pipeline instead of a scramble. Position profiling, sourcing, behavioural and technical screening, reference and NBI verification.</p>
+        <div class="l-meta">Pipeline · Screening · Verification</div></article>
+      <article class="l-card"><div class="l-idx">LINE / 03</div>
+        <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="7" y="9" width="30" height="26" rx="3"/><path d="M7 17h30"/><path d="M13 24h8M13 29h14"/><circle cx="30" cy="25" r="3.5"/></svg>
+        <h3>Payroll &amp; Benefits</h3><p>Timekeeping to payslip, on cycle. SSS, PhilHealth, Pag-IBIG and BIR computed, remitted and filed — with the receipts to prove it.</p>
+        <div class="l-meta">SSS · PhilHealth · Pag-IBIG · BIR</div></article>
+      <article class="l-card"><div class="l-idx">LINE / 04</div>
+        <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 5l14 6v10c0 9-6 15-14 18C14 36 8 30 8 21V11z"/><path d="M16 22l4 4 8-8"/></svg>
+        <h3>HR Administration</h3><p>201 files, contracts, employee relations, disciplinary process and DOLE-ready documentation maintained as a standing record, not a fire drill.</p>
+        <div class="l-meta">201 files · ER · Labour compliance</div></article>
+      <article class="l-card"><div class="l-idx">LINE / 05</div>
+        <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 34h32"/><path d="M11 34V20l11-9 11 9v14"/><path d="M18 34v-8h8v8"/></svg>
+        <h3>General &amp; Facility Services</h3><p>Janitorial, utility, warehouse and production support crews — supervised, equipped and scheduled against your operating hours.</p>
+        <div class="l-meta">Janitorial · Utility · Warehouse</div></article>
+      <article class="l-card"><div class="l-idx">LINE / 06</div>
+        <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M15 36h14M22 30v6"/><path d="M12 22l5-6 5 4 4-7 6 9" stroke-linecap="round"/></svg>
+        <h3>HRIS Technology</h3><p>Our own workforce platform runs underneath every deployment — DTR intake, payroll basis, payslip release and data-quality checks in one system.</p>
+        <div class="l-meta">In-house platform · Client visibility</div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILM IV · COVERAGE ============ -->
+<section id="coverage" class="scene" aria-label="Coverage and convergence">
+  <div class="stage">
+    <div id="orbit-field" aria-hidden="true">
+      <div id="nucleus"></div>
+    </div>
+    <div class="beat g-beats" data-in="0.05" data-peak="0.16" data-out="0.32">
+      <div class="kicker">SCENE 06 · <b>COVERAGE</b></div>
+      <h2 class="h-film">Deployed where<br>the work actually is.</h2>
+      <p class="sub">NCR, Rizal and the Laguna manufacturing belt — staffed from offices inside the same catchment as your site.</p>
+    </div>
+    <div class="beat g-beats" data-in="0.56" data-peak="0.70" data-out="0.83">
+      <h2 class="h-film">Every industry,<br><span class="grad-text">one system of record.</span></h2>
+    </div>
+    <div class="beat g-beats" id="b-hand" data-in="0.86" data-peak="0.94" data-out="2">
+      <div class="kicker">DOCKING · <b>HRIS PLATFORM</b></div>
+      <h2 class="h-film">Enter the platform</h2>
+      <div class="down"></div>
+    </div>
+    <div class="vignette"></div>
+  </div>
+</section>
+
+<!-- ============ HRIS PLATFORM ============ -->
+<section id="platform" aria-label="TAASCOR HRIS platform">
+  <div class="plat-head">
+    <div class="kicker"><span class="kdot"></span>TAASCOR HRIS · IN PRODUCTION</div>
+    <h2 class="h-sec">The platform your deployment <span class="grad-text">actually runs on.</span></h2>
+    <p class="sub" style="margin-top:16px">Most manpower agencies hand you a spreadsheet. We built the system instead — timekeeping, payroll basis and compliance evidence in one governed workflow.</p>
+    <a class="plat-portal" href="https://taascor.visiotechsolutions.com/hris/login/" target="_blank" rel="noopener noreferrer">Open the HRIS portal <b>→</b></a>
+  </div>
+</section>
+
+<!-- ============ DEPLOYMENT PROTOCOL ============ -->
+<section id="protocol" aria-label="Deployment protocol">
+  <div class="pr-wrap">
+    <div class="pr-head">
+      <div class="kicker">SCENE 07 · <b>DEPLOYMENT PROTOCOL</b></div>
+      <h2 class="h-sec">From requisition to first shift — <span class="grad-text">a fixed sequence.</span></h2>
+    </div>
+    <div class="tl">
+      <div class="tl-spine"><i id="spine-fill"></i></div>
+      <div class="ms"><div class="ms-q">STEP 01 · REQUISITION</div><h3>Manpower Planning</h3>
+        <p>We size the requirement with you — headcount, shift pattern, skill profile, site conditions and the date it has to be standing on the floor.</p></div>
+      <div class="ms"><div class="ms-q">STEP 02 · SOURCING</div><h3>Sourcing &amp; Screening</h3>
+        <p>Candidates are drawn from a maintained pipeline, screened against the position profile, then verified — references, NBI clearance, medical.</p></div>
+      <div class="ms"><div class="ms-q">STEP 03 · COMPLIANCE</div><h3>Statutory Onboarding</h3>
+        <p>Contracts issued, 201 file opened, SSS, PhilHealth, Pag-IBIG and BIR registration completed before deployment — not after the first payroll run.</p></div>
+      <div class="ms"><div class="ms-q">STEP 04 · DEPLOYMENT</div><h3>Site Orientation</h3>
+        <p>Workers report with site orientation, safety briefing and a named TAASCOR supervisor as the single point of escalation for your operations team.</p></div>
+      <div class="ms"><div class="ms-q">STEP 05 · CYCLE</div><h3>Timekeeping &amp; Payroll</h3>
+        <p>DTR flows into the HRIS, validation gates the payroll basis, payslips release on cycle and statutory remittances are filed with evidence retained.</p></div>
+      <div class="ms"><div class="ms-q">STEP 06 · SUSTAIN</div><h3>Performance &amp; Retention</h3>
+        <p>Attendance, turnover and employee relations reviewed with your account owner — replacements sourced ahead of the gap, not after it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST / CREDENTIALS ============ -->
+<section id="trust" aria-label="Compliance and credentials">
+  <div class="tr-wrap">
+    <div class="tr-head">
+      <div class="kicker">SCENE 08 · <b>COMPLIANCE</b></div>
+      <h2 class="h-sec">The paperwork that keeps <span class="grad-text">your name clean.</span></h2>
+      <p class="sub" style="margin-top:16px">Engaging an unregistered contractor makes the principal solidarily liable. Ours is on the record and available on request.</p>
+    </div>
+    <div class="tr-grid">
+      <div class="cred">
+        <div class="cr-k">Incorporation</div>
+        <h3>SEC Registered</h3>
+        <p>Incorporated in 2012 and managed by HR outsourcing professionals with decades of combined experience across the field.</p>
+        <div class="cr-no">SEC No. CS201212925</div>
+      </div>
+      <div class="cred">
+        <div class="cr-k">Labour</div>
+        <h3>DOLE Registered Contractor</h3>
+        <p>Registered with the Department of Labor and Employment under Department Order No. 18-A, Series of 2011.</p>
+        <div class="cr-no">Cert. No. NCR-PFO-7491-101712-098</div>
+      </div>
+      <div class="cred">
+        <div class="cr-k">Governance</div>
+        <h3>Statutory Remittance</h3>
+        <p>SSS, PhilHealth, Pag-IBIG and BIR obligations computed, remitted and filed on cycle, with supporting records retained for audit.</p>
+        <div class="cr-no">Evidence available on request</div>
+      </div>
+      <div class="cred">
+        <div class="cr-k">Coverage</div>
+        <h3>NCR · Rizal · Laguna</h3>
+        <p>Operating from Cainta, Rizal, with deployment coverage across Metro Manila and the Laguna manufacturing corridor.</p>
+        <div class="cr-no">Mon–Sat · 9:00 AM – 6:00 PM</div>
+      </div>
+    </div>
+
+    <div class="ind">
+      <h3>Industries we staff</h3>
+      <ul class="ind-list">
+        <li>Manufacturing</li>
+        <li>Logistics &amp; Warehousing</li>
+        <li>Retail &amp; Food Service</li>
+        <li>Facilities Management</li>
+        <li>Construction</li>
+        <li>BPO &amp; Shared Services</li>
+        <li>Food Processing</li>
+        <li>Distribution</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CODA ============ -->
+<section id="coda" aria-label="Contact TAASCOR">
+  <div class="kicker"><span class="kdot"></span>REQUISITION DESK OPEN</div>
+  <h2 style="margin-top:26px">Tell us the headcount.<br><span class="grad-text">We will staff it.</span></h2>
+  <p class="sub">Send us the position, the shift pattern and the date you need people standing on the floor. You will get a costed manpower proposal, not a brochure.</p>
+  <div class="cta-row">
+    <a class="btn-p" href="mailto:JayVillanueva@taascor.visiotechsolutions.com?subject=Manpower%20Requisition%20Enquiry">Request Manpower</a>
+    <a class="btn-g" href="tel:+639175119011">Call (+63) 917 511 9011</a>
+  </div>
+  <div class="coda-contact">
+    <a href="mailto:JayVillanueva@taascor.visiotechsolutions.com">JayVillanueva@taascor.visiotechsolutions.com</a>
+    <span>Cainta, Rizal</span>
+    <span>Mon–Sat · 9AM–6PM</span>
+  </div>
+</section>
+
+<footer>
+  <div class="f-in">
+    <div class="f-col">
+      <a class="lockup" href="#top" data-to="0" style="margin-bottom:16px">
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path d="M29.2 16 22.6 27.43H9.4L2.8 16 9.4 4.57h13.2z" fill="rgba(39,72,155,.42)" stroke="url(#hx2)" stroke-width="1.6"/>
+          <circle cx="29.2" cy="16" r="2" fill="#BF1E2C"/><circle cx="2.8" cy="16" r="2" fill="#BF1E2C"/>
+          <circle cx="22.6" cy="4.57" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="4.57" r="2" fill="#BF1E2C"/>
+          <circle cx="22.6" cy="27.43" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="27.43" r="2" fill="#BF1E2C"/>
+          <defs><linearGradient id="hx2" x1="3" y1="5" x2="29" y2="27"><stop stop-color="#FEDD21"/><stop offset="1" stop-color="#F7A20F"/></linearGradient></defs>
+        </svg>
+        <span><span class="lk-name">TAASCOR</span><br><span class="lk-sub">Manpower Solutions</span></span>
+      </a>
+      <p style="max-width:34ch">TAASCOR Management &amp; General Services Corp. — DOLE-registered manpower outsourcing for Philippine business.</p>
+    </div>
+    <div class="f-col">
+      <h4>Services</h4>
+      <nav class="f-nav" aria-label="Footer services">
+        <a href="#lines" data-to="#lines">Contractual Staffing</a>
+        <a href="#lines" data-to="#lines">Recruitment &amp; Sourcing</a>
+        <a href="#lines" data-to="#lines">Payroll &amp; Benefits</a>
+        <a href="#lines" data-to="#lines">HR Administration</a>
+        <a href="#lines" data-to="#lines">General &amp; Facility Services</a>
+      </nav>
+    </div>
+    <div class="f-col">
+      <h4>Company</h4>
+      <nav class="f-nav" aria-label="Footer company">
+        <a href="#platform" data-to="#platform">HRIS Platform</a>
+        <a href="#protocol" data-to="#protocol">Deployment Process</a>
+        <a href="#trust" data-to="#trust">Compliance</a>
+        <a href="https://taascor.visiotechsolutions.com/hris/login/" target="_blank" rel="noopener noreferrer">Employee Portal</a>
+      </nav>
+    </div>
+    <div class="f-col">
+      <h4>Contact</h4>
+      <a href="mailto:JayVillanueva@taascor.visiotechsolutions.com">JayVillanueva@taascor<br>.visiotechsolutions.com</a>
+      <a href="tel:+639175119011">(+63) 917 511 9011</a>
+      <p>Lot 1 Block 2, Phase 2E Area 4,<br>#7 Peach St., Greenwoods Executive Village,<br>San Andres, Cainta, Rizal</p>
+    </div>
+  </div>
+  <div class="f-fine">
+    © <span id="yr">2026</span> TAASCOR Management &amp; General Services Corp. · SEC CS201212925 · DOLE Cert. NCR-PFO-7491-101712-098<br>
+    Operational figures shown on the Operations Floor are illustrative and do not represent client data.
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+'use strict';
+var qs=function(s,r){return (r||document).querySelector(s)};
+var qsa=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var clamp=function(v,a,b){return v<a?a:(v>b?b:v)};
+var seg=function(p,a,b){return clamp((p-a)/(b-a),0,1)};
+var sm=function(t){return t*t*(3-2*t)};
+var eo=function(t){return 1-Math.pow(1-t,3)};
+var lerp=function(a,b,t){return a+(b-a)*t};
+var TAU=Math.PI*2;
+
+var params=new URLSearchParams(location.search);
+var JUMP=params.get('jump');
+var PRM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var TOUCH=matchMedia('(pointer: coarse)').matches;
+if(JUMP!==null){history.scrollRestoration='manual'}
+
+var yr=qs('#yr');if(yr)yr.textContent=new Date().getFullYear();
+
+/* ==================== THE FIELD (particle workforce) ====================
+   Every particle is a worker. Six formations:
+   pool → funnel → hex (the TMGS mark) → dust → hexnet → map → orbit */
+var field=(function(){
+  var cv=qs('#field'),ctx=cv.getContext('2d');
+  var DPR=Math.min(devicePixelRatio||1,1.5);
+  var W=0,H=0,CX=0,CY=0,R=0;
+  var N=TOUCH?620:1450, NW=TOUCH?140:260;
+  var P=[],WARP=[],NODES=[],CLUST=[];
+  var spin=0.4,time=0;
+  var S={a:'pool',b:'funnel',t:0,glow:.2,glowScale:1,arcs:0,warp:0,warpSpeed:1,
+         edges:0,alpha:1,scale:1,hexT:0,orbitScale:1,rotSpeed:.08,dustA:.3};
+  var sprites={};
+  /* the six hexagon vertices of the TMGS mark: points left/right, flat top/bottom */
+  var VA=[];for(var v=0;v<6;v++)VA.push(v*Math.PI/3);
+  /* inner hexagram chords — the lattice that binds the six vertices */
+  var CHORD=[[0,2],[1,3],[2,4],[3,5],[4,0],[5,1]];
+
+  function makeSprite(col){
+    var s=document.createElement('canvas');s.width=s.height=48;
+    var c=s.getContext('2d');
+    var g=c.createRadialGradient(24,24,0,24,24,24);
+    g.addColorStop(0,'rgba(255,255,255,.9)');
+    g.addColorStop(0.25,col);
+    g.addColorStop(1,'rgba(0,0,0,0)');
+    c.fillStyle=g;c.fillRect(0,0,48,48);
+    return s;
+  }
+  function rnd(seed){var x=Math.sin(seed*127.1+311.7)*43758.5453;return x-Math.floor(x)}
+  function gauss(seed){return (rnd(seed)+rnd(seed+13)+rnd(seed+29)-1.5)*0.9}
+
+  function init(){
+    sprites.g=makeSprite('rgba(254,221,33,.85)');   /* gold  */
+    sprites.r=makeSprite('rgba(229,56,74,.85)');    /* crimson */
+    sprites.b=makeSprite('rgba(76,123,232,.85)');   /* blue  */
+    sprites.w=makeSprite('rgba(214,226,255,.85)');  /* white */
+    P=[];
+    for(var i=0;i<N;i++){
+      var r1=rnd(i),r2=rnd(i+9999),r3=rnd(i+5000),r4=rnd(i+777),r5=rnd(i+404);
+      var ci=r4<0.34?'g':(r4<0.6?'b':(r4<0.82?'r':'w'));
+      P.push({
+        c:ci,
+        size:0.7+r1*r1*2.0,tw:r2*TAU,
+        /* pool — a dispersed, drifting crowd */
+        pl:{x:(r1-0.5)*2.7,y:(r2-0.5)*2.2,z:(r3-0.5)*2.7},
+        /* funnel — spun down a narrowing cone */
+        fa:r1*TAU, ft:i/(N-1),
+        /* hexagon — 6 edges, concentric rings, 6 highlighted vertices */
+        he:i%6, ht:r3, hr:0.34+Math.floor(r5*4)/4*0.66, hz:(r2-0.5),
+        vtx:(i%53===0),
+        /* hexnet — 6 spread nodes with jitter */
+        node:i%6, no:{x:gauss(i),y:gauss(i+31),z:gauss(i+77)*0.3},
+        /* map — archipelago clusters */
+        cl:i%CLUSTW.length, cj:{x:gauss(i+117),y:gauss(i+211)},
+        /* orbit — three rings around the platform nucleus */
+        ring:i%3, ra:r3*TAU, rj:(r2-0.5)*0.12, nuc:(i%9===0),
+        /* dust */
+        du:{x:(r1-0.5)*2.4,y:(r3-0.5)*2.4,z:r2*900}
+      });
+    }
+    WARP=[];
+    for(i=0;i<NW;i++){
+      var a=rnd(i+123)*TAU,rr=0.15+rnd(i+456)*0.9;
+      WARP.push({dx:Math.cos(a)*rr,dy:Math.sin(a)*rr,z:rnd(i+789)});
+    }
+    NODES=[];
+    for(i=0;i<6;i++){
+      var na=-Math.PI/2+i*(TAU/6);
+      NODES.push({x:Math.cos(na)*0.96,y:Math.sin(na)*0.6,z:(rnd(i+7)-0.5)*0.2});
+    }
+    resize();
+  }
+  /* archipelago: Luzon (large, tilted), Visayas (small scatter), Mindanao (broad) */
+  var CLUSTW=[
+    {x:-0.10,y:-0.60,sx:0.20,sy:0.34},
+    {x:-0.02,y:-0.24,sx:0.15,sy:0.22},
+    {x: 0.14,y: 0.02,sx:0.26,sy:0.11},
+    {x: 0.04,y: 0.24,sx:0.22,sy:0.12},
+    {x: 0.12,y: 0.52,sx:0.26,sy:0.22}
+  ];
+  function resize(){
+    W=innerWidth;H=innerHeight;
+    cv.width=W*DPR;cv.height=H*DPR;
+    cv.style.width=W+'px';cv.style.height=H+'px';
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    CX=W/2;CY=H*0.46;
+    R=Math.min(W,H)*0.34;
+  }
+  var FOV=760;
+  function posFor(mode,p,out){
+    var a,rr,x,y,z;
+    switch(mode){
+      case 'pool':
+        out.x=p.pl.x*R*1.9+Math.sin(time*0.3+p.tw)*14;
+        out.y=p.pl.y*R*1.6+Math.cos(time*0.24+p.tw)*12;
+        out.z=p.pl.z*R*1.9;return;
+      case 'funnel':
+        a=p.fa+time*0.55+p.ft*2.2;
+        rr=R*1.85*Math.pow(1-p.ft,1.55)+R*0.035;
+        out.x=Math.cos(a)*rr;out.z=Math.sin(a)*rr;
+        out.y=(p.ft-0.44)*R*2.35;return;
+      case 'hex':
+        var wob=Math.sin(time*0.24)*0.30;
+        var Rh=R*1.02*(p.vtx?1:p.hr);
+        var k=p.he,a0=VA[k],a1=VA[(k+1)%6];
+        if(p.vtx){x=Math.cos(a0)*R*1.02;y=Math.sin(a0)*R*1.02;}
+        else{
+          x=lerp(Math.cos(a0),Math.cos(a1),p.ht)*Rh;
+          y=lerp(Math.sin(a0),Math.sin(a1),p.ht)*Rh;
+        }
+        z=p.hz*R*0.16;
+        out.x=x*Math.cos(wob)-z*Math.sin(wob);
+        out.z=x*Math.sin(wob)+z*Math.cos(wob);
+        out.y=y;return;
+      case 'hexnet':
+        var n=NODES[p.node];
+        out.x=(n.x+p.no.x*0.16)*W*0.34;
+        out.y=(n.y+p.no.y*0.16)*H*0.30;
+        out.z=n.z*R+p.no.z*R*0.4;return;
+      case 'map':
+        var c=CLUSTW[p.cl];
+        out.x=(c.x+p.cj.x*c.sx)*Math.min(W,H*1.5)*0.78;
+        out.y=(c.y+p.cj.y*c.sy)*H*0.86;
+        out.z=p.no.z*R*0.3;return;
+      case 'orbit':
+        if(p.nuc){out.x=p.no.x*R*0.1;out.y=p.no.y*R*0.1;out.z=p.no.z*R*0.1;return}
+        var ring=p.ring,ang=p.ra+time*(0.26-ring*0.07)+spin*0.5;
+        var orr=R*(0.52+ring*0.34)*(1+p.rj)*S.orbitScale;
+        var ox=Math.cos(ang)*orr,oy=Math.sin(ang)*orr;
+        var tl=[0.42,0.85,0.28][ring],zr=[0.4,-0.5,1.25][ring];
+        var y2=oy*Math.cos(tl),z2=oy*Math.sin(tl);
+        out.x=ox*Math.cos(zr)-y2*Math.sin(zr);
+        out.y=ox*Math.sin(zr)+y2*Math.cos(zr);
+        out.z=z2;return;
+      default: /* dust */
+        out.x=p.du.x*W*0.6+Math.sin(time*0.12+p.tw)*20;
+        out.y=p.du.y*H*0.62+Math.cos(time*0.1+p.tw)*16;
+        out.z=p.du.z;return;
+    }
+  }
+  var pa={x:0,y:0,z:0},pb={x:0,y:0,z:0};
+  function render(dt){
+    time+=dt;spin+=dt*S.rotSpeed;
+    ctx.clearRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';
+
+    if(S.glow>0.02){
+      var gr=Math.max(10,R*1.05*S.glowScale*S.scale);
+      var g=ctx.createRadialGradient(CX,CY,0,CX,CY,gr);
+      g.addColorStop(0,'rgba(247,162,15,'+(0.30*S.glow).toFixed(3)+')');
+      g.addColorStop(0.4,'rgba(39,72,155,'+(0.18*S.glow).toFixed(3)+')');
+      g.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=g;ctx.fillRect(CX-gr,CY-gr,gr*2,gr*2);
+    }
+
+    var i;
+    if(S.alpha>0.01){
+      var t=sm(S.t),modeA=S.a,modeB=S.b;
+      var isDustish=(modeB==='dust'&&t>0.5)||(modeA==='dust'&&t<0.5);
+      var baseA=S.alpha*(isDustish?S.dustA:1);
+      for(i=0;i<P.length;i++){
+        var p=P[i];
+        if(t<=0.001){posFor(modeA,p,pa)}
+        else if(t>=0.999){posFor(modeB,p,pa)}
+        else{
+          posFor(modeA,p,pa);posFor(modeB,p,pb);
+          pa.x=lerp(pa.x,pb.x,t);pa.y=lerp(pa.y,pb.y,t);pa.z=lerp(pa.z,pb.z,t);
+        }
+        var persp=FOV/(FOV+pa.z);
+        if(persp<0.1||persp>6)continue;
+        var sx=CX+pa.x*persp*S.scale,sy=CY+pa.y*persp*S.scale;
+        if(sx<-30||sx>W+30||sy<-30||sy>H+30)continue;
+        var tws=0.72+0.28*Math.sin(time*1.7+p.tw);
+        var al=baseA*tws*clamp(persp,0.25,1.25);
+        /* as the hexagon forms, the six vertex nodes take over the frame */
+        if(S.hexT>0.01)al*=lerp(1,p.vtx?1.6:0.78,S.hexT);
+        if(al<=0.015)continue;
+        var spr=(S.hexT>0.5&&p.vtx)?sprites.r:sprites[p.c];
+        var sz=p.size*persp*S.scale*(p.vtx&&S.hexT>0.5?2.1:(p.nuc&&modeB==='orbit'?1.5:1));
+        ctx.globalAlpha=clamp(al,0,1);
+        ctx.drawImage(spr,sx-sz*2,sy-sz*2,sz*4,sz*4);
+      }
+    }
+
+    /* hexagram chords between the six vertices */
+    if(S.arcs>0.02){
+      ctx.globalAlpha=1;
+      var wob2=Math.sin(time*0.24)*0.30,cw=Math.cos(wob2),sw=Math.sin(wob2);
+      var mul=R*1.02*S.scale;
+      for(i=0;i<CHORD.length;i++){
+        var A=VA[CHORD[i][0]],B=VA[CHORD[i][1]];
+        var axr=Math.cos(A)*mul,ayr=Math.sin(A)*mul;
+        var bxr=Math.cos(B)*mul,byr=Math.sin(B)*mul;
+        var az=axr*sw,bz=bxr*sw;
+        var pA=FOV/(FOV+az),pB=FOV/(FOV+bz);
+        var x1=CX+axr*cw*pA,y1=CY+ayr*pA;
+        var x2=CX+bxr*cw*pB,y2=CY+byr*pB;
+        ctx.strokeStyle='rgba(247,162,15,'+(0.34*S.arcs).toFixed(3)+')';
+        ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+        var tt=(time*0.24+i*0.17)%1;
+        ctx.globalAlpha=S.arcs;
+        ctx.drawImage(sprites.w,lerp(x1,x2,tt)-5,lerp(y1,y2,tt)-5,10,10);
+        ctx.globalAlpha=1;
+      }
+    }
+
+    /* hexnet edges — the six service lines wired to one centre */
+    if(S.edges>0.02){
+      ctx.globalAlpha=1;
+      for(i=0;i<6;i++){
+        var n1=NODES[i],n2=NODES[(i+1)%6];
+        var nx1=CX+n1.x*W*0.34,ny1=CY+n1.y*H*0.30;
+        var nx2=CX+n2.x*W*0.34,ny2=CY+n2.y*H*0.30;
+        ctx.strokeStyle='rgba(76,123,232,'+(0.3*S.edges).toFixed(3)+')';
+        ctx.lineWidth=1;
+        ctx.beginPath();ctx.moveTo(nx1,ny1);ctx.lineTo(nx2,ny2);ctx.stroke();
+        ctx.strokeStyle='rgba(191,30,44,'+(0.16*S.edges).toFixed(3)+')';
+        ctx.beginPath();ctx.moveTo(nx1,ny1);ctx.lineTo(CX,CY);ctx.stroke();
+        var pt=(time*0.3+i*0.37)%1;
+        ctx.globalAlpha=S.edges*0.9;
+        ctx.drawImage(sprites.g,lerp(nx1,nx2,pt)-4,lerp(ny1,ny2,pt)-4,8,8);
+        ctx.globalAlpha=1;
+      }
+    }
+
+    /* warp — the transit between scenes */
+    if(S.warp>0.02){
+      ctx.globalAlpha=1;
+      var sp=S.warpSpeed;
+      for(i=0;i<WARP.length;i++){
+        var wp=WARP[i];
+        wp.z-=dt*sp*0.55;
+        if(wp.z<0.05)wp.z+=1.0;
+        var z1=wp.z,z0=Math.min(1.0,wp.z+0.06+sp*0.04);
+        var s1=1/z1,s0=1/z0;
+        var wx1=CX+wp.dx*W*0.5*s1,wy1=CY+wp.dy*H*0.5*s1;
+        var wx0=CX+wp.dx*W*0.5*s0,wy0=CY+wp.dy*H*0.5*s0;
+        var wa=(S.warp*clamp((1-z1)*1.4,0,1)*0.5).toFixed(3);
+        ctx.strokeStyle=(i%3===0)?'rgba(254,221,33,'+wa+')':(i%3===1?'rgba(229,56,74,'+wa+')':'rgba(190,205,255,'+wa+')');
+        ctx.lineWidth=clamp(s1*0.9,0.5,2.4);
+        ctx.beginPath();ctx.moveTo(wx0,wy0);ctx.lineTo(wx1,wy1);ctx.stroke();
+      }
+    }
+    ctx.globalAlpha=1;
+    ctx.globalCompositeOperation='source-over';
+  }
+  return {init:init,resize:resize,render:render,S:S,
+    staticDraw:function(){S.a='hex';S.b='hex';S.t=1;S.hexT=1;S.glow=.8;S.arcs=.9;S.alpha=1;render(0.016)}};
+})();
+
+/* ==================== SCENE DIRECTOR ==================== */
+var chapEl={num:qs('#ro-num'),name:qs('#ro-name')};
+var curChap='';
+function chapter(n,label){
+  var k=n+label;if(k===curChap)return;curChap=k;
+  chapEl.num.textContent=n;chapEl.name.textContent=label;
+}
+function makeBeats(rootSel){
+  var els=qsa(rootSel+' .beat').map(function(b){
+    return {el:b,i:+b.dataset.in,pk:+b.dataset.peak,o:+b.dataset.out,last:-1};
+  });
+  return function(p){
+    for(var j=0;j<els.length;j++){
+      var b=els[j],a;
+      if(p<b.i||p>b.o)a=0;
+      else if(p<b.pk)a=(p-b.i)/Math.max(1e-4,b.pk-b.i);
+      else if(b.o>1.5)a=1;
+      else a=1-(p-b.pk)/Math.max(1e-4,b.o-b.pk);
+      a=clamp(a,0,1);
+      if(Math.abs(a-b.last)>0.004||((a===0)!==(b.last===0))){
+        b.el.style.opacity=a;
+        b.el.style.visibility=a>0?'visible':'hidden';
+        b.el.style.transform='translateY('+((1-a)*26).toFixed(2)+'px)';
+        b.last=a;
+      }
+    }
+  };
+}
+function setCounters(list,e){
+  for(var i=0;i<list.length;i++){
+    var c=list[i],v=(+c.dataset.v)*eo(e);
+    var d=+(c.dataset.d||0);
+    var txt=(d?v.toFixed(d):Math.round(v)+'')+(c.dataset.suf||'');
+    if(c._t!==txt){c.textContent=txt;c._t=txt}
+  }
+}
+
+var S=field.S;
+var filmBeats,covBeats;
+var cue=qs('#cue');
+var filmCnt=[],opsCnt=[];
+
+function filmScene(p){
+  var form1=sm(seg(p,0.06,0.30));   /* pool → funnel  */
+  var form2=sm(seg(p,0.40,0.62));   /* funnel → hex   */
+  if(form2<=0){S.a='pool';S.b='funnel';S.t=form1}
+  else{S.a='funnel';S.b='hex';S.t=form2}
+  S.hexT=form2;
+  S.glow=clamp(0.22+0.78*seg(p,0.05,0.32)-0.6*seg(p,0.82,0.95),0,1);
+  S.glowScale=1+0.4*form2;
+  S.arcs=seg(p,0.58,0.70)*(1-seg(p,0.82,0.90));
+  S.scale=1+0.14*seg(p,0.30,0.52)+1.0*sm(seg(p,0.70,0.94));
+  var w=seg(p,0.82,0.96);
+  S.warp=w;S.warpSpeed=0.5+2.2*seg(p,0.82,1);
+  S.alpha=1-w*0.92;
+  S.rotSpeed=0.08+0.25*seg(p,0.72,0.96);
+  S.edges=0;S.dustA=0.3;S.orbitScale=1;
+  filmBeats(p);
+  setCounters(filmCnt,seg(p,0.60,0.72));
+  cue.style.opacity=p<0.03?1:0;
+  chapter(p<0.36?'01':(p<0.60?'02':'03'),p<0.36?'THE TALENT POOL':(p<0.60?'SCREENING':'THE WORKFORCE CORE'));
+}
+
+var panels=[],charts={},feedLines=[];
+function opsScene(p){
+  var dec=seg(p,0,0.2);
+  S.warp=1-dec;S.warpSpeed=2.7-2.2*dec;
+  S.a='hex';S.b='dust';S.t=sm(seg(p,0.02,0.22));
+  S.hexT=0;S.arcs=0;S.glow=0.09;S.scale=lerp(2.0,1,sm(dec));
+  S.alpha=lerp(0.08,1,sm(seg(p,0.05,0.3)));S.dustA=0.3;S.edges=0;S.rotSpeed=0.05;
+  var i;
+  for(i=0;i<panels.length;i++){
+    var pn=panels[i],e=sm(seg(p,pn.a,pn.b));
+    if(Math.abs(e-pn.last)>0.003){
+      pn.el.style.opacity=e;
+      pn.el.style.transform='translateY('+((1-e)*70).toFixed(2)+'px) scale('+(0.92+0.08*e).toFixed(4)+')';
+      pn.last=e;
+    }
+  }
+  var draw=seg(p,0.3,0.62);
+  if(charts.l1){
+    charts.l1.style.strokeDashoffset=charts.L1*(1-eo(draw));
+    charts.l2.style.strokeDashoffset=charts.L2*(1-eo(seg(p,0.36,0.68)));
+    charts.area.style.opacity=seg(p,0.5,0.66);
+    charts.donut.style.strokeDashoffset=276.5*(1-0.968*eo(seg(p,0.34,0.6)));
+    var be=eo(seg(p,0.4,0.64));
+    for(i=0;i<charts.bars.length;i++){
+      charts.bars[i].style.transform='scaleY('+clamp(be*1.6-i*0.12,0,1).toFixed(3)+')';
+    }
+  }
+  for(i=0;i<feedLines.length;i++){
+    var fe=seg(p,0.42+i*0.05,0.5+i*0.05);
+    var fl=feedLines[i];
+    if(Math.abs(fe-(fl._l||0))>0.01){
+      fl.style.opacity=fe;fl.style.transform='translateX('+((1-fe)*-8).toFixed(2)+'px)';fl._l=fe;
+    }
+  }
+  setCounters(opsCnt,seg(p,0.38,0.66));
+  chapter('04','OPERATIONS FLOOR');
+}
+
+var track=qs('#l-track'),maxX=0,skew=0,skewT=0,lCards=[],lLive=-1;
+function linesScene(p,vel){
+  S.a='dust';S.b='hexnet';S.t=sm(seg(p,0,0.16));
+  S.edges=seg(p,0.08,0.25);S.warp=0;S.arcs=0;S.glow=0.06;S.scale=1;
+  S.alpha=1;S.dustA=0.32;S.hexT=0;S.rotSpeed=0.05;S.orbitScale=1;
+  skewT=clamp((vel||0)/-3200,-3.4,3.4);
+  track.style.transform='translate3d('+(-p*maxX).toFixed(1)+'px,0,0) skewX('+skew.toFixed(3)+'deg)';
+  var idx=Math.round(seg(p,0.1,0.96)*(lCards.length-1));
+  if(idx!==lLive){
+    for(var i=0;i<lCards.length;i++)lCards[i].classList.toggle('live',i===idx);
+    lLive=idx;
+  }
+  chapter('05','SERVICE LINES');
+}
+
+var chips=[],nucleus=qs('#nucleus');
+function coverageScene(p){
+  var toMap=sm(seg(p,0.02,0.26));      /* hexnet → archipelago */
+  var toOrbit=sm(seg(p,0.50,0.74));    /* archipelago → orbit  */
+  var out=seg(p,0.90,1);
+  if(out>0.001){S.a='orbit';S.b='dust';S.t=sm(out)}
+  else if(toOrbit>0){S.a='map';S.b='orbit';S.t=toOrbit}
+  else{S.a='hexnet';S.b='map';S.t=toMap}
+  S.edges=(1-toMap)*0.8;S.warp=0;S.arcs=0;S.hexT=0;S.scale=1;
+  var cond=sm(seg(p,0.62,0.86));
+  S.orbitScale=1-0.62*cond;
+  S.glow=clamp(0.10+0.9*cond-0.6*out,0,1);
+  S.glowScale=0.5+0.5*cond;
+  S.rotSpeed=0.12;
+  S.alpha=1-out*0.3;S.dustA=0.32;
+  var chipA=seg(p,0.60,0.74)*(1-seg(p,0.86,0.96));
+  var sp=p*4.4;
+  var R0=Math.min(innerWidth*0.44,600)*(1-0.5*cond);
+  for(var i=0;i<chips.length;i++){
+    var ch=chips[i];
+    var a=ch.base+sp*(1+ch.ring*0.13);
+    var rr=R0*(0.42+ch.ring*0.3);
+    var x=Math.cos(a)*rr;
+    var z=Math.sin(a);
+    var y=Math.sin(a)*rr*[0.3,0.42,0.24][ch.ring];
+    var depth=(z+1)/2;
+    ch.el.style.transform='translate(-50%,-50%) translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) scale('+(0.78+0.3*depth).toFixed(3)+')';
+    ch.el.style.opacity=(chipA*(0.35+0.65*depth)).toFixed(3);
+    ch.el.style.zIndex=1+Math.round(depth*10);
+  }
+  nucleus.style.opacity=((0.3+0.7*cond)*(1-out)).toFixed(3);
+  nucleus.style.transform='translate(-50%,-50%) scale('+(0.6+0.9*cond).toFixed(3)+')';
+  covBeats(p);
+  chapter('06','COVERAGE');
+}
+
+function dustScene(num,label){return function(){
+  S.a='dust';S.b='dust';S.t=1;S.edges=0;S.warp=0;S.arcs=0;
+  S.glow=0.05;S.alpha=1;S.dustA=0.26;S.orbitScale=1;S.hexT=0;
+  chapter(num,label);
+}}
+
+/* ==================== BOOT ==================== */
+var scenes=[];
+function scrollToSel(t){
+  if(window.__lenis){window.__lenis.scrollTo(t,{duration:1.6})}
+  else if(t===0){window.scrollTo({top:0,behavior:'smooth'})}
+  else{var el=qs(t);if(el)el.scrollIntoView({behavior:'smooth'})}
+}
+function sizing(){
+  field.resize();
+  var sec=qs('#lines');
+  if(!PRM){
+    maxX=Math.max(0,track.scrollWidth-innerWidth);
+    sec.style.height=(maxX+innerHeight)+'px';
+  }else{sec.style.height='auto'}
+}
+function collectCharts(){
+  charts.l1=qs('#line1');charts.l2=qs('#line2');charts.area=qs('#area1');charts.donut=qs('#donut');
+  charts.bars=qsa('#p-bars .bars rect');
+}
+function bootPRM(){
+  collectCharts();
+  field.staticDraw();
+  qsa('.cnt').forEach(function(c){
+    var v=+c.dataset.v,d=+(c.dataset.d||0);
+    c.textContent=(d?v.toFixed(d):v)+(c.dataset.suf||'');
+  });
+  if(charts.l1){
+    charts.l1.style.strokeDashoffset=0;charts.l2.style.strokeDashoffset=0;
+    charts.area.style.opacity=1;
+    charts.donut.style.strokeDashoffset=276.5*(1-0.968);
+    charts.bars.forEach(function(b){b.style.transform='scaleY(1)'});
+  }
+  qsa('#p-feed .feed div').forEach(function(f){f.style.opacity=1;f.style.transform='none'});
+  qs('#hdr').classList.add('scrolled');
+  window.__ready=true;
+}
+function boot(){
+  document.documentElement.classList.add('js');
+  field.init();
+  filmBeats=makeBeats('#film');
+  covBeats=makeBeats('#coverage');
+  filmCnt=qsa('#film .cnt');
+  opsCnt=qsa('#ops .cnt');
+  var pdefs=[['#p-line',0.1,0.3],['#p-donut',0.16,0.36],['#p-bars',0.22,0.42],['#p-feed',0.28,0.48],['#p-kpi',0.34,0.54]];
+  panels=pdefs.map(function(d){return {el:qs(d[0]),a:d[1],b:d[2],last:-1}}).filter(function(x){return x.el});
+  collectCharts();
+  charts.bars.forEach(function(b){b.style.transformOrigin='center 120px';b.style.transform='scaleY(0)'});
+  if(charts.l1){
+    charts.L1=charts.l1.getTotalLength();charts.L2=charts.l2.getTotalLength();
+    charts.l1.style.strokeDasharray=charts.L1;charts.l1.style.strokeDashoffset=charts.L1;
+    charts.l2.style.strokeDasharray=charts.L2;charts.l2.style.strokeDashoffset=charts.L2;
+  }
+  feedLines=qsa('#p-feed .feed div');
+  lCards=qsa('.l-card',track);
+
+  var inds=['Manufacturing','Logistics &amp; Warehousing','Retail &amp; Food Service','Facilities Management',
+            'Construction','BPO &amp; Shared Services','Food Processing','Distribution'];
+  var fld=qs('#orbit-field');
+  chips=inds.map(function(nm,i){
+    var el=document.createElement('button');
+    el.className='g-chip';el.type='button';
+    el.innerHTML='<i></i>'+nm;
+    el.setAttribute('aria-label','See the HRIS platform');
+    el.addEventListener('click',function(){scrollToSel('#platform')});
+    fld.appendChild(el);
+    return {el:el,ring:i%3,base:(i/inds.length)*TAU};
+  });
+  sizing();
+
+  if(PRM){bootPRM();return}
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var lenis=null;
+  if(JUMP===null){
+    lenis=new Lenis({lerp:0.09,smoothWheel:true});
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add(function(t){lenis.raf(t*1000)});
+    gsap.ticker.lagSmoothing(0);
+  }
+  window.__lenis=lenis;
+
+  function scene(sel,handler,useVel){
+    var rec={h:handler,v:0,sel:sel};
+    rec.st=ScrollTrigger.create({
+      trigger:sel,start:'top top',end:'bottom bottom',
+      onUpdate:function(self){rec.v=useVel?self.getVelocity():0}
+    });
+    scenes.push(rec);
+  }
+  function range(sel,handler){
+    var rec={h:handler,v:0,sel:sel};
+    rec.st=ScrollTrigger.create({trigger:sel,start:'top 70%',end:'bottom top'});
+    scenes.push(rec);
+  }
+  /* positional director: the last scene whose start has been crossed drives the
+     field — no isActive edge cases at sticky-section boundaries */
+  function runActive(){
+    var sc=window.scrollY||window.pageYOffset||0,active=null;
+    for(var i=0;i<scenes.length;i++)
+      if(sc>=scenes[i].st.start-0.5)active=scenes[i];
+    if(!active)active=scenes[0];
+    if(active){
+      var span=Math.max(1,active.st.end-active.st.start);
+      active.h(clamp((sc-active.st.start)/span,0,1),active.v);
+    }
+  }
+  scene('#film',filmScene);
+  scene('#ops',opsScene);
+  scene('#lines',linesScene,true);
+  scene('#coverage',coverageScene);
+  range('#platform',dustScene('07','HRIS PLATFORM'));
+  range('#protocol',dustScene('08','DEPLOYMENT PROTOCOL'));
+  range('#trust',dustScene('09','COMPLIANCE'));
+  range('#coda',dustScene('10','READY TO DEPLOY'));
+
+  gsap.utils.toArray('.ms').forEach(function(el){
+    gsap.to(el,{opacity:1,y:0,duration:0.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 82%',once:true}});
+  });
+  gsap.to('#spine-fill',{scaleY:1,ease:'none',
+    scrollTrigger:{trigger:'.tl',start:'top 75%',end:'bottom 55%',scrub:0.6}});
+
+  var hdr=qs('#hdr'),roFill=qs('#ro-fill');
+  ScrollTrigger.create({start:80,end:'max',onToggle:function(self){hdr.classList.toggle('scrolled',self.isActive)}});
+
+  var lastT=performance.now();
+  function frame(dt){
+    runActive();
+    skew+=(skewT-skew)*0.08;skewT*=0.9;
+    field.render(dt);
+    var doc=document.documentElement;
+    roFill.style.transform='scaleX('+clamp(scrollY/((doc.scrollHeight-innerHeight)||1),0,1).toFixed(4)+')';
+  }
+  gsap.ticker.add(function(){
+    var now=performance.now(),dt=Math.min(0.05,(now-lastT)/1000);lastT=now;
+    frame(dt);
+  });
+  /* synchronous single frame — lets the page be driven and inspected in
+     headless or background tabs where requestAnimationFrame is throttled off */
+  window.__frame=function(dt){frame(typeof dt==='number'?dt:0.016)};
+
+  if(JUMP===null){
+    gsap.fromTo('#b-hero .wordmark span',{yPercent:118},
+      {yPercent:0,duration:1.3,stagger:0.055,ease:'power4.out',delay:0.25});
+    gsap.fromTo(['#b-hero .kicker','#b-hero .tagline','#b-hero .legal','#b-hero .status','#cue'],
+      {opacity:0},{opacity:1,duration:1.1,stagger:0.1,delay:0.7,ease:'power2.out'});
+  }
+
+  qsa('[data-to]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var t=a.getAttribute('data-to');
+      scrollToSel(t==='0'?0:t);
+    });
+  });
+
+  ScrollTrigger.refresh();
+
+  if(JUMP!==null){
+    requestAnimationFrame(function(){
+      window.scrollTo(0,+JUMP||0);
+      ScrollTrigger.update();
+      skew=0;skewT=0;
+      runActive();
+      field.render(0.016);
+      requestAnimationFrame(function(){requestAnimationFrame(function(){window.__ready=true})});
+    });
+  }else{
+    window.__ready=true;
+  }
+}
+
+var rT;
+function remeasure(){
+  sizing();
+  if(window.ScrollTrigger)ScrollTrigger.refresh();
+}
+addEventListener('resize',function(){
+  clearTimeout(rT);
+  rT=setTimeout(remeasure,180);
+});
+/* the horizontal track is measured at boot, before webfonts land — its width
+   moves once Archivo/Switzer replace the fallbacks, so measure again after */
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){setTimeout(remeasure,0)});
+
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);
+else boot();
+})();
+</script>
+</body>
+</html>
