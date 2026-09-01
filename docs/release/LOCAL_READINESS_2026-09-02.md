@@ -2,7 +2,7 @@
 
 ## Gate decision
 
-- **Local implementation gate: READY FOR SEPARATE FEATURE COMMIT/PUSH REVIEW.** Fresh isolated verification completed on `feature/integrated-experience` with no open P0/P1 local code or workflow defect. The feature tree remains uncommitted and unpushed.
+- **Local implementation gate: PASSED; separate feature commit/push gate: COMPLETE; isolated exact-commit source qualification: PASSED.** Fresh isolated verification and a separate clean-checkout rerun completed on `feature/integrated-experience` with no open P0/P1 local code or workflow defect. The qualified source commit is `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`.
 - **Production gate: NO-GO.** Local readiness, even when complete, will not close the privacy, security, infrastructure, content, business, release-authority or deployment gates in `KNOWN_GAPS_2026-09-02.md`.
 
 This record is not a deployment authorization, production-parity report or security certification.
@@ -30,11 +30,11 @@ This record is not a deployment authorization, production-parity report or secur
 - Workforce Planner with explicit privacy gate, abuse controls and local-only receipt behavior.
 - Dynamic robots/sitemap, custom error behavior, headers and source/private-path denial.
 
-Presence in source is not proof that a surface works. The final verification table below is the local acceptance record for this uncommitted candidate tree.
+Presence in source is not proof that a surface works. The final verification table below is the local acceptance record for the pre-commit candidate tree now represented by feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`.
 
 ## Final verification record
 
-Evidence below was captured from the final feature-branch run on 2026-09-02. It is local source evidence only; the branch must be committed under separate approval and rerun from a clean checkout before it can become release-candidate evidence.
+Evidence below was captured from the final pre-commit feature-branch run on 2026-09-02. The candidate was subsequently committed and pushed as `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`, then separately rerun from an isolated clean checkout with the same static and browser results. This is source-level evidence for the synthetic local profile, not production qualification or packaging approval.
 
 | Check | Final command / scope | Status | Final evidence |
 | --- | --- | --- | --- |
@@ -49,9 +49,9 @@ Evidence below was captured from the final feature-branch run on 2026-09-02. It 
 | Content and claims | Static route/link/fragment checks plus coverage/known-gap reconciliation | **Pass for source coherence / owner approval pending** | Local routes and references resolved with no broken static target or missing same-document fragment. Claims, jobs, identities, locations, clients, leaders and official channels remain explicitly evidence-gated under P1-04; no owner approval is inferred from route availability. |
 | Secret/private artifact scan | Candidate textual-source scan, dependency audit and ignore-boundary check | **Pass — candidate source** | Textual-secret signature scan found no recognizable committed secret pattern across 120 textual files. `npm audit` reported 0 vulnerabilities. `Backups/` and `tests/.artifacts/` are ignored; their databases, uploads, screenshots and baseline archive are not candidate release material. |
 
-## Acceptance rule after the final run
+## Acceptance rule applied after the final run
 
-The local implementation gate can change to **READY FOR SEPARATE COMMIT/PUSH REVIEW** only when:
+The local implementation gate changed to **READY FOR SEPARATE COMMIT/PUSH REVIEW** only after:
 
 1. every required row above is completed with fresh evidence;
 2. no P0/P1 code or local-workflow defect remains open;
@@ -59,7 +59,7 @@ The local implementation gate can change to **READY FOR SEPARATE COMMIT/PUSH REV
 4. documentation accurately distinguishes implemented local controls from unavailable production services; and
 5. the exact changed-path review confirms no unrelated user work is included.
 
-That decision still does not authorize commit/push. A pushed feature commit must receive separate approval and then pass clean-checkout verification before packaging can be considered.
+That local decision did not authorize commit/push. Separate approval was subsequently granted, feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` was pushed, and exact-commit clean-checkout verification passed. None of those gates authorizes packaging or production deployment.
 
 ## Safe local verification profile
 
@@ -99,7 +99,7 @@ Never point mutation tests at a remote URL. Use the QA harness's disposable data
 - Production privacy/legal/DPO/DSR/retention approval remains open.
 - Applicant email ownership verification and recovery remain unavailable for production.
 - Staff MFA, least privilege, provisioning and maker-checker controls remain unqualified.
-- No approved exact feature commit, package, deployment path or rollback point exists.
+- No approved production release candidate, package, deployment path or rollback point exists. Feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` is pushed and passed isolated exact-commit source qualification, but every production gate remains open.
 
 ## P1 Major
 
@@ -108,7 +108,7 @@ Never point mutation tests at a remote URL. Use the QA harness's disposable data
 - Edge HTTPS, document-root, trusted-proxy and live denial/header behavior remains unverified.
 - Jobs, company identity, locations, clients, leaders, claims and official channels remain subject to source and owner approval.
 - Monitoring, encrypted backups, restore rehearsal, vulnerability management and penetration testing remain open.
-- Fresh local source verification is recorded; exact-commit clean-checkout, business UAT, named accessibility review and packaging qualification remain open.
+- Fresh local and exact-commit clean-checkout verification are recorded; business UAT, named accessibility review and packaging qualification remain open.
 
 ## P2 Watch Item
 
@@ -124,7 +124,16 @@ After separate production approval, normal runtime activity may add or change ap
 ## Commit/push status
 
 - Baseline commit `e7299f42908fd2e31b91067d79b433c14a713231` is pushed and matches `main` and `origin/main`.
-- The integrated feature tree is locally verified but remains uncommitted and unpushed on `feature/integrated-experience`.
+- The locally verified integrated implementation was committed and pushed under separate approval as `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` on `origin/feature/integrated-experience`; isolated clean-checkout source qualification passed on that exact commit.
+
+## Exact-commit clean-checkout qualification
+
+- Qualified source commit: `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`; `origin/feature/integrated-experience` pointed to that commit throughout the qualification run.
+- `npm ci`: passed in an isolated checkout.
+- `npm test`: passed with 12/12 static checks and 26/26 Playwright tests.
+- `npm audit --audit-level=moderate`: 0 vulnerabilities.
+- At qualification-run completion: HEAD still matched the remote commit; staged, unstaged and untracked status was clean.
+- Boundary: technical source qualification only. No package was built, no production path was used and no production data was touched.
 
 ## Deployment path
 
@@ -132,4 +141,4 @@ No production document root, Hostinger destination, package or deployment path h
 
 ## Next controlled action
 
-Request separate approval to commit and push the locally verified feature tree. After that approval, rerun qualification from a clean checkout of the exact feature commit, complete Recruitment/Workforce UAT and named accessibility review, and close the external P0/P1 gates before packaging is considered. Hostinger upload, live smoke and any production data movement remain later, separately approved gates.
+The separately approved feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` is pushed and passed isolated exact-commit source qualification. Complete Recruitment/Workforce UAT, named accessibility review, and the external P0/P1 gates before requesting separate packaging approval. Hostinger upload, live smoke, and any production data movement remain later, separately approved gates.

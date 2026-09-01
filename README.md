@@ -4,11 +4,11 @@ TAASCOR Management & General Services Corp. public website, workforce-planning e
 
 ## Current status
 
-The audited cinematic baseline is preserved on `main` at commit `e7299f42908fd2e31b91067d79b433c14a713231`. The integrated experience on `feature/integrated-experience` is locally verified for the isolated synthetic profile; it remains uncommitted, unpushed, unpackaged and undeployed.
+The audited cinematic baseline remains preserved on `main` and `origin/main` at commit `e7299f42908fd2e31b91067d79b433c14a713231`. The separately approved integrated experience is pushed to `origin/feature/integrated-experience` at feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`; exact-commit clean-checkout qualification passed, and the feature remains unpackaged and undeployed.
 
-**Release gate: NO-GO.** Local implementation is complete for the isolated synthetic profile, but production remains NO-GO pending approved corporate/compliance content, DPO-approved privacy notices and retention rules, media permissions, production infrastructure and credentials, security qualification, backup/restore evidence, business UAT, named accessibility review, exact-commit qualification, and explicit commit/push and deployment approvals.
+**Release gate: NO-GO.** Local implementation and isolated exact-commit source qualification are complete for the synthetic local profile, but production remains NO-GO pending approved corporate/compliance content, DPO-approved privacy notices and retention rules, media permissions, production infrastructure and credentials, security qualification, backup/restore evidence, business UAT, named accessibility review, separately approved packaging, and separate production-deployment approval.
 
-The fresh 2026-09-02 local run passed 12/12 static checks, linted 72 PHP files, passed 26/26 Playwright tests, verified a fresh disposable SQLite migration/seed (`integrity_check=ok`), and found 0 dependency-audit vulnerabilities. See `docs/release/LOCAL_READINESS_2026-09-02.md` for the evidence boundary and remaining gates.
+The fresh 2026-09-02 pre-commit run and isolated clean checkout of the exact feature commit each passed 12/12 static checks and 26/26 Playwright tests. Both linted 72 PHP files and reported 0 dependency-audit vulnerabilities; the separately recorded pre-commit lifecycle check verified a disposable SQLite migration/seed (`integrity_check=ok`). The clean checkout ended with no Git changes. See `docs/release/LOCAL_READINESS_2026-09-02.md` for the evidence boundary and remaining gates.
 
 ## What is implemented locally
 

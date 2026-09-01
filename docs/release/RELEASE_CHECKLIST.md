@@ -8,7 +8,7 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 - [x] Local feature work isolated on `feature/integrated-experience`.
 - [ ] Product owner approves the release-one scope and every explicit deferral.
 - [ ] Render backend/database/storage/mail/authenticated functions are supplied or formally classified reference-only.
-- [ ] Feature-branch commit and push are explicitly approved.
+- [x] The requesting user explicitly approved feature-branch commit/push in the current Codex task on 2026-09-02; commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` is pushed to `origin/feature/integrated-experience`.
 
 ## G1 — Content, claims, and media
 
@@ -41,8 +41,8 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 
 ## G4 — Product qualification
 
-- [ ] Static/lint/link/secret checks pass from a clean checkout.
-- [ ] Public, applicant, staff, workforce, negative authorization, upload-abuse, and failure-path browser suites pass.
+- [x] Static/lint/link/secret checks passed from a clean checkout of `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`.
+- [x] Public, applicant, staff, workforce, negative-authorization, upload-abuse and failure-path browser suites passed on the exact feature commit.
 - [ ] Keyboard, screen-reader, zoom/reflow, reduced-motion, target-size, contrast, and error-state review meets WCAG 2.2 AA acceptance.
 - [ ] Desktop, tablet, 390 px, and 360 px visual baselines are approved.
 - [ ] Core Web Vitals and asset/CPU/network budgets pass on the release target.
@@ -52,10 +52,10 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 
 ## G5 — Commit-specific release
 
-- [ ] Explicit paths are reviewed and staged without unrelated changes.
-- [ ] No archive, backup, editor-swap, private database, upload, or release-package artifact is placed in the public document root.
-- [ ] The exact feature commit is reviewed and pushed to GitHub.
-- [ ] Clean-checkout verification passes at that commit.
+- [x] Explicit paths for commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` were reviewed and staged without unrelated changes.
+- [x] Commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` contains no backup/archive/editor-swap, runtime database/upload, dependency-tree, or release-package artifact.
+- [x] The exact feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` was reviewed and pushed to GitHub.
+- [x] Clean-checkout verification passed at `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`: 12/12 static checks, 26/26 Playwright tests and 0 dependency-audit vulnerabilities.
 - [ ] The deployment package is built only from that commit.
 - [ ] Package manifest and SHA-256 hashes are recorded and match the reviewed source.
 - [ ] Release, Product, Recruitment, Security, DPO/Legal, and data owners approve the exact candidate.
@@ -73,4 +73,4 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 
 ## Current decision
 
-**NO-GO for production.** G0 baseline preservation is complete. The remaining unchecked items require evidence, named ownership, infrastructure, credentials, legal/business decisions, or explicit release authority.
+**NO-GO for production.** Baseline preservation, the separately approved feature commit/push, and isolated exact-commit source qualification are complete. The remaining unchecked items require evidence, named ownership, infrastructure, credentials, legal/business decisions, packaging approval, or explicit production-release authority.

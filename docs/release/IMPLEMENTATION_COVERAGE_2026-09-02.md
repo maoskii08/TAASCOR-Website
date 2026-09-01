@@ -4,7 +4,7 @@
 
 The isolated local implementation scope is complete, supported by the fresh verification recorded in `LOCAL_READINESS_2026-09-02.md`. No open P0/P1 local implementation defect remains; all remaining P0/P1 items are external production, business, legal, infrastructure, accessibility or release-qualification gates. Read against `Planning/TAASCOR_WEBSITE_INTEGRATION_PLAN_2026-09-01.md`, every required capability is implemented with synthetic local evidence, deliberately evidence-gated, code-locked from production, or assigned to a named external approval/integration gate. No unclassified Render capability is being treated as silently complete.
 
-This is a **local completion record**, not approval to commit the feature branch, publish content, enable collection, package, deploy, migrate data, or create production test records.
+This is a **local completion record**; the feature commit/push later occurred under separate approval. It is not approval to publish content, enable collection, package, deploy, migrate data, or create production test records.
 
 ## Status definitions
 
@@ -39,7 +39,7 @@ This is a **local completion record**, not approval to commit the feature branch
 | Search/social/indexing foundation | Canonicals, titles/descriptions, Open Graph/Twitter metadata, organization/job structured data, dynamic robots/sitemap, branded 404, and noindex defaults. | Implemented locally. Canonical production domain, share image, approved channels, and indexing activation remain external gates. |
 | Security and runtime foundation | Environment allowlist, strict production origin/MySQL/key/cookie/upload rules, trusted-proxy allowlist, HTTPS/HSTS path, CSP/SRI/headers, CSRF, encoding, prepared queries, authorization, throttles, session rotation/expiry/version, route/internal/archive denial, migration pre/post checks, audit and concurrency controls. | Implemented locally. Hosting, MySQL, central monitoring, backups/restore, vulnerability management, and penetration testing remain external qualification gates. |
 | Production capability containment | Applicant/workforce collection, resume upload, and staff workflows cannot be enabled in production by environment flags in this release. | Production code-locked. A future reviewed commit must implement the missing controls and change the corresponding qualification gate. |
-| Verification and release governance | Static governance/security/PHP/link/secret checks, Playwright public/recruitment/security/lifecycle/accessibility/responsive/visual suites, disposable migrations, release checklist, known-gaps register, and manual Hostinger boundary. | Implemented locally. Clean-checkout/exact-commit qualification starts only after separate feature commit/push approval. |
+| Verification and release governance | Static governance/security/PHP/link/secret checks, Playwright public/recruitment/security/lifecycle/accessibility/responsive/visual suites, disposable migrations, release checklist, known-gaps register, and manual Hostinger boundary. | Implemented locally. Feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` is pushed under separate approval and passed isolated exact-commit clean-checkout source qualification; packaging and every production gate remain separate. |
 
 ## Deliberate plan deltas
 
