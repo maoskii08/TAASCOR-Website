@@ -31,7 +31,7 @@ function taascor_solution_details(): array
             'intent_copy' => 'The intended output is a reviewable staffing brief: what work is needed, where and when it occurs, what readiness conditions apply, and which decisions must be made before any proposal or mobilization plan is authorized.',
             'intent_boundary' => 'No worker availability, deployment date, location coverage, contracting model, legal status, or operating outcome is promised by this page. Those points require current evidence and engagement-specific approval.',
             'taascor_title' => 'Workforce formation questions',
-            'taascor_copy' => 'The proposed TAASCOR-side scope may examine sourcing routes, role readiness, employment and supervision boundaries, mobilization dependencies, workforce-support handoffs, and completion evidence—only where the approved service catalogue supports them.',
+            'taascor_copy' => 'The proposed TAASCOR-side scope may examine sourcing routes, role readiness, employment and supervision boundaries, mobilization dependencies, workforce-support handoffs, and completion evidence only where the approved service catalogue supports them.',
             'client_title' => 'Work design and site-readiness questions',
             'client_copy' => 'The proposed employer or worksite scope may define tasks, expected outcomes, demand authority, safe-work conditions, access, equipment, training, day-to-day direction, service acceptance, and the process for changing the requirement.',
             'lifecycle' => [
@@ -111,7 +111,7 @@ function taascor_solution_details(): array
                 ['Role and release controls', 'Maker-checker boundaries, least-privilege matrix, posting and lock authority, delivery route, audit events, and recovery process.'],
                 ['Statutory and records evidence', 'Named obligations, applicable period, reconciled support, exception treatment, retention, privacy controls, and current owner approval.'],
             ],
-            'planner_copy' => 'Bring the workforce scope, time and attendance sources, cut-off pattern, approval roles, expected outputs, exceptions, and current systems. The first step is a controlled map—not a payroll guarantee.',
+            'planner_copy' => 'Bring the workforce scope, time and attendance sources, cut-off pattern, approval roles, expected outputs, exceptions, and current systems. The first step is a controlled map, not a payroll guarantee.',
         ],
         'hr-administration' => [
             'title' => 'HR Administration Planning',

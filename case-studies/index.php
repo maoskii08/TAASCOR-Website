@@ -16,7 +16,7 @@ taascor_page_start([
             <div class="hero-copy">
                 <p class="eyebrow">Evidence in context</p>
                 <h1 id="case-studies-title">A result is credible when the <em>method survives scrutiny.</em></h1>
-                <p class="hero-lede">TAASCOR case studies will connect an approved relationship, defined operating need, dated intervention, source-backed result, and material limitations—without exposing client or worker information.</p>
+                <p class="hero-lede">TAASCOR case studies will connect an approved relationship, defined operating need, dated intervention, source-backed result, and material limitations without exposing client or worker information.</p>
                 <div class="hero-actions">
                     <a class="button" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Open the proof ledger</a>
                     <a class="button button-outline" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Shape a workforce brief</a>
@@ -124,7 +124,7 @@ taascor_page_start([
         <div class="shell split">
             <div class="section-heading">
                 <p class="section-kicker">Make the evidence useful</p>
-                <h2 id="study-action-title">Start with your operating need—not a borrowed outcome.</h2>
+                <h2 id="study-action-title">Start with your operating need, not a borrowed outcome.</h2>
                 <p class="section-copy">Every environment has its own baseline, constraints, ownership, and readiness gates. Use the planner to frame what TAASCOR should evaluate for yours.</p>
             </div>
             <div class="hero-actions">

@@ -21,7 +21,7 @@ function taascor_industry_details(): array
             'title' => 'Production and Throughput Context',
             'description' => 'Frame production work, flow dependencies, schedules, site interfaces, acceptance, and evidence before asking whether a workforce model is suitable.',
             'eyebrow' => 'Industry context / Production and throughput',
-            'hero_before' => 'Model the work around the flow—not ',
+            'hero_before' => 'Model the work around the flow, not ',
             'hero_emphasis' => 'the sector label.',
             'lede' => 'Production environments can only be assessed from the actual work, flow, schedule, site, readiness, and decision boundary. This page is a discovery lens, not a statement of TAASCOR capacity, coverage, or availability.',
             'signal_core' => ['Flow', 'context'],
@@ -39,7 +39,7 @@ function taascor_industry_details(): array
                 ['Variability and ramp', 'Separate a planning estimate from authorized demand, then document how peaks, downtime, mix changes, and ramp decisions would be handled.'],
                 ['Quality and rework', 'Name who sets acceptance criteria, records completion, decides rework, and resolves a disputed result.'],
                 ['Site and safe-work interfaces', 'Identify work-area rules, access conditions, equipment boundaries, incident paths, and the accountable owner of each control.'],
-                ['Mobilization dependencies', 'Make prerequisites—such as approved roles, schedules, facilities, equipment, orientation, and system access—visible rather than assuming readiness.'],
+                ['Mobilization dependencies', 'Make prerequisites such as approved roles, schedules, facilities, equipment, orientation, and system access visible rather than assuming readiness.'],
                 ['Authority and escalation', 'Define who directs daily work, changes demand, approves exceptions, communicates with workers, and accepts the operating outcome.'],
             ],
             'solutions' => [

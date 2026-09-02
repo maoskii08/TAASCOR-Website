@@ -73,7 +73,7 @@ taascor_page_start([
                 <article class="module-card">
                     <span class="module-index">04</span>
                     <h3>Service boundary</h3>
-                    <p>The exact areas and services the location supports—without turning a base address into an unsupported regional-coverage claim.</p>
+                    <p>The exact areas and services the location supports without turning a base address into an unsupported regional-coverage claim.</p>
                 </article>
                 <article class="module-card">
                     <span class="module-index">05</span>
@@ -111,7 +111,7 @@ taascor_page_start([
                 <article class="role-card">
                     <span class="role-code">AUTHORIZED USER</span>
                     <h3>Access your workspace</h3>
-                    <p>Applicant, employee, client, and staff information belongs in the appropriate authenticated system—not in a public location enquiry.</p>
+                    <p>Applicant, employee, client, and staff information belongs in the appropriate authenticated system, not in a public location enquiry.</p>
                     <a class="button button-dark" href="<?= taascor_escape(taascor_url('/portal/')) ?>">Choose a secure route</a>
                 </article>
                 <article class="role-card">

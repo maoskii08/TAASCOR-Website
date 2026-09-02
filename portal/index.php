@@ -99,7 +99,7 @@ taascor_page_start([
         <div class="shell">
             <div class="section-heading">
                 <p class="section-kicker">Boundary map / 03</p>
-                <h2 id="boundary-title">What this gateway does—and does not do.</h2>
+                <h2 id="boundary-title">What this gateway does, and does not do.</h2>
             </div>
             <div class="metric-strip">
                 <div><strong>Routes</strong><span>Directs each user to a role-specific destination.</span></div>

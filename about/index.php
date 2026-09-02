@@ -15,7 +15,7 @@ taascor_page_start([
         <div class="shell hero-grid">
             <div class="hero-copy">
                 <p class="eyebrow">TAASCOR / The workforce network</p>
-                <h1 id="about-title">People, operations, and systems—<em>connected with purpose.</em></h1>
+                <h1 id="about-title">People, operations, and systems, <em>connected with purpose.</em></h1>
                 <p class="hero-lede">TAASCOR’s new digital front door is designed around one idea: every workforce journey should make the next action, its owner, and its evidence easier to understand.</p>
                 <div class="hero-actions">
                     <a class="button" href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Build a workforce</a>
@@ -73,7 +73,7 @@ taascor_page_start([
                 <article class="module-card">
                     <span class="module-index">01</span>
                     <h3>Clarity before commitment</h3>
-                    <p>Separate facts, estimates, options, exclusions, dependencies, and approvals so each person knows what a website statement does—and does not—mean.</p>
+                    <p>Separate facts, estimates, options, exclusions, dependencies, and approvals so each person knows what a website statement does, and does not, mean.</p>
                 </article>
                 <article class="module-card">
                     <span class="module-index">02</span>

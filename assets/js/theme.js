@@ -4,7 +4,7 @@
   const storageKey = 'taascor-color-theme';
   const root = document.documentElement;
   root.classList.add('theme-ready');
-  const media = window.matchMedia('(prefers-color-scheme: light)');
+  const defaultTheme = 'light';
 
   const storedTheme = () => {
     try {
@@ -15,7 +15,7 @@
     }
   };
 
-  const resolvedTheme = () => storedTheme() || (media.matches ? 'light' : 'dark');
+  const resolvedTheme = () => storedTheme() || defaultTheme;
 
   const renderControls = (theme) => {
     document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
@@ -28,11 +28,15 @@
   };
 
   const applyTheme = (theme) => {
+    const previousTheme = root.dataset.theme;
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     const themeColor = document.querySelector('meta[name="theme-color"]');
-    if (themeColor) themeColor.setAttribute('content', theme === 'light' ? '#f4efe5' : '#080b13');
+    if (themeColor) themeColor.setAttribute('content', theme === 'light' ? '#f4f7fb' : '#080b13');
     renderControls(theme);
+    if (previousTheme !== theme) {
+      root.dispatchEvent(new CustomEvent('taascor:themechange', { detail: { theme } }));
+    }
   };
 
   applyTheme(resolvedTheme());
@@ -52,7 +56,4 @@
     });
   });
 
-  media.addEventListener('change', () => {
-    if (!storedTheme()) applyTheme(resolvedTheme());
-  });
 })();

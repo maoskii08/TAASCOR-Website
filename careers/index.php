@@ -251,7 +251,7 @@ taascor_page_start([
             <div class="sticky-intro">
                 <p class="section-kicker">Candidate path</p>
                 <h2 id="candidate-path-title">A shorter first step. More detail only when needed.</h2>
-                <p class="section-copy">The application begins with job context and contact information. Verification, references, government identifiers and medical requirements belong to later approved stages—not the first click.</p>
+                <p class="section-copy">The application begins with job context and contact information. Verification, references, government identifiers and medical requirements belong to later approved stages, not the first click.</p>
             </div>
             <ol class="process-list">
                 <li><h3>Review the actual role</h3><p>Worksite, employment type, role summary and current publication state stay attached to the application.</p></li>

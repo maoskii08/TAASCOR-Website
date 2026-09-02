@@ -153,7 +153,7 @@ taascor_page_start([
         <div class="shell">
             <div class="section-heading">
                 <p class="section-kicker">External frameworks / 04</p>
-                <h2 id="external-frameworks-title">Verify against the authority—not a screenshot.</h2>
+                <h2 id="external-frameworks-title">Verify against the authority, not a screenshot.</h2>
                 <p class="section-copy">These links provide public regulatory context. They do not verify TAASCOR’s current status and this page does not make a legal determination.</p>
             </div>
             <div class="module-grid">

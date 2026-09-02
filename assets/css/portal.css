@@ -26,18 +26,18 @@ html[data-theme="light"] {
   --ink: #151923;
   --muted: #525a69;
   --dim: #687181;
-  --canvas: #f4efe7;
-  --surface: rgba(255, 253, 249, 0.92);
-  --surface-soft: rgba(238, 232, 222, 0.78);
-  --card-start: rgba(255, 253, 249, 0.98);
-  --card-end: rgba(243, 237, 228, 0.96);
+  --canvas: #f4f7fb;
+  --surface: rgba(251, 253, 255, 0.94);
+  --surface-soft: rgba(231, 237, 245, 0.82);
+  --card-start: rgba(251, 253, 255, 0.99);
+  --card-end: rgba(237, 242, 248, 0.97);
   --line: rgba(21, 25, 35, 0.14);
   --line-strong: rgba(21, 25, 35, 0.28);
   --signal: #087d68;
   --warning: #8a5700;
   --danger: #a62239;
   --info: #235da8;
-  --shadow: 0 24px 70px rgba(39, 31, 20, 0.12);
+  --shadow: 0 24px 70px rgba(28, 45, 79, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -46,7 +46,7 @@ html { background: var(--canvas); scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--ink);
   background:
     radial-gradient(circle at 10% -5%, rgba(225, 11, 123, 0.22), transparent 34rem),
@@ -110,7 +110,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   backdrop-filter: blur(18px);
 }
 
-html[data-theme="light"] .portal-header { background: rgba(244, 239, 231, 0.9); }
+html[data-theme="light"] .portal-header { background: rgba(248, 250, 253, 0.92); }
 html[data-theme="light"] body::before {
   background-image:
     linear-gradient(rgba(21, 25, 35, 0.035) 1px, transparent 1px),
@@ -183,7 +183,7 @@ html[data-theme="light"] .button-secondary:hover { color: var(--ink); border-col
 
 .portal-main {
   width: min(1180px, calc(100% - 2rem));
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100dvh - 12rem);
   margin: 0 auto;
   padding: clamp(3rem, 8vw, 7rem) 0;
 }
@@ -389,8 +389,9 @@ th { color: var(--dim); font-size: 0.68rem; letter-spacing: 0.1em; text-transfor
 }
 
 @media (max-width: 620px) {
-  .portal-header { position: static; align-items: flex-start; flex-direction: column; gap: 0.5rem; }
+  .portal-header { position: static; align-items: flex-start; flex-direction: column; gap: 0.7rem; padding: 1rem; }
   .portal-nav { width: 100%; justify-content: flex-start; flex-wrap: wrap; gap: 0.8rem 1rem; }
+  .portal-nav a, .portal-nav .link-button, .portal-nav .theme-toggle { min-height: 2.75rem; display: inline-flex; align-items: center; }
   .portal-main { width: min(100% - 1.25rem, 1180px); padding: 2.5rem 0 4rem; }
   .portal-intro h1 { font-size: clamp(2.4rem, 14vw, 4rem); }
   .job-grid, .dashboard-summary, .stats-grid, .record-grid, .field-pair { grid-template-columns: 1fr; }

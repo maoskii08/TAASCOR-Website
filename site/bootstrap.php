@@ -133,13 +133,13 @@ function taascor_page_start(array $page): void
     }
     ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?= taascor_escape($description) ?>">
     <meta name="robots" content="<?= taascor_escape($robots) ?>">
-    <meta name="theme-color" content="#080b13">
+    <meta name="theme-color" content="#f4f7fb">
     <meta property="og:site_name" content="TAASCOR">
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?= taascor_escape($title) ?> | TAASCOR">
@@ -151,6 +151,7 @@ function taascor_page_start(array $page): void
         <meta property="og:url" content="<?= taascor_escape($canonicalUrl) ?>">
     <?php endif; ?>
     <link rel="icon" href="<?= taascor_escape(taascor_url('/favicon.svg')) ?>" type="image/svg+xml">
+    <script src="<?= taascor_escape(taascor_url('/assets/js/theme.js')) ?>"></script>
     <link rel="stylesheet" href="<?= taascor_escape(taascor_url('/assets/css/site.css')) ?>">
     <?php foreach ($validatedStyles as $stylesheet): ?>
         <link rel="stylesheet" href="<?= taascor_escape(taascor_url($stylesheet)) ?>">
@@ -158,7 +159,6 @@ function taascor_page_start(array $page): void
     <?php if ($jsonLdOutput !== null): ?>
         <script type="application/ld+json" nonce="<?= taascor_escape((string) $GLOBALS['taascor_csp_nonce']) ?>"><?= $jsonLdOutput ?></script>
     <?php endif; ?>
-    <script src="<?= taascor_escape(taascor_url('/assets/js/theme.js')) ?>" defer></script>
     <script src="<?= taascor_escape(taascor_url('/assets/js/site.js')) ?>" defer></script>
 </head>
 <body class="<?= taascor_escape($bodyClass) ?>">
@@ -188,8 +188,8 @@ function taascor_page_start(array $page): void
                     <?= taascor_nav_link('/proof/', 'Proof', 'proof', $activePage) ?>
                     <?= taascor_nav_link('/about/', 'About', 'about', $activePage) ?>
                 </div>
-                <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
-                    <span aria-hidden="true">◐</span><span data-theme-label>Dark</span>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="true">
+                    <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
                 </button>
                 <a class="button button-small button-outline" href="<?= taascor_escape(taascor_url('/portal/')) ?>"<?= $activePage === 'portal' ? ' aria-current="page"' : '' ?>>Access TAASCOR</a>
             </nav>
@@ -211,7 +211,7 @@ function taascor_page_end(): void
                     </svg>
                     <span class="brand-copy"><strong>TAASCOR</strong><small>Workforce Network</small></span>
                 </a>
-                <p>A clearer path from workforce need to coordinated action—and from opportunity to application.</p>
+                <p>A clearer path from workforce need to coordinated action, and from opportunity to application.</p>
             </div>
             <nav aria-label="Workforce journeys">
                 <h2>Journeys</h2>

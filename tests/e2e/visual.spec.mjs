@@ -25,9 +25,17 @@ function requireLoopback(baseURL) {
   ).toContain(host);
 }
 
+async function setThemePreference(page, theme) {
+  await page.goto('/');
+  await page.evaluate((value) => {
+    window.localStorage.setItem('taascor-color-theme', value);
+  }, theme);
+}
+
 async function captureReviewRoute(page, route, prefix, testInfo) {
   await expectSuccessfulNavigation(page, route);
   await expect(page.locator('body')).toBeVisible();
+  await page.evaluate(() => window.scrollTo(0, 0));
   const dimensions = await page.evaluate(() => ({
     clientWidth: document.documentElement.clientWidth,
     scrollWidth: document.documentElement.scrollWidth,
@@ -92,10 +100,12 @@ test('capture review screenshots across the final responsive and theme matrix', 
   ]) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: viewport.colorScheme });
+    await setThemePreference(page, viewport.name.includes('dark') ? 'dark' : 'light');
 
     for (const route of routes) {
       await expectSuccessfulNavigation(page, route);
       await expect(page.locator('body')).toBeVisible();
+      await page.evaluate(() => window.scrollTo(0, 0));
       const dimensions = await inspectHorizontalOverflow(page);
       expect(
         dimensions.scrollWidth,
@@ -121,6 +131,7 @@ test('capture authenticated applicant and staff surfaces at desktop and mobile',
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: 'dark' });
+  await setThemePreference(page, 'dark');
   await page.goto('/account/register.php');
   await page.locator('[name="full_name"]').fill('Synthetic Visual Applicant');
   await page.locator('[name="email"]').fill('qa.visual.applicant@example.test');
@@ -140,6 +151,7 @@ test('capture authenticated applicant and staff surfaces at desktop and mobile',
   ]) {
     await page.setViewportSize({ width: viewport.width, height: viewport.height });
     await page.emulateMedia({ reducedMotion: 'reduce', colorScheme: viewport.colorScheme });
+    await setThemePreference(page, viewport.colorScheme);
     for (const route of ['/applicant/', '/account/settings.php', '/apply/sample-warehouse-coordinator/']) {
       await captureReviewRoute(page, route, viewport.prefix, testInfo);
     }
@@ -148,6 +160,7 @@ test('capture authenticated applicant and staff surfaces at desktop and mobile',
   const staffContext = await browser.newContext({ viewport: { width: 1440, height: 1000 }, colorScheme: 'dark', reducedMotion: 'reduce' });
   const staffPage = await staffContext.newPage();
   try {
+    await setThemePreference(staffPage, 'dark');
     await staffPage.goto('/staff/login.php');
     await staffPage.locator('[name="email"]').fill('qa.staff@example.test');
     await staffPage.locator('[name="password"]').fill('QA-only-password-43!');
@@ -163,6 +176,7 @@ test('capture authenticated applicant and staff surfaces at desktop and mobile',
     ]) {
       await staffPage.setViewportSize({ width: viewport.width, height: viewport.height });
       await staffPage.emulateMedia({ reducedMotion: 'reduce', colorScheme: viewport.colorScheme });
+      await setThemePreference(staffPage, viewport.colorScheme);
       for (const route of ['/staff/', '/staff/jobs.php', '/staff/applications.php']) {
         await captureReviewRoute(staffPage, route, viewport.prefix, testInfo);
       }

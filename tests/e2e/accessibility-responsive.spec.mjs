@@ -183,7 +183,12 @@ test('home mobile navigation is keyboard-usable and ambient motion can be paused
 
   await page.waitForFunction(() =>
     document.documentElement.classList.contains('motion-ready')
-      || document.documentElement.classList.contains('motion-unavailable'));
+      || document.documentElement.classList.contains('motion-unavailable')
+      || document.documentElement.classList.contains('mobile-layout'));
+  await expect(page.locator('html')).toHaveClass(/mobile-layout/);
+  await expect(page.locator('#film .stage')).toHaveCSS('position', 'static');
+  await expect(page.locator('#film .beat')).toHaveCount(5);
+  await expect(page.locator('#film .beat').nth(1)).toBeVisible();
   const motionIsReady = await page.locator('html').evaluate((element) =>
     element.classList.contains('motion-ready'));
   if (motionIsReady) {
@@ -198,7 +203,7 @@ test('home mobile navigation is keyboard-usable and ambient motion can be paused
 });
 
 test('theme control is accessible and persists across public routes', async ({ page }) => {
-  await page.emulateMedia({ colorScheme: 'light' });
+  await page.emulateMedia({ colorScheme: 'dark' });
   await expectSuccessfulNavigation(page, '/solutions/');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
 
@@ -212,4 +217,15 @@ test('theme control is accessible and persists across public routes', async ({ p
   await expectSuccessfulNavigation(page, '/proof/');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await expect(page.locator('[data-theme-toggle]').first()).toHaveAttribute('aria-label', 'Use light theme');
+
+  await expectSuccessfulNavigation(page, '/');
+  const homeToggle = page.locator('[data-theme-toggle]').first();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await expect(homeToggle).toHaveAttribute('aria-label', 'Use light theme');
+  await homeToggle.click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute('content', '#f4f7fb');
+
+  await expectSuccessfulNavigation(page, '/portal/');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
 });

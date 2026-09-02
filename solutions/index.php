@@ -39,7 +39,7 @@ taascor_page_start([
             <div class="section-heading">
                 <p class="section-kicker">Formation engine / 01</p>
                 <h2 id="solution-lines-title">Six lenses for the workforce conversation.</h2>
-                <p class="section-copy">These capability areas are a planning framework—not a promise that every service, location, control, or system module applies to every engagement. Each scope is verified with its accountable owner before contracting.</p>
+                <p class="section-copy">These capability areas are a planning framework, not a promise that every service, location, control, or system module applies to every engagement. Each scope is verified with its accountable owner before contracting.</p>
             </div>
             <div class="module-grid">
                 <article class="module-card">
@@ -130,7 +130,7 @@ taascor_page_start([
                 <article class="content-panel">
                     <p class="section-kicker">TAASCOR-side questions</p>
                     <h3>Workforce formation and service operations</h3>
-                    <p>What sourcing, screening, onboarding, records, workforce-support, supervision, time-input, exception, and reporting activities are in scope—and which evidence proves completion?</p>
+                    <p>What sourcing, screening, onboarding, records, workforce-support, supervision, time-input, exception, and reporting activities are in scope, and which evidence proves completion?</p>
                 </article>
                 <article class="content-panel">
                     <p class="section-kicker">Client-side questions</p>

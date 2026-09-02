@@ -44,7 +44,7 @@ taascor_page_start([
             <ol class="process-list">
                 <li>
                     <h3>Capture the authorized source</h3>
-                    <p>Identify the official workforce, assignment, schedule, and time inputs—plus the person or system allowed to create and correct them.</p>
+                    <p>Identify the official workforce, assignment, schedule, and time inputs, plus the person or system allowed to create and correct them.</p>
                 </li>
                 <li>
                     <h3>Validate before value moves</h3>
@@ -70,7 +70,7 @@ taascor_page_start([
         <div class="shell">
             <div class="section-heading">
                 <p class="section-kicker">Capability model / 02</p>
-                <h2 id="platform-model-title">Six modules to verify—not six claims to assume.</h2>
+                <h2 id="platform-model-title">Six modules to verify, not six claims to assume.</h2>
             </div>
             <div class="module-grid">
                 <article class="module-card">
@@ -124,7 +124,7 @@ taascor_page_start([
                 <article class="role-card">
                     <span class="role-code">ROLE / EMPLOYEE</span>
                     <h3>Personal workforce access</h3>
-                    <p>Only the user’s own approved records, notices, documents, and actions—presented with accessible help and recovery paths.</p>
+                    <p>Only the user’s own approved records, notices, documents, and actions, presented with accessible help and recovery paths.</p>
                     <a class="button button-dark" href="https://taascor.visiotechsolutions.com/hris/login/" target="_blank" rel="noopener noreferrer">Employee / HRIS login <span class="sr-only">in a new tab</span></a>
                 </article>
                 <article class="role-card">
@@ -162,7 +162,7 @@ taascor_page_start([
         <div class="shell split">
             <div class="section-heading">
                 <p class="section-kicker">Evaluate fit</p>
-                <h2 id="platform-action-title">Start with the workflow, roles, and evidence—not the dashboard.</h2>
+                <h2 id="platform-action-title">Start with the workflow, roles, and evidence, not the dashboard.</h2>
                 <p class="section-copy">A useful platform discussion maps the current source, exception path, approvals, integrations, privacy boundary, retention, and implementation ownership.</p>
             </div>
             <div class="hero-actions">

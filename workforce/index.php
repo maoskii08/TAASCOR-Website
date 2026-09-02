@@ -69,7 +69,7 @@ taascor_page_start([
         <div class="shell workforce-hero-grid">
             <div>
                 <p class="eyebrow">Build a workforce</p>
-                <h1 id="workforce-title">Start with the operating truth—not a generic contact form.</h1>
+                <h1 id="workforce-title">Start with the operating truth, not a generic contact form.</h1>
                 <p class="hero-lede">Frame the roles, sites, scale, schedule, timing, and service boundary TAASCOR should evaluate. Estimates remain planning inputs until owners approve a proposal and operating model.</p>
             </div>
             <dl class="brief-map" aria-label="Workforce brief sequence">

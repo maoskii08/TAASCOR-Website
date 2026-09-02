@@ -39,7 +39,7 @@ taascor_page_start([
             <div class="section-heading">
                 <p class="section-kicker">Planning contexts / 01</p>
                 <h2 id="context-title">Four environments. No blanket availability claim.</h2>
-                <p class="section-copy">These are discovery lenses for an employer conversation—not a public statement that TAASCOR currently serves every role, site, region, or business in the category.</p>
+                <p class="section-copy">These are discovery lenses for an employer conversation, not a public statement that TAASCOR currently serves every role, site, region, or business in the category.</p>
             </div>
             <div class="module-grid module-grid-two">
                 <article class="module-card">
@@ -110,7 +110,7 @@ taascor_page_start([
         <div class="shell split">
             <div class="section-heading">
                 <p class="section-kicker">Evidence gate / 03</p>
-                <h2 id="industry-proof-title">Named industry pages follow evidence—not ambition.</h2>
+                <h2 id="industry-proof-title">Named industry pages follow evidence, not ambition.</h2>
                 <p class="section-copy">A future industry profile should include approved service scope, applicable locations, current capability owners, operating constraints, dated proof, and permitted client or case-study references.</p>
             </div>
             <div class="notice-panel" role="note">

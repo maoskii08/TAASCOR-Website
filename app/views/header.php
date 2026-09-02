@@ -9,16 +9,16 @@ $bodyClass = $bodyClass ?? '';
 $navigationUser = auth_user();
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="theme-color" content="#080b13">
+    <meta name="theme-color" content="#f4f7fb">
     <title><?= e($pageTitle) ?></title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script src="/assets/js/theme.js"></script>
     <link rel="stylesheet" href="/assets/css/portal.css">
-    <script defer src="/assets/js/theme.js"></script>
     <script defer src="/assets/js/portal.js"></script>
 </head>
 <body class="portal-body <?= e($bodyClass) ?>">
@@ -44,8 +44,8 @@ $navigationUser = auth_user();
                 <button class="link-button" type="submit">Sign out</button>
             </form>
         <?php endif; ?>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
-            <span aria-hidden="true">◐</span><span data-theme-label>Dark</span>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="true">
+            <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
         </button>
     </nav>
 </header>

@@ -44,7 +44,7 @@ taascor_page_start([
             <div class="notice-panel" role="note">
                 <?= taascor_status_tag('All client candidates on hold', 'review') ?>
                 <h3>No client identities are released here</h3>
-                <p>This page does not publish or imply names, logos, testimonials, active contracts, service scope, hiring relationships, outcomes, or endorsements. Missing approval remains a visible gap—not a substitute claim.</p>
+                <p>This page does not publish or imply names, logos, testimonials, active contracts, service scope, hiring relationships, outcomes, or endorsements. Missing approval remains a visible gap, not a substitute claim.</p>
             </div>
         </div>
     </section>
@@ -65,7 +65,7 @@ taascor_page_start([
                 <article class="module-card">
                     <span class="module-index">02</span>
                     <h3>Relationship state</h3>
-                    <p>Client, former client, partner, vendor, prospect, worksite, or another exact category—plus dates and currentness.</p>
+                    <p>Client, former client, partner, vendor, prospect, worksite, or another exact category, plus dates and currentness.</p>
                 </article>
                 <article class="module-card">
                     <span class="module-index">03</span>
