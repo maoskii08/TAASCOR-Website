@@ -19,7 +19,7 @@
 | Runtime | PHP 8.5.4; `pdo_mysql` and `mbstring` loaded |
 | Credential source | Project-root `.env.deploy.local`; ignored and untracked; values not displayed or packaged |
 
-The active document root is a symlink to the immutable release. Hostinger ignored `.user.ini` for the web handler, so a non-secret `php_value auto_prepend_file` deployment overlay was added to the release `.htaccess`. The referenced mode-`600` runtime bootstrap and private upload directory remain outside the web root. The source `.htaccess` is retained beside the release for hash comparison and rollback.
+The active document root is a symlink to the immutable release. Hostinger ignored `.user.ini` for the web handler, so a non-secret `php_value auto_prepend_file` deployment overlay was added to the release `.htaccess`. Hostinger also replaced PHP-generated CSP headers with a minimal policy; a verified deployment-level CSP fallback was therefore added to the same overlay. The referenced mode-`600` runtime bootstrap and private upload directory remain outside the web root. The source and runtime-only `.htaccess` versions are retained beside the release for comparison and rollback.
 
 ## Release and parity evidence
 
@@ -30,7 +30,8 @@ The active document root is a symlink to the immutable release. Hostinger ignore
 | Live `assets/js/theme.js` | `ef3a09cc691d95bddcb193832a3a0becb3c05f2987e74330b3cd9c090fab32ca` |
 | Live `favicon.svg` | `967fa0ba93fc413eae7e590784b1b91bc5c2d04d9f7f6c6abf8d17a4906f56b9` |
 | Source `.htaccess` | `57b74f958feb88cd6b869543a47ada609c9c1f6842342b814d2196b7f22a5f45` |
-| Deployed `.htaccess` with non-secret runtime overlay | `8c7957a7162be9c7b3bd30c79e1c3cd9a7e7f617000943bf0c454f3dbc912cbd` |
+| Runtime-only `.htaccess` overlay backup | `8c7957a7162be9c7b3bd30c79e1c3cd9a7e7f617000943bf0c454f3dbc912cbd` |
+| Deployed `.htaccess` with runtime and CSP overlays | `5cdeb50f0b968021e569fd778e734ebc776069726db47f9d0a667c097a7a21c7` |
 
 The uploaded archive hash matched its remote readback before extraction. The three public executable assets matched the local exact-commit package and their remote release files.
 
@@ -53,16 +54,16 @@ The two archive backups were also downloaded to ignored local release storage. R
 - Remote source: all PHP files passed PHP 8.5 lint; pre-switch production homepage rendering passed.
 - External HTTP: `/`, `/about/`, `/careers/`, `/workforce/`, `/portal/`, `/robots.txt`, and `/sitemap.xml` returned `200`.
 - Denials: `/.user.ini`, `/database/schema.mysql.sql`, and `/Backups/` returned `404`; `/app/.env.example` returned `403`.
-- Security transport: HTTPS returned HSTS, no-sniff, frame denial, referrer policy, permissions policy, and `X-Robots-Tag: noindex,nofollow`.
+- Security transport: HTTPS returned a restrictive deployment-level CSP, HSTS, no-sniff, frame denial, referrer policy, permissions policy, and `X-Robots-Tag: noindex,nofollow`.
 - Browser: desktop light, desktop dark, persistent theme preference, 390 px mobile menu/no-overflow, public navigation, and zero page errors passed.
 
 ## Risks and gaps
 
-- **P1 Major:** Hostinger replaces the application-generated CSP with `Content-Security-Policy: upgrade-insecure-requests`. Other tested security headers remain active, but the stricter application CSP requires a hosting-level correction or an independently reviewed markup policy.
 - **P1 Major:** Privacy, security, retention, accessibility-owner, content/claim, malware-scanning, recovery, staff-access, and business-UAT gates remain open. Their corresponding production capabilities remain disabled.
+- **P2 Watch Item:** Hostinger overrides PHP-generated nonce/hash CSP headers. The deployed fallback restricts sources, frames, objects, forms, and connections, but permits existing inline presentation scripts. Moving all inline scripts to versioned assets would allow removal of `'unsafe-inline'` in a future qualified release.
 - **P2 Watch Item:** Search indexing remains deliberately disabled until canonical-domain, content, claims, social metadata, and owner approvals close.
 - **Expected Data Movement:** The approved migration created/confirmed the application schema only. No real applicant, workforce, staff, job, document, or synthetic test record was inserted during live smoke.
 
 ## Post-release observation
 
-The live site returned `200` after the runtime bootstrap was activated. Public-route, protected-path, asset-parity, desktop/mobile, and theme checks passed. No authenticated or mutating production workflow was exercised because those capabilities remain intentionally disabled.
+The live site returned `200` after the runtime bootstrap was activated. The deployment-level CSP was externally verified, and the browser smoke was rerun successfully after activation. Public-route, protected-path, asset-parity, desktop/mobile, and theme checks passed. No authenticated or mutating production workflow was exercised because those capabilities remain intentionally disabled.
