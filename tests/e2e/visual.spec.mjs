@@ -84,6 +84,7 @@ test('capture review screenshots across the final responsive and theme matrix', 
     '/industries/',
     '/platform/',
     '/proof/',
+    '/about/',
     careersRoute,
     '/jobs/sample-warehouse-coordinator/',
     '/workforce/',
@@ -115,7 +116,11 @@ test('capture review screenshots across the final responsive and theme matrix', 
         screenshotDirectory,
         `${viewport.name}-${routeSlug(route)}.png`,
       );
-      await page.screenshot({ path: screenshotPath, fullPage: false, animations: 'disabled' });
+      await page.screenshot({
+        path: screenshotPath,
+        fullPage: route === '/about/',
+        animations: 'disabled',
+      });
       await testInfo.attach(`${viewport.name}-${routeSlug(route)}`, {
         path: screenshotPath,
         contentType: 'image/png',

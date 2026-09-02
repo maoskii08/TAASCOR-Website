@@ -6,7 +6,7 @@ require_once dirname(__DIR__) . '/site/bootstrap.php';
 
 taascor_page_start([
     'title' => 'About',
-    'description' => 'Learn how the TAASCOR Workforce Network experience connects employer needs, job opportunities, accountable operating handoffs, and role-specific systems.',
+    'description' => 'Discover TAASCOR’s mission, vision, core values, and approach to connecting employer needs, job opportunities, and accountable workforce operations.',
     'active' => 'about',
 ]);
 ?>
@@ -21,7 +21,7 @@ taascor_page_start([
                     <a class="button" href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Build a workforce</a>
                     <a class="button button-outline" href="<?= taascor_escape(taascor_url('/jobs/')) ?>">Find work</a>
                 </div>
-                <p class="hero-note">Canonical mission, vision, values, corporate history, leadership, and office details remain subject to source and publication approval.</p>
+                <p class="hero-note">Mission, vision, and core values are drawn from TAASCOR’s supplied company profile and adapted here for clear digital reading.</p>
             </div>
             <div class="network-stage" aria-hidden="true">
                 <span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span>
@@ -62,44 +62,80 @@ taascor_page_start([
         </div>
     </section>
 
-    <section class="scene scene-tinted" aria-labelledby="principles-title">
+    <section class="scene scene-tinted purpose-section" aria-labelledby="purpose-title">
         <div class="shell">
             <div class="section-heading">
-                <p class="section-kicker">Experience principles / 02</p>
-                <h2 id="principles-title">Professional does not have to feel impersonal.</h2>
-                <p class="section-copy">These are design and operating principles for the new digital experience. They are not presented as TAASCOR’s formally approved corporate values.</p>
+                <p class="section-kicker">Mission and vision / 02</p>
+                <h2 id="purpose-title">A clear purpose for every person we place and every client we support.</h2>
             </div>
-            <div class="module-grid module-grid-two">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h3>Clarity before commitment</h3>
-                    <p>Separate facts, estimates, options, exclusions, dependencies, and approvals so each person knows what a website statement does, and does not, mean.</p>
+            <div class="purpose-grid">
+                <article class="purpose-statement">
+                    <p class="purpose-label">Our mission</p>
+                    <h3>Lead through excellent and varied service.</h3>
+                    <p>To be a leading manpower provider in the industry by delivering excellent and varied services to our clients.</p>
                 </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h3>Dignity by design</h3>
-                    <p>Collect only the applicant or employee information needed at the current stage, explain why, and avoid making sensitive data the price of initial access.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h3>Human authority where it matters</h3>
-                    <p>Identity-, employment-, access-, payroll-, and money-impacting decisions retain explicit ownership, review, and auditability.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">04</span>
-                    <h3>Evidence over decoration</h3>
-                    <p>Use dated documents, permissioned relationships, defined measures, and visible limitations instead of unsupported badges, counters, or simulated live status.</p>
+                <article class="purpose-statement purpose-statement-vision">
+                    <p class="purpose-label">Our vision</p>
+                    <h3>Keep clients moving forward with the right people.</h3>
+                    <p>To continuously support our clients in their outsourcing needs by providing well-trained, skilled, and motivated people.</p>
                 </article>
             </div>
+        </div>
+    </section>
+
+    <section class="scene values-section" aria-labelledby="values-title">
+        <div class="shell values-layout">
+            <div class="section-heading sticky-intro">
+                <p class="section-kicker">Company core values / 03</p>
+                <h2 id="values-title">The standards behind the service.</h2>
+                <p class="section-copy">TAASCOR believes success grows from a strong culture of dedicated, quality service made possible by motivated employees.</p>
+            </div>
+            <ol class="values-list">
+                <li>
+                    <span class="value-number" aria-hidden="true">01</span>
+                    <div>
+                        <h3>Quality</h3>
+                        <p>Quality is the philosophy behind everything we do. It is the result of the high standards we set, sincere effort, and skillful execution by every member of our team.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="value-number" aria-hidden="true">02</span>
+                    <div>
+                        <h3>Service</h3>
+                        <p>Quality, friendly, and personalized service sets us apart. We build positive relationships through hard work, ingenuity, and a passion for service excellence.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="value-number" aria-hidden="true">03</span>
+                    <div>
+                        <h3>Results Oriented</h3>
+                        <p>We focus on positive outcomes in every action and decision. We continuously measure performance and set targets against relevant benchmarks to remain competitive and move forward.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="value-number" aria-hidden="true">04</span>
+                    <div>
+                        <h3>Responsibility</h3>
+                        <p>We believe business has a responsibility to employees, clients, and the community. We do not overlook our duties; we continually raise the standard of our performance.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="value-number" aria-hidden="true">05</span>
+                    <div>
+                        <h3>Passion</h3>
+                        <p>Passion fuels our commitment to the endless pursuit of excellence. It drives us to persevere and meet every challenge.</p>
+                    </div>
+                </li>
+            </ol>
         </div>
     </section>
 
     <section class="scene" aria-labelledby="company-facts-title">
         <div class="shell split">
             <div class="section-heading">
-                <p class="section-kicker">Corporate profile / 03</p>
-                <h2 id="company-facts-title">Company facts are moving through verification.</h2>
-                <p class="section-copy">The previous public experiences contain conflicting or unverified corporate, registration, leadership, location, and service statements. This build does not silently choose one version.</p>
+                <p class="section-kicker">Corporate profile / 04</p>
+                <h2 id="company-facts-title">The remaining company facts are moving through verification.</h2>
+                <p class="section-copy">Mission, vision, and values now reflect the supplied company profile. Registration, leadership, location, and detailed service statements remain evidence-gated.</p>
                 <a class="text-link" href="<?= taascor_escape(taascor_url('/proof/')) ?>">See the publication standard</a>
             </div>
             <div class="content-panel">
@@ -107,7 +143,6 @@ taascor_page_start([
                 <h3>What will appear after approval</h3>
                 <ul>
                     <li>Exact legal name and current corporate registration details.</li>
-                    <li>One approved mission, vision, and values source.</li>
                     <li>Current leadership names, roles, biographies, and public-use permissions.</li>
                     <li>Verified office locations, directions, contact channels, hours, and service areas.</li>
                     <li>Current service catalogue, operating boundaries, and review date.</li>
@@ -125,7 +160,7 @@ taascor_page_start([
                 </div>
             </div>
             <div class="section-heading">
-                <p class="section-kicker">Locations / 04</p>
+                <p class="section-kicker">Locations / 05</p>
                 <h2 id="locations-title">Directions should lead to a real, current destination.</h2>
                 <p class="section-copy">No office address, branch count, coverage map, or operating-hours claim is published here until Facilities and Operations confirm the address, service status, contact route, effective date, and next review.</p>
                 <p>For a current meeting or service-location enquiry, contact TAASCOR directly and confirm the destination before travelling.</p>

@@ -39,6 +39,18 @@ const staff = {
 
 const selectedJobSlug = 'sample-operations-associate';
 
+test('about page presents the supplied mission, vision, and five core values', async ({ page }) => {
+  const response = await page.goto('/about/');
+  expect(response?.status()).toBe(200);
+  await expect(page.getByRole('heading', { name: 'A clear purpose for every person we place and every client we support.' })).toBeVisible();
+  await expect(page.getByText('To be a leading manpower provider in the industry by delivering excellent and varied services to our clients.')).toBeVisible();
+  await expect(page.getByText('To continuously support our clients in their outsourcing needs by providing well-trained, skilled, and motivated people.')).toBeVisible();
+  await expect(page.locator('.values-list > li')).toHaveCount(5);
+  for (const value of ['Quality', 'Service', 'Results Oriented', 'Responsibility', 'Passion']) {
+    await expect(page.getByRole('heading', { name: value, exact: true })).toBeVisible();
+  }
+});
+
 function requireLoopback(baseURL) {
   const host = new URL(baseURL).hostname;
   expect(

@@ -5,6 +5,7 @@ This register intentionally carries no implied approval. `Unverified` means the 
 | Item family | Current local treatment | Evidence required | Approver | Status |
 | --- | --- | --- | --- | --- |
 | Corporate legal identity and registration | Generic legal name only; identifiers withheld | Current corporate record and legal-entity match | Corporate / Legal | Unverified |
+| Mission, vision, and corporate values | Published on the About page using professionally edited source wording | Company-profile screenshot supplied by the requesting user on 2026-09-02, corroborated by the legacy TAASCOR About page | Requesting user / Corporate | Approved for requested publication |
 | D.O. 174 contractor status | Evidence-gated explanatory copy; no current badge | Certificate, issuing region, issue/expiry, registry check, entity match | Legal / Compliance | Unverified |
 | Services and responsibility split | Capability descriptions without contract guarantees | Approved service catalogue and client/TAASCOR responsibility matrix | Operations / Commercial | Unverified |
 | Offices, addresses, hours, phones, and service areas | Verification-required language or baseline contact copy | Maintained location/contact register with review date | Operations / Corporate | Unverified |
