@@ -32,8 +32,8 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 
 ## G3 — Runtime and data readiness
 
-- [ ] Exact Hostinger account, document root, PHP version/extensions, MySQL version/database, TLS behavior, and deployment method are confirmed.
-- [ ] Production environment variables are provisioned outside Git; no secret appears in source or package.
+- [x] Hostinger account, `/home/u716215139/domains/taascor.com/public_html`, PHP 8.5.4 with required extensions, the named MySQL database/user, HTTPS behavior, and SSH/SFTP deployment method were confirmed for the public-experience release.
+- [x] Production runtime values are provisioned in a mode-`600` bootstrap outside the web root; no secret appears in source, release manifests, logs, or packages.
 - [ ] MySQL schema/migration dry run passes on a production-like non-production environment.
 - [ ] Backup and restore rehearsal passes for database, private uploads, and current deployed artifact.
 - [ ] Any legacy migration has separate approval, read-only extract, mapping, preview, reconciliation, rollback, and data-owner sign-off.
@@ -56,21 +56,21 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 - [x] Commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` contains no backup/archive/editor-swap, runtime database/upload, dependency-tree, or release-package artifact.
 - [x] The exact feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` was reviewed and pushed to GitHub.
 - [x] Clean-checkout verification passed at `5c6fdde3edb2caa63b8f20c921b98bfa9089f379`: 12/12 static checks, 26/26 Playwright tests and 0 dependency-audit vulnerabilities.
-- [ ] The deployment package is built only from that commit.
-- [ ] Package manifest and SHA-256 hashes are recorded and match the reviewed source.
+- [x] The public-experience deployment package was built only from commit `8d5e929822d85d75f7c2fd1aae28e5d0ac3820d3`.
+- [x] Package, upload/readback, executable asset, runtime-overlay and backup SHA-256 hashes are recorded in `PRODUCTION_RELEASE_2026-09-02.md`.
 - [ ] Release, Product, Recruitment, Security, DPO/Legal, and data owners approve the exact candidate.
 
 ## G6 — Manual deployment and live smoke
 
-- [ ] Separate production-deployment approval is recorded.
-- [ ] Named production files/database are backed up and the rollback point is verified.
-- [ ] Package is manually uploaded to the confirmed Hostinger path; production is not edited directly.
-- [ ] Upload/readback hashes reconcile to the approved package and Git commit.
-- [ ] Public routes, headers, forms, job-to-apply context, error paths, and portals pass live smoke.
+- [x] The requesting user explicitly approved commit, push, and production deployment in the current Codex task on 2026-09-02 and supplied the exact Hostinger target evidence.
+- [x] The previous document root and pre-migration database were backed up remotely and downloaded locally; the rollback directory is verified.
+- [x] The Git-built package was uploaded over SSH/SFTP to an immutable release directory and activated by a recoverable document-root switch.
+- [x] Upload/readback and executable asset hashes reconcile to Git commit `8d5e929822d85d75f7c2fd1aae28e5d0ac3820d3`.
+- [x] Public routes, HTTPS/security headers, protected-path denials, portals, default light mode, dark-mode persistence, and 390 px mobile behavior passed live smoke. Data-collection forms remain intentionally disabled.
 - [ ] Proportionate authenticated smoke uses approved non-production/test accounts and data only.
 - [ ] Logs/queues/notifications are checked and rollback readiness remains intact.
 - [ ] Product owner accepts live behavior; data owner separately accepts any approved data movement.
 
 ## Current decision
 
-**NO-GO for production.** Baseline preservation, the separately approved feature commit/push, and isolated exact-commit source qualification are complete. The remaining unchecked items require evidence, named ownership, infrastructure, credentials, legal/business decisions, packaging approval, or explicit production-release authority.
+**GO for the deployed fail-closed public experience at commit `8d5e929822d85d75f7c2fd1aae28e5d0ac3820d3`. NO-GO for enabling governed data workflows.** The public release, package, backups, MySQL schema, deployment target, parity checks, and live responsive/theme smoke are recorded in `PRODUCTION_RELEASE_2026-09-02.md`. Applicant/workforce collection, uploads, staff workflows, job publication, and indexing remain disabled until their unchecked legal, privacy, security, content, accessibility, recovery, and business gates close.
