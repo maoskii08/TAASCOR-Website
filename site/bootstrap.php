@@ -150,7 +150,9 @@ function taascor_page_start(array $page): void
         <link rel="canonical" href="<?= taascor_escape($canonicalUrl) ?>">
         <meta property="og:url" content="<?= taascor_escape($canonicalUrl) ?>">
     <?php endif; ?>
-    <link rel="icon" href="<?= taascor_escape(taascor_url('/favicon.svg')) ?>" type="image/svg+xml">
+    <link rel="icon" href="<?= taascor_escape(taascor_url('/assets/brand/favicon-32.png')) ?>" type="image/png" sizes="32x32">
+    <link rel="icon" href="<?= taascor_escape(taascor_url('/assets/brand/icon-192.png')) ?>" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="<?= taascor_escape(taascor_url('/assets/brand/apple-touch-icon.png')) ?>" sizes="180x180">
     <script src="<?= taascor_escape(taascor_url('/assets/js/theme.js')) ?>"></script>
     <link rel="stylesheet" href="<?= taascor_escape(taascor_url('/assets/css/site.css')) ?>">
     <?php foreach ($validatedStyles as $stylesheet): ?>
@@ -167,11 +169,8 @@ function taascor_page_start(array $page): void
     <header class="site-header" data-site-header>
         <div class="shell nav-shell">
             <a class="brand" href="<?= taascor_escape(taascor_url('/')) ?>" aria-label="TAASCOR home">
-                <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-                    <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <path d="M15 17h18M18 24h12M21 31h6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-                <span class="brand-copy"><strong>TAASCOR</strong><small>Workforce Network</small></span>
+                <img class="brand-mark" src="<?= taascor_escape(taascor_url('/assets/brand/taascor-mark.png')) ?>" width="859" height="756" alt="">
+                <span class="brand-copy" aria-hidden="true"><span class="brand-name">TAASCOR</span><span class="brand-legal">Management &amp; General Services Corp.</span></span>
             </a>
 
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
@@ -188,7 +187,7 @@ function taascor_page_start(array $page): void
                     <?= taascor_nav_link('/proof/', 'Proof', 'proof', $activePage) ?>
                     <?= taascor_nav_link('/about/', 'About', 'about', $activePage) ?>
                 </div>
-                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="true">
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">
                     <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
                 </button>
                 <a class="button button-small button-outline" href="<?= taascor_escape(taascor_url('/portal/')) ?>"<?= $activePage === 'portal' ? ' aria-current="page"' : '' ?>>Access TAASCOR</a>
@@ -205,11 +204,8 @@ function taascor_page_end(): void
         <div class="shell footer-grid">
             <div class="footer-brand">
                 <a class="brand" href="<?= taascor_escape(taascor_url('/')) ?>" aria-label="TAASCOR home">
-                    <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true">
-                        <path d="M24 3 42 13.5v21L24 45 6 34.5v-21L24 3Z" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <path d="M15 17h18M18 24h12M21 31h6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
-                    <span class="brand-copy"><strong>TAASCOR</strong><small>Workforce Network</small></span>
+                    <img class="brand-mark" src="<?= taascor_escape(taascor_url('/assets/brand/taascor-mark.png')) ?>" width="859" height="756" alt="">
+                    <span class="brand-copy" aria-hidden="true"><span class="brand-name">TAASCOR</span><span class="brand-legal">Management &amp; General Services Corp.</span></span>
                 </a>
                 <p>A clearer path from workforce need to coordinated action, and from opportunity to application.</p>
             </div>
@@ -237,7 +233,7 @@ function taascor_page_end(): void
             </nav>
         </div>
         <div class="shell footer-base">
-            <p>&copy; <span data-current-year>2026</span> TAASCOR · Corporate identity pending owner verification.</p>
+            <p>&copy; <span data-current-year>2026</span> TAASCOR · Workforce services, recruitment, and workforce technology.</p>
             <nav aria-label="Legal information">
                 <a href="<?= taascor_escape(taascor_url('/legal/privacy/')) ?>">Privacy</a>
                 <a href="<?= taascor_escape(taascor_url('/legal/terms/')) ?>">Terms</a>

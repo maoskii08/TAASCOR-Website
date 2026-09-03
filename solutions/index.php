@@ -87,10 +87,28 @@ taascor_page_start([
         </div>
     </section>
 
-    <section class="scene scene-tinted" aria-labelledby="sequence-title">
+    <section class="scene scene-tinted" aria-labelledby="operational-services-title">
+        <div class="shell">
+            <div class="section-heading">
+                <p class="section-kicker">Operational services / 02</p>
+                <h2 id="operational-services-title">The complete service portfolio from TAASCOR’s company profile.</h2>
+                <p class="section-copy">These service families extend the workforce conversation into facilities, logistics, transport, and manufacturing support. Exact scope, location, equipment, supervision, and commercial terms are confirmed for each engagement.</p>
+            </div>
+            <div class="service-spectrum">
+                <article><span>01</span><h3>Building management &amp; maintenance</h3><p>Janitorial, housekeeping, sanitation, and waste-management services organized around the site’s operating requirements.</p></article>
+                <article><span>02</span><h3>Facilities maintenance</h3><p>Repair and maintenance support for plant facilities, electrical systems, plumbing, carpentry, fabrication, and welding.</p></article>
+                <article><span>03</span><h3>Executive search &amp; recruitment</h3><p>Manpower recruitment, sourcing, and staffing support for role families across industries and locations.</p></article>
+                <article><span>04</span><h3>Warehousing &amp; 3PL logistics</h3><p>Operational support for warehousing, distribution, transport, delivery, and third-party logistics environments.</p></article>
+                <article><span>05</span><h3>Courier &amp; transport services</h3><p>Courier, collection, transport, and delivery support shaped around the client’s route, handling, and service requirements.</p></article>
+                <article><span>06</span><h3>Electronics manufacturing</h3><p>Workforce support for electronics manufacturing, printed-circuit-board assembly, product assembly, testing, and related production activity.</p></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="scene" aria-labelledby="sequence-title">
         <div class="shell split">
             <div class="section-heading sticky-intro">
-                <p class="section-kicker">Engagement sequence / 02</p>
+                <p class="section-kicker">Engagement sequence / 03</p>
                 <h2 id="sequence-title">Decisions become gates, not assumptions.</h2>
                 <p class="section-copy">A professional workforce engagement begins by separating known inputs, open questions, client responsibilities, TAASCOR responsibilities, and external dependencies.</p>
             </div>
@@ -122,7 +140,7 @@ taascor_page_start([
     <section class="scene" aria-labelledby="boundary-title">
         <div class="shell">
             <div class="section-heading">
-                <p class="section-kicker">Responsibility map / 03</p>
+                <p class="section-kicker">Responsibility map / 04</p>
                 <h2 id="boundary-title">A starting framework for the handoff.</h2>
                 <p class="section-copy">The exact boundary varies by engagement. This model helps surface ownership questions; it does not replace a proposal, contract, operating procedure, or legal review.</p>
             </div>
@@ -144,7 +162,7 @@ taascor_page_start([
     <section class="scene scene-tinted" aria-labelledby="solutions-faq-title">
         <div class="shell split">
             <div class="section-heading sticky-intro">
-                <p class="section-kicker">Before you enquire / 04</p>
+                <p class="section-kicker">Before you enquire / 05</p>
                 <h2 id="solutions-faq-title">Useful answers, without invented certainty.</h2>
             </div>
             <div class="accordion">

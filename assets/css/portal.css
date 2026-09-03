@@ -120,11 +120,7 @@ html[data-theme="light"] body::before {
 .portal-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  color: var(--ink);
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  gap: 0.5rem;
   text-decoration: none;
 }
 
@@ -153,7 +149,26 @@ html[data-theme="light"] select { color: var(--ink); background: rgba(255, 255, 
 html[data-theme="light"] .button-secondary { color: var(--ink); background: rgba(21, 25, 35, 0.05); }
 html[data-theme="light"] .button-secondary:hover { color: var(--ink); border-color: rgba(21, 25, 35, 0.45); background: rgba(21, 25, 35, 0.09); }
 
-.portal-brand img { display: block; }
+.portal-brand img { display: block; height: auto; }
+.portal-brand-mark {
+  width: 2.35rem;
+  filter: drop-shadow(0 0.35rem 0.65rem rgba(25, 43, 83, 0.14));
+}
+.portal-brand-copy { display: grid; gap: 0.08rem; line-height: 1; }
+.portal-brand-name {
+  color: #c12635;
+  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+  font-weight: 850;
+  letter-spacing: 0.018em;
+}
+.portal-brand-legal {
+  color: #d4def2;
+  font-size: clamp(0.38rem, 0.52vw, 0.46rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+html[data-theme="light"] .portal-brand-legal { color: #29447f; }
 
 .portal-nav {
   display: flex;

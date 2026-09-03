@@ -19,6 +19,21 @@ async function coreRoutes(request) {
   ];
 }
 
+async function contrastRatio(page, textSelector, surfaceSelector) {
+  const colors = await page.evaluate(({ textSelector: text, surfaceSelector: surface }) => ({
+    foreground: getComputedStyle(document.querySelector(text)).color,
+    background: getComputedStyle(document.querySelector(surface)).backgroundColor,
+  }), { textSelector, surfaceSelector });
+
+  const channels = (value) => value.match(/[\d.]+/g).slice(0, 3).map((channel) => Number(channel) / 255);
+  const luminance = (value) => channels(value)
+    .map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4)
+    .reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0);
+  const foreground = luminance(colors.foreground);
+  const background = luminance(colors.background);
+  return (Math.max(foreground, background) + 0.05) / (Math.min(foreground, background) + 0.05);
+}
+
 test('core pages provide skip navigation, one main landmark, labels, and no hidden focus traps', async ({ page, request }) => {
   for (const route of await coreRoutes(request)) {
     await test.step(route, async () => {
@@ -168,7 +183,7 @@ test('reduced-motion preference disables smooth scrolling and long-running page 
   }
 });
 
-test('home mobile navigation is keyboard-usable and ambient motion can be paused', async ({ page }) => {
+test('home mobile navigation is keyboard-usable without a floating motion control', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expectSuccessfulNavigation(page, '/');
@@ -189,17 +204,29 @@ test('home mobile navigation is keyboard-usable and ambient motion can be paused
   await expect(page.locator('#film .stage')).toHaveCSS('position', 'static');
   await expect(page.locator('#film .beat')).toHaveCount(5);
   await expect(page.locator('#film .beat').nth(1)).toBeVisible();
-  const motionIsReady = await page.locator('html').evaluate((element) =>
-    element.classList.contains('motion-ready'));
-  if (motionIsReady) {
-    const toggle = page.locator('#motion-toggle');
-    await expect(toggle).toBeVisible();
-    await expect(toggle).toHaveAccessibleName('Pause motion');
-    await toggle.click();
-    await expect(toggle).toHaveAttribute('aria-pressed', 'true');
-    await expect(toggle).toHaveText('Resume motion');
-    await expect(page.locator('html')).toHaveClass(/motion-paused/);
-  }
+  await expect(page.locator('#motion-toggle')).toHaveCount(0);
+});
+
+test('home desktop click-to-advance lands on the next authored cinematic peak', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await expectSuccessfulNavigation(page, '/');
+  await page.waitForFunction(() => window.__ready === true);
+
+  await expect(page.locator('#motion-toggle')).toHaveCount(0);
+  await expect(page.locator('#ops')).toHaveAttribute('data-click-peak', '0.72');
+
+  const expectedStop = await page.locator('#film').evaluate((scene) => {
+    const start = scene.getBoundingClientRect().top + window.scrollY;
+    const span = Math.max(1, scene.offsetHeight - window.innerHeight);
+    return Math.round(start + span * 0.24);
+  });
+
+  await page.mouse.click(18, 420);
+  await expect.poll(async () => Math.round(await page.evaluate(() => window.scrollY)), {
+    timeout: 6_000,
+  }).toBeGreaterThan(expectedStop - 12);
+  expect(Math.abs(Math.round(await page.evaluate(() => window.scrollY)) - expectedStop)).toBeLessThanOrEqual(18);
 });
 
 test('theme control is accessible and persists across public routes', async ({ page }) => {
@@ -208,11 +235,11 @@ test('theme control is accessible and persists across public routes', async ({ p
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
 
   const toggle = page.locator('[data-theme-toggle]').first();
-  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
   await expect(toggle).toHaveAttribute('aria-label', 'Use dark theme');
   await toggle.click();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
-  await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+  await expect(toggle).toHaveAttribute('aria-pressed', 'true');
 
   await expectSuccessfulNavigation(page, '/proof/');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
@@ -228,4 +255,31 @@ test('theme control is accessible and persists across public routes', async ({ p
 
   await expectSuccessfulNavigation(page, '/portal/');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('[data-theme-toggle]').first()).toHaveAttribute('aria-pressed', 'false');
+});
+
+test('default light theme keeps Careers and Workforce decision surfaces readable', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => window.localStorage.setItem('taascor-color-theme', 'light'));
+
+  await expectSuccessfulNavigation(page, '/jobs/');
+  await expect(page.locator('.job-filters')).toHaveCSS('background-color', 'rgb(251, 253, 255)');
+  await expect(page.locator('.job-filters label').first()).toHaveCSS('color', 'rgb(76, 92, 117)');
+  await expect(page.locator('.career-safety')).toHaveCSS('color', 'rgb(5, 7, 12)');
+  expect(await contrastRatio(page, '.job-filters label', '.job-filters')).toBeGreaterThanOrEqual(4.5);
+
+  await expectSuccessfulNavigation(page, '/jobs/sample-warehouse-coordinator/');
+  await expect(page.locator('.apply-rail')).toHaveCSS('background-color', 'rgb(251, 253, 255)');
+
+  await expectSuccessfulNavigation(page, '/workforce/');
+  await expect(page.locator('.brief-map')).toHaveCSS('background-color', 'rgb(251, 253, 255)');
+  await expect(page.locator('.brief-form-panel')).toHaveCSS('background-color', 'rgb(251, 253, 255)');
+  expect(await contrastRatio(page, '.brief-map dd', '.brief-map')).toBeGreaterThanOrEqual(4.5);
+});
+
+test('public marketing surfaces do not expose internal pre-release labels', async ({ page }) => {
+  for (const route of ['/', '/about/', '/workforce/']) {
+    await expectSuccessfulNavigation(page, route);
+    await expect(page.locator('body')).not.toContainText(/pre-release experience|corporate identity pending owner verification/i);
+  }
 });

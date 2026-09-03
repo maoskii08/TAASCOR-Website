@@ -14,7 +14,9 @@
 <meta name="twitter:card" content="summary">
 <!-- TAASCOR_CANONICAL_META -->
 <!-- TAASCOR_ORGANIZATION_DATA -->
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" sizes="180x180">
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <script src="/assets/js/theme.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +47,7 @@
   --mono:'IBM Plex Mono',monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:auto}
+html{scroll-behavior:auto;scroll-padding-top:5.5rem;overflow-x:clip}
 html,body{background:var(--void)}
 body{
   font-family:var(--body);color:var(--ink);
@@ -61,7 +63,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .skip-link:focus{transform:translateY(0)}
 
 /* ---------- fixed layers ---------- */
-#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#field{position:fixed;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;z-index:0;pointer-events:none}
 #grain{position:fixed;inset:-40px;z-index:6;pointer-events:none;opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");}
 
@@ -74,10 +76,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   border-bottom:1px solid transparent;
 }
 #hdr.scrolled{background:rgba(5,10,22,.66);backdrop-filter:blur(14px);border-bottom-color:var(--line)}
-.lockup{display:flex;align-items:center;gap:12px}
-.lockup svg{width:30px;height:30px;flex:none}
-.lockup .lk-name{font-family:var(--disp);font-weight:800;font-size:.94rem;letter-spacing:.1em}
-.lockup .lk-sub{font-family:var(--mono);font-size:.55rem;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;margin-top:2px}
+.lockup{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.lockup-mark{width:39px;height:auto;flex:none;filter:drop-shadow(0 5px 10px rgba(25,43,83,.13))}
+.lockup-copy{display:grid;gap:1px;line-height:1}
+.lockup-name{font-family:var(--disp);font-size:clamp(1.05rem,1.35vw,1.24rem);font-weight:900;letter-spacing:.015em;color:#bd2332}
+.lockup-legal{font-family:var(--disp);font-size:clamp(.39rem,.49vw,.46rem);font-weight:800;letter-spacing:-.015em;text-transform:uppercase;color:#cbd8f1}
+html[data-theme="light"] .lockup-legal{color:#29447f}
 .readout{position:absolute;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none}
 .readout .ro-chap{font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;white-space:nowrap}
 .readout .ro-chap b{color:var(--gold);font-weight:500}
@@ -112,14 +116,7 @@ html.theme-ready .home-theme-toggle{display:inline-flex}
 .home-menu nav a:hover,.home-menu nav a:focus-visible{color:var(--ink);background:rgba(247,162,15,.09)}
 .home-menu nav a:last-child{color:var(--gold)}
 .home-menu .home-theme-toggle{width:100%;justify-content:flex-start;min-height:44px;margin-bottom:4px;border-radius:8px}
-.motion-toggle{display:none;min-height:44px;position:fixed;right:clamp(16px,3vw,38px);bottom:clamp(16px,3vw,34px);z-index:30;
-  padding:9px 13px;border:1px solid var(--line);border-radius:99px;color:var(--dim);background:rgba(5,10,22,.82);
-  backdrop-filter:blur(12px);font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
-.motion-ready .motion-toggle{display:inline-flex}
-.motion-toggle:hover,.motion-toggle:focus-visible{color:var(--ink);border-color:rgba(247,162,15,.55)}
-.motion-toggle[aria-pressed="true"]{color:var(--gold);border-color:rgba(247,162,15,.48)}
-.motion-paused *{animation-play-state:paused!important}
-@media(max-width:960px){.readout,.hnav{display:none}.lockup .lk-sub{display:none}.home-menu{display:block}}
+@media(max-width:960px){.readout,.hnav{display:none}.home-menu{display:block}}
 
 /* ---------- shared type ---------- */
 .kicker{font-family:var(--mono);font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
@@ -291,6 +288,25 @@ html.no-js #b-hero,html.js:not(.motion-ready) #b-hero{opacity:1;visibility:visib
 .opp-demo strong{font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 @media(max-width:900px){.opp-grid{grid-template-columns:1fr}.opp-card{min-height:0}}
 
+/* ---------- company profile ---------- */
+#company{position:relative;z-index:2;padding:10vh 6vw 15vh;scroll-margin-top:5.5rem}
+.company-wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(36px,7vw,96px);align-items:start}
+.company-intro{position:sticky;top:110px}
+.company-intro .h-sec{margin-top:18px;max-width:13ch}
+.company-intro .sub{margin-top:20px}
+.company-purpose{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:rgba(8,13,28,.72)}
+.company-purpose article{min-height:290px;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,4vw,42px)}
+.company-purpose article+article{border-left:1px solid var(--line)}
+.company-purpose small{font-family:var(--mono);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.company-purpose h3{font-family:var(--disp);font-size:clamp(1.4rem,2.7vw,2.2rem);line-height:1.06;letter-spacing:-.03em;margin:42px 0 18px}
+.company-purpose p{color:var(--dim);font-size:.9rem}
+.company-values{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.company-values span{padding:9px 13px;border:1px solid var(--line2);border-radius:99px;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);background:rgba(8,13,28,.5)}
+.company-links{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.company-links a{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 16px;border:1px solid var(--line);border-radius:14px;color:var(--dim);font-family:var(--mono);font-size:.58rem;letter-spacing:.11em;text-transform:uppercase;transition:transform .25s,border-color .25s,color .25s}
+.company-links a:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--ink)}
+.company-links b{color:var(--gold);font-weight:400}
+
 /* ---------- protocol ---------- */
 #protocol{position:relative;z-index:2;padding:14vh 6vw 16vh}
 .pr-wrap{max-width:980px;margin:0 auto}
@@ -372,7 +388,7 @@ html[data-theme="light"] ::selection{background:rgba(199,42,59,.22);color:#101b3
 html[data-theme="light"] #field{opacity:.78}
 html[data-theme="light"] #grain{opacity:.026;mix-blend-mode:multiply}
 html[data-theme="light"] #hdr.scrolled{background:rgba(247,249,253,.84);border-bottom-color:var(--line);box-shadow:0 14px 38px rgba(28,45,79,.07)}
-html[data-theme="light"] .home-menu summary,html[data-theme="light"] .motion-toggle{background:rgba(255,253,248,.9)}
+html[data-theme="light"] .home-menu summary{background:rgba(255,253,248,.9)}
 html[data-theme="light"] .home-menu nav{background:rgba(255,253,248,.98);box-shadow:0 22px 70px rgba(28,45,79,.16)}
 html[data-theme="light"] .hcta,html[data-theme="light"] .plat-portal{background:linear-gradient(#fffdf8,#fffdf8) padding-box,var(--grad) border-box}
 html[data-theme="light"] .vignette{background:radial-gradient(ellipse 120% 90% at 50% 46%,transparent 58%,rgba(39,72,155,.11) 100%)}
@@ -387,6 +403,8 @@ html[data-theme="light"] .ops-disclosure,html[data-theme="light"] .opp-demo{back
 html[data-theme="light"] #platform{background:linear-gradient(180deg,transparent,rgba(237,242,249,.92) 18%,rgba(237,242,249,.92) 88%,transparent)}
 html[data-theme="light"] .opp-wrap{background:linear-gradient(135deg,rgba(255,253,248,.96),rgba(235,241,249,.9));box-shadow:inset 0 1px 0 #fff,0 28px 80px rgba(28,45,79,.1)}
 html[data-theme="light"] .opp-card{background:rgba(255,255,255,.7)}
+html[data-theme="light"] .company-purpose,html[data-theme="light"] .company-values span{background:rgba(255,253,248,.86)}
+html[data-theme="light"] .company-purpose{box-shadow:inset 0 1px 0 #fff,0 28px 80px rgba(28,45,79,.1)}
 html[data-theme="light"] .ms::before{background:#f4f7fb;box-shadow:0 0 0 4px rgba(199,42,59,.08)}
 html[data-theme="light"] footer{background:rgba(231,237,246,.82)}
 html[data-theme="light"] #p-bars text{fill:#52617a}
@@ -395,7 +413,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
 @media (max-width:48rem), (pointer:coarse) and (max-width:60rem){
   #hdr{padding:12px 14px;background:rgba(244,247,251,.9);border-bottom-color:var(--line);backdrop-filter:blur(16px)}
   html[data-theme="dark"] #hdr{background:rgba(5,10,22,.88)}
-  .lockup{gap:9px}.lockup svg{width:28px;height:28px}.lockup .lk-name{font-size:.85rem}
+  .lockup{gap:6px}.lockup-mark{width:31px}.lockup-name{font-size:1rem}.lockup-legal{font-size:.36rem}
   #film,#ops,#coverage,#lines{height:auto!important}
   .stage,:is(html.no-js,html.motion-unavailable) .stage{position:static;height:auto;min-height:0;overflow:visible;padding:0}
   .beat,:is(html.no-js,html.motion-unavailable) .beat{position:static;min-height:auto;opacity:1!important;visibility:visible!important;transform:none!important;padding:4.5rem 1rem;pointer-events:auto;border-bottom:1px solid var(--line)}
@@ -418,6 +436,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   #orbit-field,#nucleus{display:none}
   #platform{padding:4.5rem 1rem}.plat-portal{width:100%;justify-content:center;margin-top:28px;padding:15px 18px}
   #opportunities{padding:0 1rem 4.5rem}.opp-wrap{padding:22px 18px;border-radius:20px}.opp-head{display:block;margin-bottom:24px}.opp-head .sub{margin-top:16px}
+  #company{padding:4.5rem 1rem}.company-wrap{grid-template-columns:1fr;gap:28px}.company-intro{position:static}.company-purpose{grid-template-columns:1fr}.company-purpose article{min-height:0}.company-purpose article+article{border-left:0;border-top:1px solid var(--line)}.company-links{grid-template-columns:1fr}
   #protocol{padding:4.5rem 1rem}.pr-head{margin-bottom:42px}.ms{padding-bottom:42px;opacity:1!important;transform:none!important}
   #trust{padding:1rem 1rem 4.5rem}.tr-grid{grid-template-columns:1fr}.ind-list{display:grid;grid-template-columns:1fr 1fr}
   #coda{min-height:0;padding:5rem 1rem}.cta-row{width:min(100%,28rem);display:grid;grid-template-columns:1fr}.btn-p,.btn-g{width:100%;padding:15px 18px}
@@ -481,14 +500,8 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
 
 <header id="hdr">
   <a class="lockup" href="#top" data-to="0" aria-label="TAASCOR home">
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <path d="M29.2 16 22.6 27.43H9.4L2.8 16 9.4 4.57h13.2z" fill="rgba(39,72,155,.42)" stroke="url(#hx1)" stroke-width="1.6"/>
-      <circle cx="29.2" cy="16" r="2" fill="#BF1E2C"/><circle cx="2.8" cy="16" r="2" fill="#BF1E2C"/>
-      <circle cx="22.6" cy="4.57" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="4.57" r="2" fill="#BF1E2C"/>
-      <circle cx="22.6" cy="27.43" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="27.43" r="2" fill="#BF1E2C"/>
-      <defs><linearGradient id="hx1" x1="3" y1="5" x2="29" y2="27"><stop stop-color="#FEDD21"/><stop offset="1" stop-color="#F7A20F"/></linearGradient></defs>
-    </svg>
-    <span><span class="lk-name">TAASCOR</span><br><span class="lk-sub">Manpower Solutions</span></span>
+    <img class="lockup-mark" src="/assets/brand/taascor-mark.png" width="859" height="756" alt="">
+    <span class="lockup-copy" aria-hidden="true"><span class="lockup-name">TAASCOR</span><span class="lockup-legal">Management &amp; General Services Corp.</span></span>
   </a>
   <div class="readout" aria-hidden="true">
     <div class="ro-chap">SYS <b id="ro-num">01</b> · <span id="ro-name">THE TALENT POOL</span></div>
@@ -499,7 +512,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
     <a class="nl" href="/jobs/">Jobs</a>
     <a class="nl nl-hris" href="/platform/">HRIS</a>
     <a class="nl" href="/proof/">Proof</a>
-    <button class="home-theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="true">
+    <button class="home-theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">
       <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
     </button>
     <a class="hcta" href="/workforce/">Build a workforce</a>
@@ -507,7 +520,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   <details class="home-menu">
     <summary>Menu</summary>
     <nav aria-label="Mobile primary">
-      <button class="home-theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="true">
+      <button class="home-theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">
         <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
       </button>
       <a href="/solutions/">Solutions</a>
@@ -521,14 +534,12 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   </details>
 </header>
 
-<button id="motion-toggle" class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
-
 <main id="main-content">
 <!-- ============ FILM I · POOL → SCREENING → CORE ============ -->
 <section id="film" class="scene" aria-label="From talent pool to workforce core">
   <div class="stage">
     <div class="beat" id="b-hero" data-in="-0.1" data-peak="0" data-out="0.11">
-      <div class="kicker">WORKFORCE NETWORK · PRE-RELEASE EXPERIENCE</div>
+      <div class="kicker">WORKFORCE NETWORK · PEOPLE · SERVICE · SYSTEMS</div>
       <h1 class="wordmark" aria-label="TAASCOR"><span>T</span><span>A</span><span>A</span><span>S</span><span>C</span><span>O</span><span>R</span></h1>
       <p class="tagline">Powering business with <em>the right people</em>.</p>
       <div class="legal">MANPOWER SOLUTIONS · RECRUITMENT · WORKFORCE TECHNOLOGY</div>
@@ -573,7 +584,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
 </section>
 
 <!-- ============ FILM II · OPERATIONS FLOOR ============ -->
-<section id="ops" class="scene" aria-label="Operations floor" aria-describedby="ops-disclosure">
+<section id="ops" class="scene" data-click-peak="0.72" aria-label="Operations floor" aria-describedby="ops-disclosure">
   <div class="stage">
     <div class="ops-head">
       <div class="kicker">SCENE 04 · <b>OPERATIONS FLOOR</b></div>
@@ -679,7 +690,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
       <article class="l-card"><div class="l-idx">LINE / 06</div>
         <svg class="l-glyph" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="8" width="32" height="22" rx="3"/><path d="M15 36h14M22 30v6"/><path d="M12 22l5-6 5 4 4-7 6 9" stroke-linecap="round"/></svg>
         <h3>HRIS Technology</h3><p>A connected platform experience for DTR intake, payroll basis, payslip delivery and data-quality checks through role-based workflow.</p>
-        <div class="l-meta">Platform story · Owner verification required</div></article>
+        <div class="l-meta">Platform story · Governed access</div></article>
     </div>
   </div>
 </section>
@@ -731,6 +742,38 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
     <div class="opp-empty">No approved openings are published in this static preview. Visit Careers for the current governed listing.</div>
     <!-- TAASCOR_JOB_PREVIEW_END -->
     <a class="plat-portal" href="/jobs/">View all opportunities <b>→</b></a>
+  </div>
+</section>
+
+<!-- ============ COMPANY PROFILE ============ -->
+<section id="company" aria-labelledby="company-title">
+  <div class="company-wrap">
+    <div class="company-intro">
+      <div class="kicker">COMPANY DNA · <b>PURPOSE &amp; PEOPLE</b></div>
+      <h2 class="h-sec" id="company-title">The values behind <span class="grad-text">the workforce.</span></h2>
+      <p class="sub">TAASCOR’s mission, vision, leadership, organizational structure, office network, and company portfolio are now part of the connected experience—not buried in an old profile.</p>
+      <a class="plat-portal" href="/about/">Explore the company profile <b>→</b></a>
+    </div>
+    <div>
+      <div class="company-purpose">
+        <article>
+          <small>Our mission</small>
+          <div><h3>Keep clients moving with the right people.</h3><p>Continuously support clients in their outsourcing needs by providing well-trained, skilled, and motivated people.</p></div>
+        </article>
+        <article>
+          <small>Our vision</small>
+          <div><h3>Lead through excellent and varied service.</h3><p>Be a leading job outsourcing provider in the industry by giving excellent and varied services to clients.</p></div>
+        </article>
+      </div>
+      <div class="company-values" aria-label="TAASCOR core values">
+        <span>Quality</span><span>Service</span><span>Results oriented</span><span>Responsibility</span><span>Passion</span>
+      </div>
+      <nav class="company-links" aria-label="Explore TAASCOR company information">
+        <a href="/leadership/">Leadership &amp; org chart <b>→</b></a>
+        <a href="/locations/">Seven offices <b>→</b></a>
+        <a href="/clients/">27-company portfolio <b>→</b></a>
+      </nav>
+    </div>
   </div>
 </section>
 
@@ -820,9 +863,9 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
     <a class="btn-g" href="/contact/">Review contact routes</a>
   </div>
   <div class="coda-contact">
-    <span>Contact owner · approval required</span>
-    <span>Location register · pending</span>
-    <span>Service hours · pending</span>
+    <span>Purpose-led routing</span>
+    <span>Privacy-aware first contact</span>
+    <span>Evidence before promise</span>
   </div>
 </section>
 
@@ -831,15 +874,9 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
 <footer>
   <div class="f-in">
     <div class="f-col">
-      <a class="lockup" href="#top" data-to="0" style="margin-bottom:16px">
-        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <path d="M29.2 16 22.6 27.43H9.4L2.8 16 9.4 4.57h13.2z" fill="rgba(39,72,155,.42)" stroke="url(#hx2)" stroke-width="1.6"/>
-          <circle cx="29.2" cy="16" r="2" fill="#BF1E2C"/><circle cx="2.8" cy="16" r="2" fill="#BF1E2C"/>
-          <circle cx="22.6" cy="4.57" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="4.57" r="2" fill="#BF1E2C"/>
-          <circle cx="22.6" cy="27.43" r="2" fill="#BF1E2C"/><circle cx="9.4" cy="27.43" r="2" fill="#BF1E2C"/>
-          <defs><linearGradient id="hx2" x1="3" y1="5" x2="29" y2="27"><stop stop-color="#FEDD21"/><stop offset="1" stop-color="#F7A20F"/></linearGradient></defs>
-        </svg>
-        <span><span class="lk-name">TAASCOR</span><br><span class="lk-sub">Manpower Solutions</span></span>
+      <a class="lockup" href="#top" data-to="0" style="margin-bottom:16px" aria-label="TAASCOR home">
+        <img class="lockup-mark" src="/assets/brand/taascor-mark.png" width="859" height="756" alt="">
+        <span class="lockup-copy" aria-hidden="true"><span class="lockup-name">TAASCOR</span><span class="lockup-legal">Management &amp; General Services Corp.</span></span>
       </a>
       <p style="max-width:34ch">TAASCOR is shaping one governed experience for employers, candidates and workforce operations.</p>
     </div>
@@ -865,11 +902,11 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
     <div class="f-col">
       <h4>Contact</h4>
       <a href="/contact/">Contact and routing framework</a>
-      <p>Official channels, locations and service hours publish only after owner verification.</p>
+      <p>Use the structured routes for workforce planning, careers, evidence questions, and account access.</p>
     </div>
   </div>
   <div class="f-fine">
-    © <span id="yr">2026</span> TAASCOR · Corporate identity and compliance details publish through current-owner verification.<br>
+    © <span id="yr">2026</span> TAASCOR · Workforce services, recruitment, and workforce technology.<br>
     Operations Floor figures, sites, events and statuses are synthetic interface demonstrations, not live client, payroll, compliance or performance data.
   </div>
 </footer>
@@ -895,7 +932,6 @@ var PRM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var COMPACT_MEDIA=matchMedia('(max-width: 48rem), (pointer: coarse) and (max-width: 60rem)');
 var COMPACT=COMPACT_MEDIA.matches;
 var TOUCH=matchMedia('(pointer: coarse)').matches;
-var motionPaused=false;
 var pageVisible=!document.hidden;
 document.addEventListener('visibilitychange',function(){
   pageVisible=!document.hidden;
@@ -1404,17 +1440,6 @@ function boot(){
   document.documentElement.classList.add('motion-ready');
   gsap.registerPlugin(ScrollTrigger);
 
-  var motionToggle=qs('#motion-toggle');
-  if(motionToggle){
-    motionToggle.addEventListener('click',function(){
-      motionPaused=!motionPaused;
-      document.documentElement.classList.toggle('motion-paused',motionPaused);
-      motionToggle.setAttribute('aria-pressed',motionPaused?'true':'false');
-      motionToggle.textContent=motionPaused?'Resume motion':'Pause motion';
-      lastT=performance.now();
-    });
-  }
-
   var lenis=null;
   if(JUMP===null){
     lenis=new Lenis({lerp:0.09,smoothWheel:true});
@@ -1472,7 +1497,7 @@ function boot(){
   function frame(dt){
     runActive();
     skew+=(skewT-skew)*0.08;skewT*=0.9;
-    if(!motionPaused&&pageVisible)field.render(dt);
+    if(pageVisible)field.render(dt);
     var doc=document.documentElement;
     roFill.style.transform='scaleX('+clamp(scrollY/((doc.scrollHeight-innerHeight)||1),0,1).toFixed(4)+')';
   }
@@ -1530,6 +1555,55 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){set
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);
 else boot();
+})();
+</script>
+<script>
+/* click-to-advance — a left mouse click on empty page area glides to the next
+   authored beat peak, where its copy is fully visible. Outside a beat-driven
+   scene it advances 90% of a screen. Links, buttons and controls behave normally;
+   text selection is never hijacked; placeholder "#" links don't jump. Mouse only. */
+(function(){
+  if (matchMedia('(pointer: coarse)').matches) return;               // ignore touch taps
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var CLICK_TRAVEL = 0.90;                                           // fallback outside beat-driven scenes
+  var CLICK_DURATION = 3.0;
+  var SKIP = 'a,button,input,textarea,select,label,summary,[role="button"],[contenteditable="true"],[data-noscroll]';
+  function nextCinematicStop(y,max){
+    var driven = document.querySelectorAll('.scene');
+    for(var i=0;i<driven.length;i++){
+      var scene = driven[i];
+      var beats = scene.querySelectorAll('.beat[data-peak]');
+      var start = scene.getBoundingClientRect().top+y;
+      var span = Math.max(1,scene.offsetHeight-innerHeight);
+      var end = start+span;
+      if(y>=start-4&&y<=end+4){
+        for(var j=0;j<beats.length;j++){
+          var peak = parseFloat(beats[j].dataset.peak);
+          var stop = start+span*peak;
+          if(peak>0&&stop>y+4) return Math.min(Math.round(stop),max);
+        }
+      }
+      var scenePeak = parseFloat(scene.dataset.clickPeak);
+      var sceneStop = start+span*scenePeak;
+      if(!isNaN(scenePeak)&&sceneStop>y+4) return Math.min(Math.round(sceneStop),max);
+    }
+    return Math.min(y+Math.round(innerHeight*CLICK_TRAVEL),max);
+  }
+  addEventListener('click', function(e){
+    if (e.button !== 0 || e.defaultPrevented) return;                // left click, not already handled
+    var t = e.target;
+    var a = t.closest && t.closest('a[href]');
+    if (a && a.getAttribute('href') === '#') { e.preventDefault(); return; } // placeholder link: no top-jump
+    if (t.closest && t.closest(SKIP)) return;                        // real links/buttons/controls: leave alone
+    var s = window.getSelection && window.getSelection();
+    if (s && s.type === 'Range' && String(s).length) return;         // don't hijack a text selection
+    var doc = document.scrollingElement || document.documentElement;
+    var max = Math.max(0, doc.scrollHeight - innerHeight);
+    var y = window.scrollY || window.pageYOffset || 0;
+    var target = (y >= max - 4) ? 0 : nextCinematicStop(y,max);       // wrap to top at the end
+    if (window.__lenis && !reduce) window.__lenis.scrollTo(target, { duration: CLICK_DURATION });
+    else window.scrollTo({ top: target, behavior: reduce ? 'auto' : 'smooth' });
+  }, false);
 })();
 </script>
 </body>

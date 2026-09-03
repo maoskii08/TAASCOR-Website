@@ -4,9 +4,19 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__) . '/site/bootstrap.php';
 
+$offices = [
+    ['Main Office — San Pedro', '3rd Floor EM Arcade Building, Poblacion, San Pedro, Laguna', 'Main office'],
+    ['Cabuyao Branch', 'Units 109–111, Centennial Business Center, Brgy. Pulo, Cabuyao, Laguna', 'Branch office'],
+    ['Calamba Branch', 'Unit 5, 3rd Floor, Sta. Cecilia Business Center 2, National Highway, Parian, Calamba City, Laguna', 'Branch office'],
+    ['Dasmariñas Branch', '2nd Floor, Giron Building, Governor’s Drive, Brgy. Langkaan, Dasmariñas, Cavite', 'Branch office'],
+    ['Cainta Office', 'Unit 208, Jenny’s Avenue Saturn Field Building, Cainta, Rizal', 'Office'],
+    ['Finance Office', 'Lot 1, Block 2, Phase 2E, No. 7 Peach Street, Greenwoods Executive Village, Cainta, Rizal', 'Finance'],
+    ['Bulacan Branch', 'El Camino Road corner Cancer Street, Phase 3C LVDSN, Brgy. Perez, Meycauayan City, Bulacan', 'Branch office'],
+];
+
 taascor_page_start([
-    'title' => 'Locations',
-    'description' => 'Use the right TAASCOR route for a worksite, job location, meeting destination, or corporate-location evidence request.',
+    'title' => 'Office Network',
+    'description' => 'Explore TAASCOR office and branch locations across Laguna, Cavite, Rizal, and Bulacan.',
     'active' => 'about',
 ]);
 ?>
@@ -14,112 +24,70 @@ taascor_page_start([
     <section class="page-hero" aria-labelledby="locations-page-title">
         <div class="shell hero-grid">
             <div class="hero-copy">
-                <p class="eyebrow">Location register</p>
-                <h1 id="locations-page-title">A direction should lead to a <em>current destination.</em></h1>
-                <p class="hero-lede">Office, branch, worksite, coverage, hours, and service-area details are held behind a verification gate while accountable owners confirm one canonical location register.</p>
+                <p class="eyebrow">TAASCOR office network</p>
+                <h1 id="locations-page-title">Local teams, connected through <em>one operating network.</em></h1>
+                <p class="hero-lede">TAASCOR’s existing company profile presents seven offices and branches across Laguna, Cavite, Rizal, and Bulacan.</p>
                 <div class="hero-actions">
-                    <a class="button" href="#choose-route">Choose a location route</a>
-                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Review the evidence standard</a>
+                    <a class="button" href="#office-directory">Explore the directory</a>
+                    <a class="button button-outline" href="/contact/">Plan a visit or enquiry</a>
                 </div>
-                <p class="hero-note">Do not travel based on an older address, job post, social-media entry, or third-party map listing without current confirmation.</p>
+                <p class="hero-note">Confirm the destination and appointment route before travelling, especially when responding to a job or recruitment message.</p>
             </div>
-            <div class="location-hold" aria-hidden="true">
-                <div>
-                    <span class="pin"></span>
-                    <p class="meta">Verified-location layer reserved</p>
-                </div>
+            <div class="location-network" aria-hidden="true">
+                <span class="location-origin">TAASCOR</span>
+                <span class="location-point point-one">Laguna</span>
+                <span class="location-point point-two">Cavite</span>
+                <span class="location-point point-three">Rizal</span>
+                <span class="location-point point-four">Bulacan</span>
             </div>
         </div>
     </section>
 
-    <section class="scene" aria-labelledby="location-state-title">
+    <section class="scene" id="office-directory" aria-labelledby="office-directory-title">
+        <div class="shell">
+            <div class="section-heading">
+                <p class="section-kicker">Office directory / 01</p>
+                <h2 id="office-directory-title">Seven points in the TAASCOR network.</h2>
+                <p class="section-copy">Addresses are carried forward from TAASCOR’s existing public company profile. Use the appropriate contact or recruitment route to confirm hours, access, and the correct destination for your purpose.</p>
+            </div>
+            <div class="office-grid">
+                <?php foreach ($offices as $index => [$name, $address, $type]): ?>
+                    <article class="office-card<?= $index === 0 ? ' office-card-primary' : '' ?>">
+                        <div class="office-card-top"><span><?= taascor_escape(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?></span><span><?= taascor_escape($type) ?></span></div>
+                        <h3><?= taascor_escape($name) ?></h3>
+                        <address><?= taascor_escape($address) ?></address>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <section class="scene scene-tinted" aria-labelledby="location-intent-title">
+        <div class="shell split">
+            <div class="section-heading sticky-intro">
+                <p class="section-kicker">Choose by intent / 02</p>
+                <h2 id="location-intent-title">The right place depends on why you are connecting.</h2>
+                <p class="section-copy">A corporate meeting, workforce discussion, application, employee concern, and client request should not all enter through the same door.</p>
+            </div>
+            <ol class="process-list">
+                <li><h3>Employer or workforce enquiry</h3><p>Start with the worksite, roles, schedule, headcount, target date, and operating constraints through the Workforce Planner.</p><a class="text-link" href="/workforce/">Shape a workforce brief</a></li>
+                <li><h3>Applicant or job enquiry</h3><p>Use the published job record for the role and location, and verify recruitment messages against TAASCOR’s safety guidance.</p><a class="text-link" href="/jobs/">View current opportunities</a></li>
+                <li><h3>Existing applicant, employee, or client</h3><p>Use the relevant authenticated workspace so personal, employment, or client information stays out of public enquiries.</p><a class="text-link" href="/portal/">Choose your portal</a></li>
+                <li><h3>Corporate or office visit</h3><p>Confirm the receiving team, appointment time, access instructions, and exact destination before travelling.</p><a class="text-link" href="/contact/">Review contact routes</a></li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="scene scene-gold" aria-labelledby="locations-action-title">
         <div class="shell split">
             <div class="section-heading">
-                <p class="section-kicker">Publication state / 01</p>
-                <h2 id="location-state-title">No unverified pin becomes a public promise.</h2>
-                <p class="section-copy">A previous or third-party listing is not enough to establish that an office is open, a site accepts visitors, a branch serves a region, or a role is available there.</p>
+                <p class="section-kicker">Connect to the network</p>
+                <h2 id="locations-action-title">Start with context, then choose the location.</h2>
+                <p class="section-copy">Tell TAASCOR what you need, where the work happens, and who the request concerns. The right team can then confirm the destination and next step.</p>
             </div>
-            <div class="notice-panel" role="note">
-                <?= taascor_status_tag('Location evidence gate open', 'review') ?>
-                <h3>Current addresses are awaiting owner approval</h3>
-                <p>This route intentionally does not publish an office count, street address, map pin, operating hours, directions, coverage claim, or service-availability statement until each field has an owner, evidence source, effective date, and review date.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="scene scene-tinted" aria-labelledby="location-proof-title">
-        <div class="shell">
-            <div class="section-heading">
-                <p class="section-kicker">Location record / 02</p>
-                <h2 id="location-proof-title">What a publishable location needs.</h2>
-                <p class="section-copy">The same controlled record should power the website, directions, recruitment content, service proposals, and authorized portal references.</p>
-            </div>
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h3>Identity and address</h3>
-                    <p>Approved site name, complete postal address, location type, map reference, and the legal entity or client relationship that permits publication.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h3>Operating status</h3>
-                    <p>Whether the location is active, public-facing, appointment-only, restricted, temporary, hiring, or not available for walk-in visits.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h3>Visitor guidance</h3>
-                    <p>Approved hours, contact route, accessibility notes, arrival instructions, security requirements, and any restrictions on applicant or client visits.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">04</span>
-                    <h3>Service boundary</h3>
-                    <p>The exact areas and services the location supports without turning a base address into an unsupported regional-coverage claim.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">05</span>
-                    <h3>Ownership</h3>
-                    <p>A named facilities or operations owner, a public-content approver, an escalation route, and one source authorized to correct the record.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">06</span>
-                    <h3>Freshness</h3>
-                    <p>An effective date, last verification date, next review date, change history, and a rapid removal path when a location closes or changes.</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="scene" id="choose-route" aria-labelledby="location-routes-title">
-        <div class="shell">
-            <div class="section-heading">
-                <p class="section-kicker">Choose by intent / 03</p>
-                <h2 id="location-routes-title">Preserve the context of your location question.</h2>
-            </div>
-            <div class="path-grid path-grid-four">
-                <article class="role-card">
-                    <span class="role-code">EMPLOYER / WORKSITE</span>
-                    <h3>Evaluate a workforce location</h3>
-                    <p>Describe the worksite, roles, schedule, scale, timing, access, and constraints so coverage and capability can be assessed for that exact need.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Open the Workforce Planner</a>
-                </article>
-                <article class="role-card">
-                    <span class="role-code">APPLICANT / JOB</span>
-                    <h3>Confirm a job location</h3>
-                    <p>Use the published job record for role and location context. Do not assume a vacancy exists because a place appeared in an older post.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/jobs/')) ?>">View current jobs</a>
-                </article>
-                <article class="role-card">
-                    <span class="role-code">AUTHORIZED USER</span>
-                    <h3>Access your workspace</h3>
-                    <p>Applicant, employee, client, and staff information belongs in the appropriate authenticated system, not in a public location enquiry.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/portal/')) ?>">Choose a secure route</a>
-                </article>
-                <article class="role-card">
-                    <span class="role-code">DUE DILIGENCE</span>
-                    <h3>Review publication status</h3>
-                    <p>See how corporate, location, compliance, client, and capability statements move from pending evidence to approved public proof.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Open the proof ledger</a>
-                </article>
+            <div class="hero-actions">
+                <a class="button" href="/workforce/">Plan a workforce</a>
+                <a class="button button-outline" href="/portal/">Access TAASCOR</a>
             </div>
         </div>
     </section>

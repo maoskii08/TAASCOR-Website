@@ -21,7 +21,7 @@
     document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
       const nextTheme = theme === 'light' ? 'dark' : 'light';
       button.setAttribute('aria-label', `Use ${nextTheme} theme`);
-      button.setAttribute('aria-pressed', String(theme === 'light'));
+      button.setAttribute('aria-pressed', String(theme === 'dark'));
       const label = button.querySelector('[data-theme-label]');
       if (label) label.textContent = theme === 'light' ? 'Light' : 'Dark';
     });

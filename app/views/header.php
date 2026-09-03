@@ -16,7 +16,9 @@ $navigationUser = auth_user();
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#f4f7fb">
     <title><?= e($pageTitle) ?></title>
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" sizes="180x180">
     <script src="/assets/js/theme.js"></script>
     <link rel="stylesheet" href="/assets/css/portal.css">
     <script defer src="/assets/js/portal.js"></script>
@@ -25,8 +27,8 @@ $navigationUser = auth_user();
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="portal-header">
     <a class="portal-brand" href="/" aria-label="TAASCOR home">
-        <img src="/favicon.svg" width="36" height="36" alt="">
-        <span>TAASCOR</span>
+        <img class="portal-brand-mark" src="/assets/brand/taascor-mark.png" width="859" height="756" alt="">
+        <span class="portal-brand-copy" aria-hidden="true"><span class="portal-brand-name">TAASCOR</span><span class="portal-brand-legal">Management &amp; General Services Corp.</span></span>
     </a>
     <nav class="portal-nav" aria-label="Portal navigation">
         <a href="/jobs/">Careers</a>
@@ -44,7 +46,7 @@ $navigationUser = auth_user();
                 <button class="link-button" type="submit">Sign out</button>
             </form>
         <?php endif; ?>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="true">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">
             <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
         </button>
     </nav>

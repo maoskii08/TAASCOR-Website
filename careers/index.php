@@ -105,6 +105,8 @@ $hasOnlyDemoJobs = $jobs !== [] && count(array_filter(
     $jobs,
     static fn (array $job): bool => !(bool) ($job['is_demo'] ?? false)
 )) === 0;
+$hasActiveFilters = $keyword !== '' || $location !== '' || $employmentType !== ''
+    || $functionArea !== '' || $shiftPattern !== '' || $sort !== 'recent';
 
 taascor_page_start([
     'title' => 'Find work',
@@ -149,6 +151,7 @@ taascor_page_start([
                 <p><strong><?= count($filteredJobs) ?></strong> <?= count($filteredJobs) === 1 ? 'role' : 'roles' ?> shown</p>
             </div>
 
+            <?php if ($jobs !== [] || $hasActiveFilters): ?>
             <form class="job-filters" method="get" action="/jobs/" role="search" aria-label="Filter jobs">
                 <div class="field field-wide">
                     <label for="job-keyword">Keyword</label>
@@ -198,16 +201,24 @@ taascor_page_start([
                     </select>
                 </div>
                 <button class="button" type="submit">Apply filters</button>
-                <?php if ($keyword !== '' || $location !== '' || $employmentType !== '' || $functionArea !== '' || $shiftPattern !== '' || $sort !== 'recent'): ?>
+                <?php if ($hasActiveFilters): ?>
                     <a class="filter-reset" href="/jobs/">Clear filters</a>
                 <?php endif; ?>
             </form>
+            <?php endif; ?>
 
             <?php if ($catalogueError !== null): ?>
                 <div class="jobs-empty" role="status">
                     <span class="empty-code">CATALOGUE / SETUP</span>
                     <h3>Job catalogue setup is pending.</h3>
                     <p><?= taascor_escape($catalogueError) ?> Run the approved local setup command, then reload this page.</p>
+                </div>
+            <?php elseif ($jobs === [] && !$hasActiveFilters): ?>
+                <div class="jobs-empty" role="status">
+                    <span class="empty-code">OPPORTUNITY UPDATE</span>
+                    <h3>No openings are published right now.</h3>
+                    <p>Approved roles will appear here with their location, work context, requirements, and application route.</p>
+                    <a class="button button-outline" href="/legal/anti-fraud/">Review recruitment safety</a>
                 </div>
             <?php elseif ($filteredJobs === []): ?>
                 <div class="jobs-empty" role="status">

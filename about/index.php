@@ -21,7 +21,7 @@ taascor_page_start([
                     <a class="button" href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Build a workforce</a>
                     <a class="button button-outline" href="<?= taascor_escape(taascor_url('/jobs/')) ?>">Find work</a>
                 </div>
-                <p class="hero-note">Mission, vision, and core values are drawn from TAASCOR’s supplied company profile and adapted here for clear digital reading.</p>
+                <p class="hero-note">Our mission, vision, and values shape how we serve clients, support people, and improve the work behind every workforce.</p>
             </div>
             <div class="network-stage" aria-hidden="true">
                 <span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span>
@@ -62,22 +62,42 @@ taascor_page_start([
         </div>
     </section>
 
-    <section class="scene scene-tinted purpose-section" aria-labelledby="purpose-title">
+    <section class="scene scene-tinted" aria-labelledby="company-profile-title">
+        <div class="shell company-profile-layout">
+            <div class="section-heading sticky-intro">
+                <p class="section-kicker">Company profile / 02</p>
+                <h2 id="company-profile-title">Built by experienced workforce and outsourcing professionals.</h2>
+                <p class="section-copy">TAASCOR Management &amp; General Services Corporation is managed by seasoned HR outsourcing professionals and supports recruitment, onboarding, workforce administration, and operational services for employers and workers.</p>
+            </div>
+            <div class="company-profile-panel">
+                <p class="company-profile-lede">The existing TAASCOR company profile identifies the organization through the following corporate records.</p>
+                <dl class="company-fact-list">
+                    <div><dt>Legal name</dt><dd>TAASCOR Management &amp; General Services Corporation</dd></div>
+                    <div><dt>SEC registration</dt><dd>CS201212925</dd></div>
+                    <div><dt>Labor registration</dt><dd>D.O. 174, Series of 2017 · Certificate No. RO1VA-LPO DO174-1220-083-R</dd></div>
+                    <div><dt>Operating reach presented</dt><dd>Laguna, Cavite, Bulacan, Metro Manila, Rizal, and other key Philippine regions</dd></div>
+                </dl>
+                <p class="profile-source">Company-profile continuity from TAASCOR’s existing public website. Certificate currency and official use remain subject to the issuing records.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="scene purpose-section" aria-labelledby="purpose-title">
         <div class="shell">
             <div class="section-heading">
-                <p class="section-kicker">Mission and vision / 02</p>
+                <p class="section-kicker">Mission and vision / 03</p>
                 <h2 id="purpose-title">A clear purpose for every person we place and every client we support.</h2>
             </div>
             <div class="purpose-grid">
                 <article class="purpose-statement">
                     <p class="purpose-label">Our mission</p>
-                    <h3>Lead through excellent and varied service.</h3>
-                    <p>To be a leading manpower provider in the industry by delivering excellent and varied services to our clients.</p>
+                    <h3>Keep clients moving with the right people.</h3>
+                    <p>To continuously support our clients in their outsourcing needs by providing well-trained, skilled, and motivated people.</p>
                 </article>
                 <article class="purpose-statement purpose-statement-vision">
                     <p class="purpose-label">Our vision</p>
-                    <h3>Keep clients moving forward with the right people.</h3>
-                    <p>To continuously support our clients in their outsourcing needs by providing well-trained, skilled, and motivated people.</p>
+                    <h3>Lead through excellent and varied service.</h3>
+                    <p>To be a leading job outsourcing provider in the industry by giving excellent and varied services to our clients.</p>
                 </article>
             </div>
         </div>
@@ -86,7 +106,7 @@ taascor_page_start([
     <section class="scene values-section" aria-labelledby="values-title">
         <div class="shell values-layout">
             <div class="section-heading sticky-intro">
-                <p class="section-kicker">Company core values / 03</p>
+                <p class="section-kicker">Company core values / 04</p>
                 <h2 id="values-title">The standards behind the service.</h2>
                 <p class="section-copy">TAASCOR believes success grows from a strong culture of dedicated, quality service made possible by motivated employees.</p>
             </div>
@@ -130,45 +150,27 @@ taascor_page_start([
         </div>
     </section>
 
-    <section class="scene" aria-labelledby="company-facts-title">
-        <div class="shell split">
+    <section class="scene scene-tinted" aria-labelledby="company-facts-title">
+        <div class="shell">
             <div class="section-heading">
-                <p class="section-kicker">Corporate profile / 04</p>
-                <h2 id="company-facts-title">The remaining company facts are moving through verification.</h2>
-                <p class="section-copy">Mission, vision, and values now reflect the supplied company profile. Registration, leadership, location, and detailed service statements remain evidence-gated.</p>
-                <a class="text-link" href="<?= taascor_escape(taascor_url('/proof/')) ?>">See the publication standard</a>
+                <p class="section-kicker">Inside TAASCOR / 05</p>
+                <h2 id="company-facts-title">Meet the structure behind the service.</h2>
+                <p class="section-copy">The company profile now connects directly to TAASCOR’s leadership, organizational chart, office network, and portfolio of organizations served.</p>
             </div>
-            <div class="content-panel">
-                <?= taascor_status_tag('Evidence gate open', 'review') ?>
-                <h3>What will appear after approval</h3>
-                <ul>
-                    <li>Exact legal name and current corporate registration details.</li>
-                    <li>Current leadership names, roles, biographies, and public-use permissions.</li>
-                    <li>Verified office locations, directions, contact channels, hours, and service areas.</li>
-                    <li>Current service catalogue, operating boundaries, and review date.</li>
-                </ul>
+            <div class="path-grid path-grid-four company-paths">
+                <article class="role-card"><span class="role-code">LEADERSHIP</span><h3>Board and management</h3><p>Meet the directors and management roles presented in TAASCOR’s company profile.</p><a class="button button-dark" href="/leadership/">Meet the leadership</a></article>
+                <article class="role-card"><span class="role-code">ORGANIZATION</span><h3>Organizational chart</h3><p>Explore the executive, head-office, recruitment, finance, and branch structure in one accessible view.</p><a class="button button-dark" href="/leadership/#organizational-chart">View the organization</a></article>
+                <article class="role-card"><span class="role-code">OFFICES</span><h3>Office network</h3><p>Find the seven office and branch addresses carried forward from TAASCOR’s existing public profile.</p><a class="button button-dark" href="/locations/">Explore locations</a></article>
+                <article class="role-card"><span class="role-code">PORTFOLIO</span><h3>Organizations served</h3><p>Browse the 27-company portfolio presented by TAASCOR’s existing website.</p><a class="button button-dark" href="/clients/">View the portfolio</a></article>
             </div>
         </div>
     </section>
 
-    <section class="scene scene-tinted" aria-labelledby="locations-title">
-        <div class="shell split">
-            <div class="location-hold" aria-hidden="true">
-                <div>
-                    <span class="pin"></span>
-                    <p class="meta">Verified-location layer reserved</p>
-                </div>
-            </div>
-            <div class="section-heading">
-                <p class="section-kicker">Locations / 05</p>
-                <h2 id="locations-title">Directions should lead to a real, current destination.</h2>
-                <p class="section-copy">No office address, branch count, coverage map, or operating-hours claim is published here until Facilities and Operations confirm the address, service status, contact route, effective date, and next review.</p>
-                <p>For a current meeting or service-location enquiry, contact TAASCOR directly and confirm the destination before travelling.</p>
-                <div class="hero-actions">
-                    <a class="button" href="/contact/">Review contact routes</a>
-                    <a class="button button-outline" href="/contact/">Choose a contact route</a>
-                </div>
-            </div>
+    <section class="scene" aria-labelledby="partnership-title">
+        <div class="shell partnership-statement">
+            <p class="section-kicker">Partnership / 06</p>
+            <blockquote id="partnership-title">“We believe we can contribute to your success in business, and we are looking forward to a fruitful business partnership with your company.”</blockquote>
+            <p>TAASCOR Management &amp; General Services Corporation</p>
         </div>
     </section>
 

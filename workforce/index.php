@@ -109,7 +109,7 @@ taascor_page_start([
                         <li><span>04</span>Resolve ownership and evidence before commitment.</li>
                     </ol>
                     <?php if ($noticeIsDraft): ?>
-                        <div class="draft-notice" role="note"><strong>Local readiness state</strong><p>The workforce privacy notice is still marked draft. This route must remain out of production until the accountable privacy owner approves the notice and retention process.</p></div>
+                        <div class="draft-notice" role="note"><strong>Collection safeguard</strong><p>This route accepts workforce briefs only when an approved privacy notice and retention process are active.</p></div>
                     <?php endif; ?>
                 </aside>
 

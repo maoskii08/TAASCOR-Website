@@ -39,16 +39,101 @@ const staff = {
 
 const selectedJobSlug = 'sample-operations-associate';
 
+test('approved TAASCOR identity assets are consistent across public and portal surfaces', async ({ page }) => {
+  const faviconHrefs = [
+    '/assets/brand/favicon-32.png',
+    '/assets/brand/icon-192.png',
+    '/assets/brand/apple-touch-icon.png',
+  ];
+
+  for (const route of ['/', '/about/', '/portal/']) {
+    await page.goto(route);
+    for (const href of faviconHrefs) {
+      await expect(page.locator(`link[href="${href}"]`), `${route} should publish ${href}`).toHaveCount(1);
+    }
+  }
+
+  await page.goto('/');
+  await expect(page.locator('#hdr .lockup-mark')).toHaveAttribute('src', '/assets/brand/taascor-mark.png');
+  await expect(page.locator('#hdr .lockup-name')).toHaveText('TAASCOR');
+  await expect(page.locator('#hdr .lockup-legal')).toHaveText('Management & General Services Corp.');
+  await expect(page.locator('#hdr .lockup svg')).toHaveCount(0);
+  await expect(page.locator('#hdr .lockup-wordmark')).toHaveCount(0);
+  expect(await page.locator('#hdr .lockup').evaluate((element) => ({
+    background: getComputedStyle(element).backgroundColor,
+    shadow: getComputedStyle(element).boxShadow,
+  }))).toEqual({ background: 'rgba(0, 0, 0, 0)', shadow: 'none' });
+
+  await page.goto('/about/');
+  await expect(page.locator('.site-header .brand-mark')).toHaveAttribute('src', '/assets/brand/taascor-mark.png');
+  await expect(page.locator('.site-header .brand-name')).toHaveText('TAASCOR');
+  await expect(page.locator('.site-header .brand-legal')).toHaveText('Management & General Services Corp.');
+  await expect(page.locator('.site-header .brand svg')).toHaveCount(0);
+  await expect(page.locator('.site-header .brand-wordmark')).toHaveCount(0);
+  expect(await page.locator('.site-header .brand').evaluate((element) => ({
+    background: getComputedStyle(element).backgroundColor,
+    shadow: getComputedStyle(element).boxShadow,
+  }))).toEqual({ background: 'rgba(0, 0, 0, 0)', shadow: 'none' });
+
+  await page.goto('/account/login.php');
+  await expect(page.locator('.portal-brand-mark')).toHaveAttribute('src', '/assets/brand/taascor-mark.png');
+  await expect(page.locator('.portal-brand-name')).toHaveText('TAASCOR');
+  await expect(page.locator('.portal-brand-legal')).toHaveText('Management & General Services Corp.');
+  await expect(page.locator('.portal-brand-wordmark')).toHaveCount(0);
+  expect(await page.locator('.portal-brand').evaluate((element) => ({
+    background: getComputedStyle(element).backgroundColor,
+    shadow: getComputedStyle(element).boxShadow,
+  }))).toEqual({ background: 'rgba(0, 0, 0, 0)', shadow: 'none' });
+
+  expect(await page.locator('.portal-brand img').evaluateAll(
+    (images) => images.every((image) => image.complete && image.naturalWidth > 0),
+  )).toBe(true);
+});
+
 test('about page presents the supplied mission, vision, and five core values', async ({ page }) => {
   const response = await page.goto('/about/');
   expect(response?.status()).toBe(200);
   await expect(page.getByRole('heading', { name: 'A clear purpose for every person we place and every client we support.' })).toBeVisible();
-  await expect(page.getByText('To be a leading manpower provider in the industry by delivering excellent and varied services to our clients.')).toBeVisible();
+  await expect(page.getByText('To be a leading job outsourcing provider in the industry by giving excellent and varied services to our clients.')).toBeVisible();
   await expect(page.getByText('To continuously support our clients in their outsourcing needs by providing well-trained, skilled, and motivated people.')).toBeVisible();
   await expect(page.locator('.values-list > li')).toHaveCount(5);
   for (const value of ['Quality', 'Service', 'Results Oriented', 'Responsibility', 'Passion']) {
     await expect(page.getByRole('heading', { name: value, exact: true })).toBeVisible();
   }
+});
+
+test('legacy company portfolio content is integrated across the immersive public experience', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('#company')).toBeVisible();
+  await expect(page.locator('#company .company-values span')).toHaveCount(5);
+  await expect(page.getByRole('link', { name: /Leadership & org chart/i })).toHaveAttribute('href', '/leadership/');
+
+  await page.goto('/leadership/');
+  await expect(page.locator('.leader-card')).toHaveCount(7);
+  await expect(page.getByRole('heading', { name: 'Ernesto P. Villanueva' })).toBeVisible();
+  await expect(page.locator('.org-chart-media img')).toHaveAttribute('src', '/assets/img/organizational-chart.webp');
+  await expect(page.locator('.org-chart-media img')).toHaveJSProperty('complete', true);
+  await expect(page.locator('.org-directory')).toContainText('Branch operations');
+
+  await page.goto('/locations/');
+  await expect(page.locator('.office-card')).toHaveCount(7);
+  await expect(page.getByRole('heading', { name: 'Main Office — San Pedro' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Bulacan Branch' })).toBeVisible();
+
+  await page.goto('/clients/');
+  await expect(page.locator('.client-portfolio-card')).toHaveCount(27);
+  await expect(page.locator('.client-portfolio-card img')).toHaveCount(27);
+  await expect(page.getByRole('heading', { name: 'First Sumiden Circuits Inc.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Shinsei Printing' })).toBeVisible();
+  await page.locator('.client-portfolio-card').last().scrollIntoViewIfNeeded();
+  await expect.poll(async () => page.locator('.client-portfolio-card img').evaluateAll(
+    (images) => images.filter((image) => !image.complete || image.naturalWidth === 0).length,
+  )).toBe(0);
+
+  await page.goto('/solutions/');
+  await expect(page.locator('.service-spectrum article')).toHaveCount(6);
+  await expect(page.getByRole('heading', { name: 'Warehousing & 3PL logistics' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Electronics manufacturing' })).toBeVisible();
 });
 
 function requireLoopback(baseURL) {
@@ -123,7 +208,7 @@ test('workforce brief renders, rejects missing CSRF, and persists an isolated re
   await expect(page.getByRole('heading', { level: 1 })).toContainText('operating truth');
   await expect(page.locator('form.workforce-form')).toBeVisible();
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'noindex,nofollow');
-  await expect(page.locator('body')).toContainText('Local readiness state');
+  await expect(page.locator('body')).toContainText('Collection safeguard');
 
   const missingCsrf = await page.request.post('/workforce/', {
     form: {

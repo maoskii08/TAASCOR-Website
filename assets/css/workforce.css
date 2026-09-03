@@ -91,6 +91,17 @@
 .submit-note { margin: -.8rem 0 0; color: var(--paper-muted); font-size: .85rem; }
 .trap-field { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+html[data-theme="light"] .brief-map,
+html[data-theme="light"] .brief-form-panel {
+    background: #fbfdff;
+    box-shadow: var(--shadow);
+}
+
+html[data-theme="light"] .workforce-form input,
+html[data-theme="light"] .workforce-form textarea {
+    background: #f4f7fb;
+}
+
 .receipt-panel { margin: 0; padding: clamp(2rem, 5vw, 4.5rem); border-color: var(--line-strong); background: linear-gradient(135deg, rgba(39, 72, 155, .15), rgba(247, 162, 15, .08)); }
 .receipt-panel p { max-width: 50rem; color: var(--paper-muted); }
 .receipt-panel .hero-actions { margin-top: 1.75rem; }

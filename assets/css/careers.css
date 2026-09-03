@@ -221,6 +221,22 @@
 .jobs-empty p { max-width: 45rem; margin-inline: auto; color: var(--paper-muted); }
 .jobs-empty .button { margin-top: 1rem; }
 
+html[data-theme="light"] .job-filters,
+html[data-theme="light"] .jobs-empty,
+html[data-theme="light"] .apply-rail,
+html[data-theme="light"] .related-job-card {
+  background: #fbfdff;
+  box-shadow: var(--shadow);
+}
+
+html[data-theme="light"] .field select { color-scheme: light; }
+
+html[data-theme="light"] .career-safety,
+html[data-theme="light"] .job-next { color: #05070c; }
+
+html[data-theme="light"] .career-safety .text-link,
+html[data-theme="light"] .job-next .text-link { color: #05070c; }
+
 .candidate-path { background: linear-gradient(125deg, rgba(191, 30, 44, 0.075), transparent 46%), var(--ink-900); }
 .career-safety,
 .job-next { background: linear-gradient(135deg, var(--gold), #ffc451); color: var(--ink-950); }

@@ -77,13 +77,9 @@ if ($candidate !== false && ($normalizedCandidate === $normalizedRoot || str_sta
         'portal', 'proof', 'resources', 'solutions', 'staff', 'workforce', 'jobs',
     ];
     $allowed = false;
-    $favicon = realpath($projectRoot . DIRECTORY_SEPARATOR . 'favicon.svg');
-    if (is_file($candidate) && $favicon !== false && strcasecmp($candidate, $favicon) === 0) {
-        $allowed = true;
-    }
 
     $assetsRoot = realpath($projectRoot . DIRECTORY_SEPARATOR . 'assets');
-    if (!$allowed && $assetsRoot !== false) {
+    if ($assetsRoot !== false) {
         $normalizedAssetsRoot = strtolower(str_replace('\\', '/', $assetsRoot));
         $insideAssets = $normalizedCandidate === $normalizedAssetsRoot
             || str_starts_with($normalizedCandidate, $normalizedAssetsRoot . '/');

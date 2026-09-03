@@ -4,9 +4,39 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__) . '/site/bootstrap.php';
 
+$portfolio = [
+    ['First Sumiden Circuits Inc.', 'first_sumiden.webp', 'Electronics manufacturing'],
+    ['Ohgitani Corporation', 'ohgitani.webp', 'Industrial operations'],
+    ['Multimix International Manufacturing Corp.', 'multimix.webp', 'Manufacturing and packaging'],
+    ['Lazada Philippines', 'lazada.webp', 'E-commerce and fulfilment'],
+    ['Shopee Philippines', 'shopee.webp', 'E-commerce and fulfilment'],
+    ['Cainiao Smart Logistics Network Philippines', 'cainiao.webp', 'Smart logistics'],
+    ['Leslie Corporation', 'leslie.webp', 'Food manufacturing'],
+    ['Aboitiz Land', 'aboitiz.webp', 'Property and construction'],
+    ['Bi-Chain Sci. & Tech.', 'bichain.webp', 'Warehousing and distribution'],
+    ['Fujifilm Optics Phils.', 'fujifilm.webp', 'Optics and manufacturing'],
+    ['SIIX Coxon Precision Phils. Corp.', 'siix_coxon.webp', 'Electronics and logistics'],
+    ['MTC-Transport', 'mtc_transport.webp', 'Cargo and transport'],
+    ['Prime Worldwide Paper Packaging Corporation', 'prime_worldwide.webp', 'Paper and packaging'],
+    ['Swhistler Steel', 'swhistler.webp', 'Steel manufacturing'],
+    ['Centro Manufacturing Corp.', 'centro.webp', 'Vehicle-body manufacturing'],
+    ['Cavite Light Industrial Park', 'cavite_lip.webp', 'Industrial property'],
+    ['Globalmaxx Manufacturing Corp.', 'globalmaxx.webp', 'Vehicle equipment'],
+    ['Auto 88 Corporation', 'auto88.webp', 'Automotive interiors'],
+    ['Sealed Air Corporation', 'sealed_air.webp', 'Packaging solutions'],
+    ['WCL Cold Storage Inc.', 'wcl_cold.webp', 'Cold storage'],
+    ['CYA Industries Inc.', 'cya_industries.webp', 'Appliance distribution'],
+    ['Delta Milling Industries Inc.', 'delta_milling.webp', 'Food production'],
+    ['Pasture to Plate Agribusiness Inc.', 'pasture_to_plate.webp', 'Agribusiness'],
+    ['Euro-Med Laboratories Phil, Inc.', 'euromed.webp', 'Pharmaceutical manufacturing'],
+    ['Yuanshan Electronics (Phils) Inc.', 'yuanshan.webp', 'Electronics manufacturing'],
+    ['Maxistar Enterprises Inc.', 'maxistar.webp', 'Vehicle fabrication'],
+    ['Shinsei Printing', 'shinsei.webp', 'Printing and production'],
+];
+
 taascor_page_start([
-    'title' => 'Clients and Relationships',
-    'description' => 'Understand the evidence and permission standard TAASCOR applies before naming a client, partner, worksite, or commercial relationship publicly.',
+    'title' => 'Client Portfolio',
+    'description' => 'Explore the 27-company portfolio presented in TAASCOR’s existing public company experience across manufacturing, logistics, e-commerce, facilities, and related industries.',
     'active' => 'proof',
 ]);
 ?>
@@ -14,111 +44,62 @@ taascor_page_start([
     <section class="page-hero" aria-labelledby="clients-title">
         <div class="shell hero-grid">
             <div class="hero-copy">
-                <p class="eyebrow">Permissioned relationships</p>
-                <h1 id="clients-title">A logo is not proof. <em>A governed relationship is.</em></h1>
-                <p class="hero-lede">Client names, partner descriptions, logos, job associations, and outcomes appear only when the exact relationship, wording, permission, period, and approving owner support public use.</p>
+                <p class="eyebrow">27 organizations in the portfolio</p>
+                <h1 id="clients-title">Workforce experience shaped across <em>real operating environments.</em></h1>
+                <p class="hero-lede">TAASCOR’s existing public portfolio spans electronics, manufacturing, logistics, e-commerce, food production, facilities, transport, property, and distribution.</p>
                 <div class="hero-actions">
-                    <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Discuss a workforce need</a>
-                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Review the proof ledger</a>
+                    <a class="button" href="#portfolio">Explore the portfolio</a>
+                    <a class="button button-outline" href="/workforce/">Discuss a workforce need</a>
                 </div>
-                <p class="hero-note">No organization should infer a current relationship, endorsement, job opening, or performance result from this page.</p>
+                <p class="hero-note">Portfolio inclusion is carried forward from TAASCOR’s existing website. Current vacancies and engagement scope are confirmed separately through TAASCOR’s governed job and workforce routes.</p>
             </div>
-            <div class="network-stage" aria-hidden="true">
-                <span class="network-line line-a"></span><span class="network-line line-b"></span><span class="network-line line-c"></span>
-                <div class="network-core">Approved<br>proof</div>
-                <span class="network-node node-a">Identity</span>
-                <span class="network-node node-b">Scope</span>
-                <span class="network-node node-c">Permission</span>
-                <span class="network-node node-d">Review</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="scene" aria-labelledby="client-state-title">
-        <div class="shell split">
-            <div class="section-heading">
-                <p class="section-kicker">Publication state / 01</p>
-                <h2 id="client-state-title">The public relationship library is awaiting approval.</h2>
-                <p class="section-copy">Candidate client and partner references from earlier public material remain in private review until account, marketing, and legal owners reconcile each record.</p>
-            </div>
-            <div class="notice-panel" role="note">
-                <?= taascor_status_tag('All client candidates on hold', 'review') ?>
-                <h3>No client identities are released here</h3>
-                <p>This page does not publish or imply names, logos, testimonials, active contracts, service scope, hiring relationships, outcomes, or endorsements. Missing approval remains a visible gap, not a substitute claim.</p>
+            <div class="portfolio-orbit" aria-hidden="true">
+                <span class="portfolio-count">27</span>
+                <span class="portfolio-orbit-label">organizations</span>
+                <span class="portfolio-sector sector-one">Manufacturing</span>
+                <span class="portfolio-sector sector-two">Logistics</span>
+                <span class="portfolio-sector sector-three">Facilities</span>
             </div>
         </div>
     </section>
 
-    <section class="scene scene-tinted" aria-labelledby="relationship-record-title">
+    <section class="scene" id="portfolio" aria-labelledby="portfolio-title">
         <div class="shell">
-            <div class="section-heading">
-                <p class="section-kicker">Relationship record / 02</p>
-                <h2 id="relationship-record-title">Six gates before public display.</h2>
-                <p class="section-copy">A reusable record separates facts that are often collapsed into one logo card.</p>
+            <div class="section-heading portfolio-heading">
+                <div>
+                    <p class="section-kicker">Company portfolio / 01</p>
+                    <h2 id="portfolio-title">The organizations presented by TAASCOR.</h2>
+                </div>
+                <p class="section-copy">Each card retains the organization identity and brand asset used on TAASCOR’s existing public portfolio. Job availability is never inferred from a logo.</p>
             </div>
-            <div class="module-grid">
-                <article class="module-card">
-                    <span class="module-index">01</span>
-                    <h3>Canonical identity</h3>
-                    <p>Approved display name, legal name where relevant, spelling, brand assets, and the entity to which the relationship actually belongs.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">02</span>
-                    <h3>Relationship state</h3>
-                    <p>Client, former client, partner, vendor, prospect, worksite, or another exact category, plus dates and currentness.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">03</span>
-                    <h3>Approved scope</h3>
-                    <p>The specific service, geography, period, and wording permitted for public disclosure without expanding the underlying facts.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">04</span>
-                    <h3>Publicity permission</h3>
-                    <p>Written approval for the name, logo, description, channels, territory, effective period, and any required brand guidance.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">05</span>
-                    <h3>Job relationship</h3>
-                    <p>Only current, owner-approved job records may connect to a company or worksite; old card labels do not create live vacancies.</p>
-                </article>
-                <article class="module-card">
-                    <span class="module-index">06</span>
-                    <h3>Expiry and removal</h3>
-                    <p>Every public reference needs a review date, account owner, change history, and a defined route for correction or withdrawal.</p>
-                </article>
+            <div class="client-portfolio-grid">
+                <?php foreach ($portfolio as $index => [$name, $image, $sector]): ?>
+                    <article class="client-portfolio-card">
+                        <div class="client-logo-frame">
+                            <img src="/assets/img/clients/<?= taascor_escape($image) ?>" loading="lazy" decoding="async" alt="<?= taascor_escape($name) ?> brand mark">
+                        </div>
+                        <div class="client-card-copy">
+                            <span><?= taascor_escape(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?> / 27</span>
+                            <h3><?= taascor_escape($name) ?></h3>
+                            <p><?= taascor_escape($sector) ?></p>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
-    <section class="scene" aria-labelledby="client-proof-title">
+    <section class="scene scene-tinted" aria-labelledby="portfolio-context-title">
         <div class="shell split">
             <div class="section-heading sticky-intro">
-                <p class="section-kicker">Proof ladder / 03</p>
-                <h2 id="client-proof-title">Relationship, testimonial, and outcome are separate approvals.</h2>
-                <p class="section-copy">Permission to show a logo does not automatically authorize a testimonial, job association, case study, performance metric, or continuing-relationship claim.</p>
+                <p class="section-kicker">Portfolio context / 02</p>
+                <h2 id="portfolio-context-title">A company card and a current opportunity are different records.</h2>
+                <p class="section-copy">The portfolio preserves TAASCOR’s company history. The Careers experience separately controls whether a role is current, where it is based, and how an applicant should respond.</p>
             </div>
             <ol class="process-list">
-                <li>
-                    <h3>Confirm the relationship</h3>
-                    <p>Reconcile the correct organization, commercial entity, account owner, service scope, locations, and effective period.</p>
-                </li>
-                <li>
-                    <h3>Confirm what may be said</h3>
-                    <p>Approve the exact public wording and surfaces; keep confidential scope, worker data, pricing, security details, and client-owned information out.</p>
-                </li>
-                <li>
-                    <h3>Confirm media rights</h3>
-                    <p>Validate the logo or image source, license, brand rules, territory, term, required attribution, and removal conditions.</p>
-                </li>
-                <li>
-                    <h3>Confirm any outcome independently</h3>
-                    <p>Define metric, population, denominator, baseline, period, exclusions, source, owner, and limitations before a result is presented.</p>
-                </li>
-                <li>
-                    <h3>Publish with a review date</h3>
-                    <p>Release only the approved fields and revalidate them on schedule or when the relationship, permission, or underlying evidence changes.</p>
-                </li>
+                <li><h3>Explore the operating context</h3><p>Use the portfolio to understand the range of industries and environments represented in TAASCOR’s existing company story.</p></li>
+                <li><h3>Check current opportunities</h3><p>Only the governed job register should be used to determine whether a role is open, its location, requirements, and closing status.</p><a class="text-link" href="/jobs/">View current jobs</a></li>
+                <li><h3>Shape a new workforce need</h3><p>Employers can describe the work, site, scale, schedule, target date, and operational dependencies for review.</p><a class="text-link" href="/workforce/">Open the Workforce Planner</a></li>
             </ol>
         </div>
     </section>
@@ -126,13 +107,13 @@ taascor_page_start([
     <section class="scene scene-gold" aria-labelledby="client-action-title">
         <div class="shell split">
             <div class="section-heading">
-                <p class="section-kicker">Choose your relationship</p>
-                <h2 id="client-action-title">Start a conversation or enter your authorized workspace.</h2>
-                <p class="section-copy">Prospective employers can shape a new brief. Existing users should use the role-specific portal path and keep client or workforce data out of public enquiries.</p>
+                <p class="section-kicker">Build the next relationship</p>
+                <h2 id="client-action-title">Start with the operating need.</h2>
+                <p class="section-copy">Bring the roles, location, headcount, shift pattern, timeline, and constraints. TAASCOR can then structure the right workforce conversation.</p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Plan a workforce</a>
-                <a class="button button-outline" href="<?= taascor_escape(taascor_url('/portal/')) ?>">Access TAASCOR</a>
+                <a class="button" href="/workforce/">Plan a workforce</a>
+                <a class="button button-outline" href="/solutions/">Explore services</a>
             </div>
         </div>
     </section>
