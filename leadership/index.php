@@ -73,7 +73,7 @@ taascor_page_start([
             </div>
             <figure class="org-chart-media">
                 <div class="org-chart-scroll" tabindex="0" aria-label="Scrollable TAASCOR organizational chart">
-                    <img src="/assets/img/organizational-chart.webp" width="1365" height="768" loading="lazy" alt="TAASCOR organizational chart showing executive leadership, head-office teams, recruitment and finance roles, and the Cabuyao, Cavite, Cainta, San Pedro, Parian, and Bulacan branches.">
+                    <img src="<?= taascor_escape(taascor_asset_url('/assets/img/organizational-chart.webp')) ?>" width="1365" height="768" loading="lazy" alt="TAASCOR organizational chart showing executive leadership, head-office teams, recruitment and finance roles, and the Cabuyao, Cavite, Cainta, San Pedro, Parian, and Bulacan branches.">
                 </div>
                 <figcaption>TAASCOR Management &amp; General Services Corporation organizational chart, reproduced from the existing TAASCOR public company profile.</figcaption>
             </figure>

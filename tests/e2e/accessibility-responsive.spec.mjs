@@ -183,7 +183,7 @@ test('reduced-motion preference disables smooth scrolling and long-running page 
   }
 });
 
-test('home mobile navigation is keyboard-usable without a floating motion control', async ({ page }) => {
+test('home mobile keeps native flow, scroll-driven motion, and guarded tap-to-advance', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.emulateMedia({ reducedMotion: 'no-preference' });
   await expectSuccessfulNavigation(page, '/');
@@ -197,14 +197,55 @@ test('home mobile navigation is keyboard-usable without a floating motion contro
   await expect(menu.getByRole('link', { name: 'Access TAASCOR' })).toBeVisible();
 
   await page.waitForFunction(() =>
-    document.documentElement.classList.contains('motion-ready')
-      || document.documentElement.classList.contains('motion-unavailable')
-      || document.documentElement.classList.contains('mobile-layout'));
+    document.documentElement.classList.contains('mobile-motion-ready'));
   await expect(page.locator('html')).toHaveClass(/mobile-layout/);
+  await expect(page.locator('html')).toHaveClass(/mobile-motion-ready/);
   await expect(page.locator('#film .stage')).toHaveCSS('position', 'static');
   await expect(page.locator('#film .beat')).toHaveCount(5);
   await expect(page.locator('#film .beat').nth(1)).toBeVisible();
+  await expect(page.locator('#cue')).toContainText('Tap empty space or swipe to continue');
   await expect(page.locator('#motion-toggle')).toHaveCount(0);
+
+  const expectedStop = await page.locator('#film .beat').nth(1).evaluate((element) => {
+    const header = document.querySelector('#hdr');
+    const offset = Math.min(90, (header?.offsetHeight || 64) + 12);
+    return Math.max(0, Math.round(element.getBoundingClientRect().top + window.scrollY - offset));
+  });
+  await page.locator('#b-hero').dispatchEvent('pointerdown', {
+    pointerId: 17, pointerType: 'touch', isPrimary: true, clientX: 20, clientY: 620, button: 0,
+  });
+  await page.locator('#b-hero').dispatchEvent('pointerup', {
+    pointerId: 17, pointerType: 'touch', isPrimary: true, clientX: 20, clientY: 620, button: 0,
+  });
+  await expect.poll(async () => Math.round(await page.evaluate(() => window.scrollY)), {
+    timeout: 2_500,
+  }).toBeGreaterThan(expectedStop - 12);
+  expect(Math.abs(Math.round(await page.evaluate(() => window.scrollY)) - expectedStop)).toBeLessThanOrEqual(18);
+  await expect(page.locator('#film .beat').nth(1)).toHaveClass(/mobile-inview/);
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect.poll(async () => Math.round(await page.evaluate(() => window.scrollY))).toBeLessThanOrEqual(2);
+  const firstDoor = page.locator('.journey-door').first();
+  await firstDoor.dispatchEvent('pointerdown', {
+    pointerId: 18, pointerType: 'touch', isPrimary: true, clientX: 40, clientY: 500, button: 0,
+  });
+  await firstDoor.dispatchEvent('pointerup', {
+    pointerId: 18, pointerType: 'touch', isPrimary: true, clientX: 40, clientY: 500, button: 0,
+  });
+  await page.waitForTimeout(150);
+  expect(Math.round(await page.evaluate(() => window.scrollY))).toBeLessThanOrEqual(2);
+
+  await page.locator('#b-hero').dispatchEvent('pointerdown', {
+    pointerId: 19, pointerType: 'touch', isPrimary: true, clientX: 30, clientY: 650, button: 0,
+  });
+  await page.locator('#b-hero').dispatchEvent('pointermove', {
+    pointerId: 19, pointerType: 'touch', isPrimary: true, clientX: 30, clientY: 590, button: 0,
+  });
+  await page.locator('#b-hero').dispatchEvent('pointerup', {
+    pointerId: 19, pointerType: 'touch', isPrimary: true, clientX: 30, clientY: 590, button: 0,
+  });
+  await page.waitForTimeout(150);
+  expect(Math.round(await page.evaluate(() => window.scrollY))).toBeLessThanOrEqual(2);
 });
 
 test('home desktop click-to-advance lands on the next authored cinematic peak', async ({ page }) => {

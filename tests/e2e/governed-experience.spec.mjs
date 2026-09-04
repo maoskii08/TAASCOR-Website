@@ -49,12 +49,14 @@ test('approved TAASCOR identity assets are consistent across public and portal s
   for (const route of ['/', '/about/', '/portal/']) {
     await page.goto(route);
     for (const href of faviconHrefs) {
-      await expect(page.locator(`link[href="${href}"]`), `${route} should publish ${href}`).toHaveCount(1);
+      await expect(page.locator(`link[href^="${href}?v="]`), `${route} should publish a versioned ${href}`).toHaveCount(1);
     }
   }
 
   await page.goto('/');
-  await expect(page.locator('#hdr .lockup-mark')).toHaveAttribute('src', '/assets/brand/taascor-mark.png');
+  await expect(page.locator('#hdr .lockup-mark')).toHaveAttribute('src', /^\/assets\/brand\/taascor-mark\.png\?v=[a-f0-9]{12}$/);
+  await expect(page.locator('#hdr .lockup-mark')).toHaveAttribute('width', '41');
+  await expect(page.locator('#hdr .lockup-mark')).toHaveAttribute('height', '36');
   await expect(page.locator('#hdr .lockup-name')).toHaveText('TAASCOR');
   await expect(page.locator('#hdr .lockup-legal')).toHaveText('Management & General Services Corp.');
   await expect(page.locator('#hdr .lockup svg')).toHaveCount(0);
@@ -65,7 +67,9 @@ test('approved TAASCOR identity assets are consistent across public and portal s
   }))).toEqual({ background: 'rgba(0, 0, 0, 0)', shadow: 'none' });
 
   await page.goto('/about/');
-  await expect(page.locator('.site-header .brand-mark')).toHaveAttribute('src', '/assets/brand/taascor-mark.png');
+  await expect(page.locator('.site-header .brand-mark')).toHaveAttribute('src', /^\/assets\/brand\/taascor-mark\.png\?v=[a-f0-9]{12}$/);
+  await expect(page.locator('.site-header .brand-mark')).toHaveAttribute('width', '41');
+  await expect(page.locator('.site-header .brand-mark')).toHaveAttribute('height', '36');
   await expect(page.locator('.site-header .brand-name')).toHaveText('TAASCOR');
   await expect(page.locator('.site-header .brand-legal')).toHaveText('Management & General Services Corp.');
   await expect(page.locator('.site-header .brand svg')).toHaveCount(0);
@@ -76,7 +80,9 @@ test('approved TAASCOR identity assets are consistent across public and portal s
   }))).toEqual({ background: 'rgba(0, 0, 0, 0)', shadow: 'none' });
 
   await page.goto('/account/login.php');
-  await expect(page.locator('.portal-brand-mark')).toHaveAttribute('src', '/assets/brand/taascor-mark.png');
+  await expect(page.locator('.portal-brand-mark')).toHaveAttribute('src', /^\/assets\/brand\/taascor-mark\.png\?v=[a-f0-9]{12}$/);
+  await expect(page.locator('.portal-brand-mark')).toHaveAttribute('width', '38');
+  await expect(page.locator('.portal-brand-mark')).toHaveAttribute('height', '33');
   await expect(page.locator('.portal-brand-name')).toHaveText('TAASCOR');
   await expect(page.locator('.portal-brand-legal')).toHaveText('Management & General Services Corp.');
   await expect(page.locator('.portal-brand-wordmark')).toHaveCount(0);
@@ -88,6 +94,35 @@ test('approved TAASCOR identity assets are consistent across public and portal s
   expect(await page.locator('.portal-brand img').evaluateAll(
     (images) => images.every((image) => image.complete && image.naturalWidth > 0),
   )).toBe(true);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/solutions/');
+  const mobileGeometry = await page.evaluate(() => {
+    const header = document.querySelector('.site-header').getBoundingClientRect();
+    const logo = document.querySelector('.site-header .brand-mark').getBoundingClientRect();
+    return {
+      headerHeight: header.height,
+      logoWidth: logo.width,
+      logoHeight: logo.height,
+      documentWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    };
+  });
+  expect(mobileGeometry.headerHeight).toBeLessThanOrEqual(96);
+  expect(mobileGeometry.logoWidth).toBeLessThanOrEqual(48);
+  expect(mobileGeometry.logoHeight).toBeLessThanOrEqual(48);
+  expect(mobileGeometry.scrollWidth).toBeLessThanOrEqual(mobileGeometry.documentWidth + 1);
+});
+
+test('public and portal shells publish cache-keyed coordinated assets', async ({ page }) => {
+  for (const route of ['/', '/about/', '/workforce/', '/account/login.php']) {
+    await page.goto(route);
+    const assetUrls = await page.locator(
+      'link[href^="/assets/"], script[src^="/assets/"], img[src^="/assets/brand/taascor-mark.png"]',
+    ).evaluateAll((elements) => elements.map((element) => element.getAttribute('href') || element.getAttribute('src')));
+    expect(assetUrls.length, `${route} should expose local shell assets`).toBeGreaterThan(0);
+    expect(assetUrls.every((url) => /\?v=[a-f0-9]{12}$/.test(url)), `${route} should version every shell asset`).toBe(true);
+  }
 });
 
 test('about page presents the supplied mission, vision, and five core values', async ({ page }) => {
@@ -111,7 +146,7 @@ test('legacy company portfolio content is integrated across the immersive public
   await page.goto('/leadership/');
   await expect(page.locator('.leader-card')).toHaveCount(7);
   await expect(page.getByRole('heading', { name: 'Ernesto P. Villanueva' })).toBeVisible();
-  await expect(page.locator('.org-chart-media img')).toHaveAttribute('src', '/assets/img/organizational-chart.webp');
+  await expect(page.locator('.org-chart-media img')).toHaveAttribute('src', /^\/assets\/img\/organizational-chart\.webp\?v=[a-f0-9]{12}$/);
   await expect(page.locator('.org-chart-media img')).toHaveJSProperty('complete', true);
   await expect(page.locator('.org-directory')).toContainText('Branch operations');
 

@@ -4,6 +4,39 @@ declare(strict_types=1);
 
 const TAASCOR_ROOT = __DIR__ . '/..';
 
+/**
+ * Return a same-origin asset URL with a content-derived cache key.
+ *
+ * Hostinger serves public assets with a long browser cache lifetime. Content
+ * hashes keep coordinated HTML/CSS/JS releases from mixing old and new files
+ * without weakening that cache policy.
+ */
+function taascor_asset_url(string $path): string
+{
+    $urlPath = '/' . ltrim($path, '/');
+    if (
+        preg_match('#^/assets/[A-Za-z0-9][A-Za-z0-9._/-]*$#', $urlPath) !== 1
+        || str_contains($urlPath, '..')
+    ) {
+        throw new InvalidArgumentException('Asset paths must remain inside /assets/.');
+    }
+
+    static $versions = [];
+    if (!isset($versions[$urlPath])) {
+        $filePath = TAASCOR_ROOT . str_replace('/', DIRECTORY_SEPARATOR, $urlPath);
+        if (!is_file($filePath)) {
+            throw new RuntimeException('Referenced asset does not exist: ' . $urlPath);
+        }
+        $hash = hash_file('sha256', $filePath);
+        if (!is_string($hash)) {
+            throw new RuntimeException('Unable to fingerprint asset: ' . $urlPath);
+        }
+        $versions[$urlPath] = substr($hash, 0, 12);
+    }
+
+    return $urlPath . '?v=' . $versions[$urlPath];
+}
+
 function env_value(string $name, ?string $default = null): ?string
 {
     $value = getenv($name);

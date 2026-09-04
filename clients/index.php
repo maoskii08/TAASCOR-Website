@@ -76,7 +76,7 @@ taascor_page_start([
                 <?php foreach ($portfolio as $index => [$name, $image, $sector]): ?>
                     <article class="client-portfolio-card">
                         <div class="client-logo-frame">
-                            <img src="/assets/img/clients/<?= taascor_escape($image) ?>" loading="lazy" decoding="async" alt="<?= taascor_escape($name) ?> brand mark">
+                            <img src="<?= taascor_escape(taascor_asset_url('/assets/img/clients/' . $image)) ?>" loading="lazy" decoding="async" alt="<?= taascor_escape($name) ?> brand mark">
                         </div>
                         <div class="client-card-copy">
                             <span><?= taascor_escape(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?> / 27</span>

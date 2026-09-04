@@ -150,18 +150,18 @@ function taascor_page_start(array $page): void
         <link rel="canonical" href="<?= taascor_escape($canonicalUrl) ?>">
         <meta property="og:url" content="<?= taascor_escape($canonicalUrl) ?>">
     <?php endif; ?>
-    <link rel="icon" href="<?= taascor_escape(taascor_url('/assets/brand/favicon-32.png')) ?>" type="image/png" sizes="32x32">
-    <link rel="icon" href="<?= taascor_escape(taascor_url('/assets/brand/icon-192.png')) ?>" type="image/png" sizes="192x192">
-    <link rel="apple-touch-icon" href="<?= taascor_escape(taascor_url('/assets/brand/apple-touch-icon.png')) ?>" sizes="180x180">
-    <script src="<?= taascor_escape(taascor_url('/assets/js/theme.js')) ?>"></script>
-    <link rel="stylesheet" href="<?= taascor_escape(taascor_url('/assets/css/site.css')) ?>">
+    <link rel="icon" href="<?= taascor_escape(taascor_asset_url('/assets/brand/favicon-32.png')) ?>" type="image/png" sizes="32x32">
+    <link rel="icon" href="<?= taascor_escape(taascor_asset_url('/assets/brand/icon-192.png')) ?>" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="<?= taascor_escape(taascor_asset_url('/assets/brand/apple-touch-icon.png')) ?>" sizes="180x180">
+    <script src="<?= taascor_escape(taascor_asset_url('/assets/js/theme.js')) ?>"></script>
+    <link rel="stylesheet" href="<?= taascor_escape(taascor_asset_url('/assets/css/site.css')) ?>">
     <?php foreach ($validatedStyles as $stylesheet): ?>
-        <link rel="stylesheet" href="<?= taascor_escape(taascor_url($stylesheet)) ?>">
+        <link rel="stylesheet" href="<?= taascor_escape(taascor_asset_url($stylesheet)) ?>">
     <?php endforeach; ?>
     <?php if ($jsonLdOutput !== null): ?>
         <script type="application/ld+json" nonce="<?= taascor_escape((string) $GLOBALS['taascor_csp_nonce']) ?>"><?= $jsonLdOutput ?></script>
     <?php endif; ?>
-    <script src="<?= taascor_escape(taascor_url('/assets/js/site.js')) ?>" defer></script>
+    <script src="<?= taascor_escape(taascor_asset_url('/assets/js/site.js')) ?>" defer></script>
 </head>
 <body class="<?= taascor_escape($bodyClass) ?>">
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -169,7 +169,7 @@ function taascor_page_start(array $page): void
     <header class="site-header" data-site-header>
         <div class="shell nav-shell">
             <a class="brand" href="<?= taascor_escape(taascor_url('/')) ?>" aria-label="TAASCOR home">
-                <img class="brand-mark" src="<?= taascor_escape(taascor_url('/assets/brand/taascor-mark.png')) ?>" width="859" height="756" alt="">
+                <img class="brand-mark" src="<?= taascor_escape(taascor_asset_url('/assets/brand/taascor-mark.png')) ?>" width="41" height="36" alt="">
                 <span class="brand-copy" aria-hidden="true"><span class="brand-name">TAASCOR</span><span class="brand-legal">Management &amp; General Services Corp.</span></span>
             </a>
 
@@ -204,7 +204,7 @@ function taascor_page_end(): void
         <div class="shell footer-grid">
             <div class="footer-brand">
                 <a class="brand" href="<?= taascor_escape(taascor_url('/')) ?>" aria-label="TAASCOR home">
-                    <img class="brand-mark" src="<?= taascor_escape(taascor_url('/assets/brand/taascor-mark.png')) ?>" width="859" height="756" alt="">
+                    <img class="brand-mark" src="<?= taascor_escape(taascor_asset_url('/assets/brand/taascor-mark.png')) ?>" width="41" height="36" alt="">
                     <span class="brand-copy" aria-hidden="true"><span class="brand-name">TAASCOR</span><span class="brand-legal">Management &amp; General Services Corp.</span></span>
                 </a>
                 <p>A clearer path from workforce need to coordinated action, and from opportunity to application.</p>

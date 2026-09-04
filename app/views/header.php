@@ -16,18 +16,18 @@ $navigationUser = auth_user();
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#f4f7fb">
     <title><?= e($pageTitle) ?></title>
-    <link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
-    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" sizes="180x180">
-    <script src="/assets/js/theme.js"></script>
-    <link rel="stylesheet" href="/assets/css/portal.css">
-    <script defer src="/assets/js/portal.js"></script>
+    <link rel="icon" href="<?= e(taascor_asset_url('/assets/brand/favicon-32.png')) ?>" type="image/png" sizes="32x32">
+    <link rel="icon" href="<?= e(taascor_asset_url('/assets/brand/icon-192.png')) ?>" type="image/png" sizes="192x192">
+    <link rel="apple-touch-icon" href="<?= e(taascor_asset_url('/assets/brand/apple-touch-icon.png')) ?>" sizes="180x180">
+    <script src="<?= e(taascor_asset_url('/assets/js/theme.js')) ?>"></script>
+    <link rel="stylesheet" href="<?= e(taascor_asset_url('/assets/css/portal.css')) ?>">
+    <script defer src="<?= e(taascor_asset_url('/assets/js/portal.js')) ?>"></script>
 </head>
 <body class="portal-body <?= e($bodyClass) ?>">
 <a class="skip-link" href="#main-content">Skip to main content</a>
 <header class="portal-header">
     <a class="portal-brand" href="/" aria-label="TAASCOR home">
-        <img class="portal-brand-mark" src="/assets/brand/taascor-mark.png" width="859" height="756" alt="">
+        <img class="portal-brand-mark" src="<?= e(taascor_asset_url('/assets/brand/taascor-mark.png')) ?>" width="38" height="33" alt="">
         <span class="portal-brand-copy" aria-hidden="true"><span class="portal-brand-name">TAASCOR</span><span class="portal-brand-legal">Management &amp; General Services Corp.</span></span>
     </a>
     <nav class="portal-nav" aria-label="Portal navigation">

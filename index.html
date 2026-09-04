@@ -14,11 +14,11 @@
 <meta name="twitter:card" content="summary">
 <!-- TAASCOR_CANONICAL_META -->
 <!-- TAASCOR_ORGANIZATION_DATA -->
-<link rel="icon" href="/assets/brand/favicon-32.png" type="image/png" sizes="32x32">
-<link rel="icon" href="/assets/brand/icon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/assets/brand/favicon-32.png?v=0b17352d54e8" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/brand/icon-192.png?v=8eb3fc7342de" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png?v=2aa57c1a5ede" sizes="180x180">
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
-<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/theme.js?v=538801c7a2f6"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -164,6 +164,7 @@ html.no-js #b-hero,html.js:not(.motion-ready) #b-hero{opacity:1;visibility:visib
 #cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);text-align:center;z-index:3;
   font-family:var(--mono);font-size:.6rem;letter-spacing:.3em;color:var(--dim);text-transform:uppercase;
   transition:opacity .5s;pointer-events:none}
+#cue .cue-mobile{display:none}
 #cue .cue-line{width:1px;height:44px;background:linear-gradient(var(--gold),transparent);margin:12px auto 0;
   animation:cueDrop 2.1s cubic-bezier(.6,0,.3,1) infinite;transform-origin:top}
 @keyframes cueDrop{0%{transform:scaleY(0)}45%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -444,6 +445,23 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   footer{padding:38px 1rem 28px}.f-in{display:grid;grid-template-columns:1fr;width:100%}.f-fine{margin-top:28px}
 }
 
+/* Mobile keeps native document flow while scroll position drives the field and
+   narrative entrances. The class is added only after the enhancement is ready,
+   so content remains fully readable if JavaScript is unavailable. */
+@media (max-width:48rem), (pointer:coarse) and (max-width:60rem){
+  html.mobile-motion-ready .mobile-reveal{opacity:0!important;visibility:visible!important;
+    transform:translate3d(0,24px,0) scale(.985)!important;
+    transition:opacity .68s cubic-bezier(.22,1,.36,1),transform .68s cubic-bezier(.22,1,.36,1)!important;
+    will-change:opacity,transform}
+  html.mobile-motion-ready .mobile-reveal.mobile-inview{opacity:1!important;transform:none!important}
+  html.mobile-motion-ready #field{opacity:.82}
+  html.mobile-motion-ready #cue{display:block;position:static;left:auto;bottom:auto;transform:none;
+    margin-top:26px;letter-spacing:.16em;opacity:1!important}
+  html.mobile-motion-ready #cue .cue-desktop{display:none}
+  html.mobile-motion-ready #cue .cue-mobile{display:inline}
+  html.mobile-motion-ready #cue .cue-line{height:28px;margin-top:9px}
+}
+
 /* ---------- reduced motion ---------- */
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
@@ -500,7 +518,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
 
 <header id="hdr">
   <a class="lockup" href="#top" data-to="0" aria-label="TAASCOR home">
-    <img class="lockup-mark" src="/assets/brand/taascor-mark.png" width="859" height="756" alt="">
+    <img class="lockup-mark" src="/assets/brand/taascor-mark.png?v=650861b561a7" width="41" height="36" alt="">
     <span class="lockup-copy" aria-hidden="true"><span class="lockup-name">TAASCOR</span><span class="lockup-legal">Management &amp; General Services Corp.</span></span>
   </a>
   <div class="readout" aria-hidden="true">
@@ -549,6 +567,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
         <a class="journey-door" href="/jobs/">Find work<span>Explore roles and apply with context</span></a>
         <a class="journey-door" href="/portal/">Access TAASCOR<span>Applicant, employee, client and staff access</span></a>
       </nav>
+      <div id="cue" aria-hidden="true"><span class="cue-desktop">Click empty space to advance</span><span class="cue-mobile">Tap empty space or swipe to continue</span><div class="cue-line"></div></div>
     </div>
 
     <div class="beat" data-in="0.16" data-peak="0.24" data-out="0.34">
@@ -875,7 +894,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   <div class="f-in">
     <div class="f-col">
       <a class="lockup" href="#top" data-to="0" style="margin-bottom:16px" aria-label="TAASCOR home">
-        <img class="lockup-mark" src="/assets/brand/taascor-mark.png" width="859" height="756" alt="">
+        <img class="lockup-mark" src="/assets/brand/taascor-mark.png?v=650861b561a7" width="41" height="36" alt="">
         <span class="lockup-copy" aria-hidden="true"><span class="lockup-name">TAASCOR</span><span class="lockup-legal">Management &amp; General Services Corp.</span></span>
       </a>
       <p style="max-width:34ch">TAASCOR is shaping one governed experience for employers, candidates and workforce operations.</p>
@@ -1397,6 +1416,69 @@ function bootPRM(){
   qs('#hdr').classList.add('scrolled');
   window.__ready=true;
 }
+function bootCompactMotion(){
+  bootPRM();
+
+  var revealSelector=[
+    '#film .beat','#ops .ops-head','#ops .panel','#lines .l-intro','#lines .l-card',
+    '#coverage .beat','#platform .plat-head','#platform .plat-portal',
+    '#opportunities .opp-wrap','#company .company-intro','#company .company-purpose',
+    '#company .company-values','#company .company-links','#protocol .pr-head','#protocol .ms',
+    '#trust .tr-head','#trust .tr-card','#coda > *','footer .f-col','footer .f-fine'
+  ].join(',');
+  var reveals=qsa(revealSelector);
+  reveals.forEach(function(el){
+    el.classList.add('mobile-reveal');
+    var r=el.getBoundingClientRect();
+    if(r.top<innerHeight*0.94&&r.bottom>0)el.classList.add('mobile-inview');
+  });
+
+  if('IntersectionObserver' in window){
+    var observer=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){entry.target.classList.toggle('mobile-inview',entry.isIntersecting)});
+    },{rootMargin:'-6% 0px -12% 0px',threshold:0.08});
+    reveals.forEach(function(el){observer.observe(el)});
+  }else{
+    reveals.forEach(function(el){el.classList.add('mobile-inview')});
+  }
+
+  var compactDirectors=[
+    {el:qs('#film'),h:filmScene},
+    {el:qs('#ops'),h:opsScene},
+    {el:qs('#lines'),h:linesScene},
+    {el:qs('#coverage'),h:coverageScene},
+    {el:qs('#platform'),h:dustScene('07','HRIS PLATFORM')},
+    {el:qs('#protocol'),h:dustScene('08','DEPLOYMENT PROTOCOL')},
+    {el:qs('#trust'),h:dustScene('09','COMPLIANCE')},
+    {el:qs('#coda'),h:dustScene('10','READY TO DEPLOY')}
+  ].filter(function(rec){return rec.el});
+  var compactTicking=false;
+  function compactFrame(){
+    compactTicking=false;
+    var anchor=innerHeight*0.48,active=compactDirectors[0];
+    for(var i=0;i<compactDirectors.length;i++){
+      if(compactDirectors[i].el.getBoundingClientRect().top<=anchor)active=compactDirectors[i];
+    }
+    if(active){
+      var r=active.el.getBoundingClientRect();
+      var p=clamp((anchor-r.top)/Math.max(1,r.height),0,1);
+      active.h(p,0);
+    }
+    qs('#hdr').classList.toggle('scrolled',(window.scrollY||0)>20);
+    var roFill=qs('#ro-fill'),doc=document.documentElement;
+    if(roFill)roFill.style.transform='scaleX('+clamp((window.scrollY||0)/((doc.scrollHeight-innerHeight)||1),0,1).toFixed(4)+')';
+    if(pageVisible)field.render(0.016);
+  }
+  function requestCompactFrame(){
+    if(!compactTicking){compactTicking=true;requestAnimationFrame(compactFrame)}
+  }
+  addEventListener('scroll',requestCompactFrame,{passive:true});
+  addEventListener('resize',requestCompactFrame,{passive:true});
+  document.documentElement.classList.add('mobile-motion-ready');
+  window.__mobileMotionReady=true;
+  window.__frame=function(){compactFrame()};
+  compactFrame();
+}
 function boot(){
   document.documentElement.classList.add('js');
   if(COMPACT)document.documentElement.classList.add('mobile-layout');
@@ -1429,7 +1511,8 @@ function boot(){
   });
   sizing();
 
-  if(PRM||COMPACT){bootPRM();return}
+  if(PRM){bootPRM();return}
+  if(COMPACT){bootCompactMotion();return}
 
   if(!window.gsap||!window.ScrollTrigger||!window.Lenis){
     document.documentElement.classList.add('motion-unavailable');
@@ -1558,16 +1641,38 @@ else boot();
 })();
 </script>
 <script>
-/* click-to-advance — a left mouse click on empty page area glides to the next
-   authored beat peak, where its copy is fully visible. Outside a beat-driven
-   scene it advances 90% of a screen. Links, buttons and controls behave normally;
-   text selection is never hijacked; placeholder "#" links don't jump. Mouse only. */
+/* Click/tap-to-advance. Desktop retains the authored scene peaks. Compact
+   layouts advance through actual in-flow narrative blocks, so the landing
+   point remains correct at every mobile height. Touch movement stays native:
+   only a short, stationary tap on empty non-interactive space is accepted. */
 (function(){
-  if (matchMedia('(pointer: coarse)').matches) return;               // ignore touch taps
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var compactMedia = matchMedia('(max-width: 48rem), (pointer: coarse) and (max-width: 60rem)');
   var CLICK_TRAVEL = 0.90;                                           // fallback outside beat-driven scenes
   var CLICK_DURATION = 3.0;
+  var TAP_DURATION_MS = 900;
+  var TAP_MOVE_PX = 14;
+  var TAP_MAX_MS = 650;
   var SKIP = 'a,button,input,textarea,select,label,summary,[role="button"],[contenteditable="true"],[data-noscroll]';
+  var MOBILE_STOPS = [
+    '#film .beat','#ops .ops-head','#ops .panel','#lines .l-intro','#lines .l-card',
+    '#coverage .beat','#platform','#opportunities','#company','#protocol .pr-head',
+    '#protocol .ms','#trust','#coda','footer'
+  ].join(',');
+  var nativeAnimation = 0;
+  var pointerStart = null;
+  var suppressClickUntil = 0;
+
+  function selectionActive(){
+    var s=window.getSelection&&window.getSelection();
+    return !!(s&&s.type==='Range'&&String(s).length);
+  }
+  function isSkipped(target){
+    if(!target||!target.closest)return true;
+    var a=target.closest('a[href]');
+    if(a&&a.getAttribute('href')==='#')return 'placeholder';
+    return target.closest(SKIP)?true:false;
+  }
   function nextCinematicStop(y,max){
     var driven = document.querySelectorAll('.scene');
     for(var i=0;i<driven.length;i++){
@@ -1589,21 +1694,85 @@ else boot();
     }
     return Math.min(y+Math.round(innerHeight*CLICK_TRAVEL),max);
   }
+  function nextMobileStop(y,max){
+    var header=document.querySelector('#hdr');
+    var offset=Math.min(90,(header?header.offsetHeight:64)+12);
+    var stops=document.querySelectorAll(MOBILE_STOPS);
+    for(var i=0;i<stops.length;i++){
+      var el=stops[i],r=el.getBoundingClientRect();
+      if(r.width<1||r.height<1)continue;
+      var stop=Math.max(0,Math.round(r.top+y-offset));
+      if(stop>y+24)return Math.min(stop,max);
+    }
+    return Math.min(y+Math.round(innerHeight*CLICK_TRAVEL),max);
+  }
+  function stopNativeAnimation(){
+    if(nativeAnimation){cancelAnimationFrame(nativeAnimation);nativeAnimation=0}
+  }
+  function glideNative(target,duration){
+    stopNativeAnimation();
+    var start=window.scrollY||window.pageYOffset||0;
+    var delta=target-start;
+    if(reduce||Math.abs(delta)<2){window.scrollTo(0,target);return}
+    var began=performance.now();
+    function step(now){
+      var p=Math.min(1,(now-began)/duration);
+      var e=p<0.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+      window.scrollTo(0,start+delta*e);
+      if(p<1)nativeAnimation=requestAnimationFrame(step);else nativeAnimation=0;
+    }
+    nativeAnimation=requestAnimationFrame(step);
+  }
+  function advance(target){
+    var skipped=isSkipped(target);
+    if(skipped==='placeholder')return 'placeholder';
+    if(skipped||selectionActive())return false;
+    var doc=document.scrollingElement||document.documentElement;
+    var max=Math.max(0,doc.scrollHeight-innerHeight);
+    var y=window.scrollY||window.pageYOffset||0;
+    var next=(y>=max-4)?0:(compactMedia.matches?nextMobileStop(y,max):nextCinematicStop(y,max));
+    if(window.__lenis&&!reduce&&!compactMedia.matches){
+      window.__lenis.scrollTo(next,{duration:CLICK_DURATION});
+    }else if(compactMedia.matches){
+      glideNative(next,TAP_DURATION_MS);
+    }else{
+      window.scrollTo({top:next,behavior:reduce?'auto':'smooth'});
+    }
+    return true;
+  }
+  addEventListener('pointerdown',function(e){
+    stopNativeAnimation();
+    if(!e.isPrimary||(e.pointerType!=='touch'&&e.pointerType!=='pen'))return;
+    if(isSkipped(e.target)||selectionActive())return;
+    pointerStart={id:e.pointerId,x:e.clientX,y:e.clientY,t:performance.now(),moved:false,target:e.target};
+  },false);
+  addEventListener('pointermove',function(e){
+    if(!pointerStart||e.pointerId!==pointerStart.id)return;
+    if(Math.hypot(e.clientX-pointerStart.x,e.clientY-pointerStart.y)>TAP_MOVE_PX)pointerStart.moved=true;
+  },{passive:true});
+  addEventListener('pointercancel',function(e){
+    if(pointerStart&&e.pointerId===pointerStart.id)pointerStart=null;
+  },{passive:true});
+  addEventListener('pointerup',function(e){
+    if(!pointerStart||e.pointerId!==pointerStart.id)return;
+    var tap=pointerStart;
+    pointerStart=null;
+    if(tap.moved||performance.now()-tap.t>TAP_MAX_MS)return;
+    var result=advance(tap.target);
+    if(result==='placeholder'||result===true){
+      if(e.cancelable)e.preventDefault();
+      suppressClickUntil=performance.now()+700;
+    }
+  },false);
   addEventListener('click', function(e){
-    if (e.button !== 0 || e.defaultPrevented) return;                // left click, not already handled
-    var t = e.target;
-    var a = t.closest && t.closest('a[href]');
-    if (a && a.getAttribute('href') === '#') { e.preventDefault(); return; } // placeholder link: no top-jump
-    if (t.closest && t.closest(SKIP)) return;                        // real links/buttons/controls: leave alone
-    var s = window.getSelection && window.getSelection();
-    if (s && s.type === 'Range' && String(s).length) return;         // don't hijack a text selection
-    var doc = document.scrollingElement || document.documentElement;
-    var max = Math.max(0, doc.scrollHeight - innerHeight);
-    var y = window.scrollY || window.pageYOffset || 0;
-    var target = (y >= max - 4) ? 0 : nextCinematicStop(y,max);       // wrap to top at the end
-    if (window.__lenis && !reduce) window.__lenis.scrollTo(target, { duration: CLICK_DURATION });
-    else window.scrollTo({ top: target, behavior: reduce ? 'auto' : 'smooth' });
+    if(e.button!==0||e.defaultPrevented||performance.now()<suppressClickUntil)return;
+    var result=advance(e.target);
+    if(result==='placeholder')e.preventDefault();
   }, false);
+  addEventListener('wheel',stopNativeAnimation,{passive:true});
+  addEventListener('keydown',function(e){
+    if(['ArrowDown','ArrowUp','PageDown','PageUp','Home','End',' '].indexOf(e.key)>=0)stopNativeAnimation();
+  },false);
 })();
 </script>
 </body>
