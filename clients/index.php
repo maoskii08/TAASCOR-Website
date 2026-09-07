@@ -49,7 +49,7 @@ taascor_page_start([
                 <p class="hero-lede">TAASCOR’s existing public portfolio spans electronics, manufacturing, logistics, e-commerce, food production, facilities, transport, property, and distribution.</p>
                 <div class="hero-actions">
                     <a class="button" href="#portfolio">Explore the portfolio</a>
-                    <a class="button button-outline" href="/workforce/">Discuss a workforce need</a>
+                    <a class="button button-outline" href="/contact/">Discuss a workforce need</a>
                 </div>
                 <p class="hero-note">Portfolio inclusion is carried forward from TAASCOR’s existing website. Current vacancies and engagement scope are confirmed separately through TAASCOR’s governed job and workforce routes.</p>
             </div>
@@ -99,7 +99,7 @@ taascor_page_start([
             <ol class="process-list">
                 <li><h3>Explore the operating context</h3><p>Use the portfolio to understand the range of industries and environments represented in TAASCOR’s existing company story.</p></li>
                 <li><h3>Check current opportunities</h3><p>Only the governed job register should be used to determine whether a role is open, its location, requirements, and closing status.</p><a class="text-link" href="/jobs/">View current jobs</a></li>
-                <li><h3>Shape a new workforce need</h3><p>Employers can describe the work, site, scale, schedule, target date, and operational dependencies for review.</p><a class="text-link" href="/workforce/">Open the Workforce Planner</a></li>
+                <li><h3>Shape a new workforce need</h3><p>Employers can review the appropriate path for discussing work, site, scale, schedule, timing, and operational dependencies.</p><a class="text-link" href="/contact/">Choose a workforce route</a></li>
             </ol>
         </div>
     </section>
@@ -112,7 +112,7 @@ taascor_page_start([
                 <p class="section-copy">Bring the roles, location, headcount, shift pattern, timeline, and constraints. TAASCOR can then structure the right workforce conversation.</p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="/workforce/">Plan a workforce</a>
+                <a class="button" href="/contact/">Start a workforce conversation</a>
                 <a class="button button-outline" href="/solutions/">Explore services</a>
             </div>
         </div>

@@ -208,7 +208,7 @@ function taascor_solution_details(): array
                 ['Service and release model', 'Availability and support boundary, change authority, UAT, rollout, monitoring, recovery, rollback, acceptance, and ongoing review.'],
             ],
             'planner_copy' => 'Bring the current workflow, users, systems, sources, exceptions, approvals, outputs, integrations, retention needs, and support constraints. The first deliverable is a verified fit assessment, not a feature promise.',
-            'secondary_link' => ['/platform/', 'Explore the platform model'],
+            'secondary_link' => ['/solutions/hris-enabled-operations/', 'Explore the operating model'],
         ],
     ];
 }
@@ -246,7 +246,7 @@ function taascor_render_solution_detail(string $slug): void
                 <h1 id="<?= taascor_escape($sectionPrefix) ?>-title"><?= taascor_escape((string) $solution['hero_before']) ?><em><?= taascor_escape((string) $solution['hero_emphasis']) ?></em><?= taascor_escape((string) $solution['hero_after']) ?></h1>
                 <p class="hero-lede"><?= taascor_escape((string) $solution['lede']) ?></p>
                 <div class="hero-actions">
-                    <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Shape a workforce brief</a>
+                    <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Start a workforce conversation</a>
                     <a class="button button-outline" href="<?= taascor_escape(taascor_url('/solutions/')) ?>">View all solution lenses</a>
                 </div>
                 <p class="hero-note">Scope intent only. Exact services, responsibilities, evidence, availability, and terms require accountable-owner review and approved documentation.</p>
@@ -341,11 +341,11 @@ function taascor_render_solution_detail(string $slug): void
                 <p class="section-copy"><?= taascor_escape((string) $solution['planner_copy']) ?></p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Open the Workforce Planner</a>
+                <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Choose a workforce route</a>
                 <?php if (isset($solution['secondary_link'])): ?>
                     <a class="button button-outline" href="<?= taascor_escape(taascor_url((string) $solution['secondary_link'][0])) ?>"><?= taascor_escape((string) $solution['secondary_link'][1]) ?></a>
                 <?php else: ?>
-                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Review the proof standard</a>
+                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/about/')) ?>">How TAASCOR works</a>
                 <?php endif; ?>
             </div>
         </div>

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 require_once dirname(__DIR__) . '/site/bootstrap.php';
 
+$applicantCollectionAvailable = privacy_collection_is_enabled('applicant');
+$staffWorkspaceAvailable = staff_workflows_are_enabled();
+
 taascor_page_start([
     'title' => 'Access TAASCOR',
     'description' => 'Choose the correct TAASCOR access path for applicants, employees and HRIS users, clients, or authorized staff.',
@@ -50,7 +53,11 @@ taascor_page_start([
                     <p>Browse published opportunities without an account. Sign in only to continue your own saved application or review your applicant activity.</p>
                     <div class="hero-actions">
                         <a class="button" href="<?= taascor_escape(taascor_url('/jobs/')) ?>">Browse careers</a>
-                        <a class="button button-dark" href="<?= taascor_escape(taascor_url('/account/login.php')) ?>">Applicant sign in</a>
+                        <?php if ($applicantCollectionAvailable): ?>
+                            <a class="button button-dark" href="<?= taascor_escape(taascor_url('/account/login.php')) ?>">Applicant sign in</a>
+                        <?php else: ?>
+                            <?= taascor_status_tag('Applications currently unavailable', 'review') ?>
+                        <?php endif; ?>
                     </div>
                 </article>
                 <article class="role-card">
@@ -69,7 +76,11 @@ taascor_page_start([
                     <span class="role-code">PATH / AUTHORIZED STAFF</span>
                     <h3>Recruitment operations</h3>
                     <p>For TAASCOR staff provisioned for the recruitment workspace. Role and data access remain restricted after authentication.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/staff/login.php')) ?>">Staff sign in</a>
+                    <?php if ($staffWorkspaceAvailable): ?>
+                        <a class="button button-dark" href="<?= taascor_escape(taascor_url('/staff/login.php')) ?>">Staff sign in</a>
+                    <?php else: ?>
+                        <?= taascor_status_tag('Staff workspace unavailable', 'review') ?>
+                    <?php endif; ?>
                 </article>
             </div>
         </div>

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../app/bootstrap.php';
 
+$applicantCollectionAvailable = privacy_collection_is_enabled('applicant');
+
 if ($existingUser = auth_user()) {
     redirect_to($existingUser['role'] === 'staff' ? '/staff/' : '/applicant/');
 }
@@ -53,10 +55,17 @@ require __DIR__ . '/../app/views/header.php';
         </form>
     </section>
     <aside class="portal-card portal-card-soft">
-        <p class="kicker">New to TAASCOR?</p>
-        <h2>Start with a secure applicant profile</h2>
-        <p>Create an account, choose a published role, and complete a short two-stage application.</p>
-        <a class="button button-secondary" href="/account/register.php?next=<?= e(urlencode($next)) ?>">Create an account</a>
+        <?php if ($applicantCollectionAvailable): ?>
+            <p class="kicker">New to TAASCOR?</p>
+            <h2>Start with a secure applicant profile</h2>
+            <p>Create an account, choose a published role, and complete a short two-stage application.</p>
+            <a class="button button-secondary" href="/account/register.php?next=<?= e(urlencode($next)) ?>">Create an account</a>
+        <?php else: ?>
+            <p class="kicker">New applications paused</p>
+            <h2>Browse roles without creating an account</h2>
+            <p>Applicant registration and new application collection remain unavailable until the approved privacy and operating controls are published.</p>
+            <a class="button button-secondary" href="/jobs/">Browse careers</a>
+        <?php endif; ?>
         <p class="small-copy">TAASCOR staff use a separate restricted sign-in.</p>
     </aside>
 </div>

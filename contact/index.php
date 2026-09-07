@@ -7,6 +7,7 @@ require_once dirname(__DIR__) . '/site/bootstrap.php';
 taascor_page_start([
     'title' => 'Contact and Support Routes',
     'description' => 'Choose the right TAASCOR route for workforce planning, job applications, corporate evidence, or authorized account access.',
+    'active' => 'contact',
 ]);
 ?>
 <main id="main-content" tabindex="-1">
@@ -45,7 +46,7 @@ taascor_page_start([
                     <span class="role-code">EMPLOYER / WORKFORCE</span>
                     <h3>Shape a staffing brief</h3>
                     <p>Describe the roles, worksite, estimated scale, shifts, timing, constraints, and service areas you want TAASCOR to assess.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Open the Workforce Planner</a>
+                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Explore workforce solutions</a>
                 </article>
                 <article class="role-card">
                     <span class="role-code">APPLICANT / CAREERS</span>
@@ -54,10 +55,10 @@ taascor_page_start([
                     <a class="button button-dark" href="<?= taascor_escape(taascor_url('/jobs/')) ?>">Browse current jobs</a>
                 </article>
                 <article class="role-card">
-                    <span class="role-code">DUE DILIGENCE / PROOF</span>
-                    <h3>Review a public claim</h3>
-                    <p>See which corporate, compliance, client, location, capability, and outcome statements are approved, pending, or intentionally withheld.</p>
-                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Open the proof ledger</a>
+                    <span class="role-code">DUE DILIGENCE / COMPANY</span>
+                    <h3>Understand TAASCOR</h3>
+                    <p>Review the company story, mission, vision, values, leadership structure, locations, and published client relationships.</p>
+                    <a class="button button-dark" href="<?= taascor_escape(taascor_url('/about/')) ?>">Explore the company</a>
                 </article>
                 <article class="role-card">
                     <span class="role-code">USER / SECURE ACCESS</span>

@@ -116,6 +116,7 @@ html.theme-ready .home-theme-toggle{display:inline-flex}
 .home-menu nav a:hover,.home-menu nav a:focus-visible{color:var(--ink);background:rgba(247,162,15,.09)}
 .home-menu nav a:last-child{color:var(--gold)}
 .home-menu .home-theme-toggle{width:100%;justify-content:flex-start;min-height:44px;margin-bottom:4px;border-radius:8px}
+@media(max-width:1360px){.readout{display:none}}
 @media(max-width:960px){.readout,.hnav{display:none}.home-menu{display:block}}
 
 /* ---------- shared type ---------- */
@@ -527,13 +528,13 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   </div>
   <nav class="hnav" aria-label="Primary">
     <a class="nl" href="/solutions/">Solutions</a>
-    <a class="nl" href="/jobs/">Jobs</a>
-    <a class="nl nl-hris" href="/platform/">HRIS</a>
-    <a class="nl" href="/proof/">Proof</a>
+    <a class="nl" href="/industries/">Industries</a>
+    <a class="nl" href="/clients/">Clients</a>
+    <a class="nl" href="/about/">About</a>
     <button class="home-theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">
       <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
     </button>
-    <a class="hcta" href="/workforce/">Build a workforce</a>
+    <a class="hcta" href="/portal/">Access TAASCOR</a>
   </nav>
   <details class="home-menu">
     <summary>Menu</summary>
@@ -543,10 +544,10 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
       </button>
       <a href="/solutions/">Solutions</a>
       <a href="/industries/">Industries</a>
-      <a href="/jobs/">Jobs</a>
-      <a href="/platform/">Platform</a>
-      <a href="/proof/">Proof</a>
+      <a href="/clients/">Clients</a>
       <a href="/about/">About</a>
+      <a href="/jobs/">Careers</a>
+      <a href="/contact/">Contact</a>
       <a href="/portal/">Access TAASCOR</a>
     </nav>
   </details>
@@ -563,7 +564,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
       <div class="legal">MANPOWER SOLUTIONS · RECRUITMENT · WORKFORCE TECHNOLOGY</div>
       <div class="kicker status"><span class="kdot"></span>ONE NETWORK · THREE CLEAR JOURNEYS</div>
       <nav class="journey-doors" aria-label="Choose your TAASCOR journey">
-        <a class="journey-door" href="/workforce/">Build a workforce<span>Plan roles, sites and deployment needs</span></a>
+        <a class="journey-door" href="/solutions/">Build a workforce<span>Explore staffing, recruitment and workforce operations</span></a>
         <a class="journey-door" href="/jobs/">Find work<span>Explore roles and apply with context</span></a>
         <a class="journey-door" href="/portal/">Access TAASCOR<span>Applicant, employee, client and staff access</span></a>
       </nav>
@@ -743,7 +744,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
     <div class="kicker"><span class="kdot"></span>TAASCOR HRIS · WORKFORCE LIFECYCLE</div>
     <h2 class="h-sec">One connected view of <span class="grad-text">the work behind the workforce.</span></h2>
     <p class="sub" style="margin-top:16px">Explore how recruitment, time records, payroll preparation and employee service can connect through governed handoffs without mixing live employee data into the public experience.</p>
-    <a class="plat-portal" href="/platform/">Explore the platform journey <b>→</b></a>
+    <a class="plat-portal" href="/solutions/hris-enabled-operations/">Explore HRIS-enabled operations <b>→</b></a>
   </div>
 </section>
 
@@ -878,7 +879,7 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
   <h2 style="margin-top:26px">Turn workforce demand into a <span class="grad-text">reviewable brief.</span></h2>
   <p class="sub">Share the roles, sites, scale, shifts and target timing TAASCOR should evaluate. Availability, scope, controls and commercial terms are confirmed by accountable owners before any commitment.</p>
   <div class="cta-row">
-    <a class="btn-p" href="/workforce/">Shape a workforce brief</a>
+    <a class="btn-p" href="/contact/">Start a workforce conversation</a>
     <a class="btn-g" href="/contact/">Review contact routes</a>
   </div>
   <div class="coda-contact">
@@ -903,25 +904,26 @@ html[data-theme="light"] #p-bars text{fill:#52617a}
       <h4>Services</h4>
       <nav class="f-nav" aria-label="Footer services">
         <a href="/solutions/">Workforce solutions</a>
+        <a href="/industries/">Industries</a>
+        <a href="/clients/">Clients</a>
         <a href="/jobs/">Find work</a>
-        <a href="/platform/">TAASCOR HRIS</a>
-        <a href="/proof/">Proof and compliance</a>
       </nav>
     </div>
     <div class="f-col">
       <h4>Company</h4>
       <nav class="f-nav" aria-label="Footer company">
         <a href="/about/">About TAASCOR</a>
+        <a href="/leadership/">Leadership</a>
+        <a href="/locations/">Locations</a>
         <a href="/portal/">Access TAASCOR</a>
-        <a href="/legal/privacy/">Privacy</a>
-        <a href="/legal/accessibility/">Accessibility</a>
-        <a href="https://taascor.visiotechsolutions.com/hris/login/" target="_blank" rel="noopener noreferrer">Employee Portal</a>
       </nav>
     </div>
     <div class="f-col">
       <h4>Contact</h4>
-      <a href="/contact/">Contact and routing framework</a>
-      <p>Use the structured routes for workforce planning, careers, evidence questions, and account access.</p>
+      <a href="/contact/">Contact routes</a>
+      <a href="/legal/anti-fraud/">Recruitment safety</a>
+      <a href="/legal/accessibility/">Accessibility</a>
+      <p>Use the appropriate route for workforce planning, careers, safety questions, and account access.</p>
     </div>
   </div>
   <div class="f-fine">

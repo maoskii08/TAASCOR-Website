@@ -76,7 +76,7 @@ test('industry overview leads to four evidence-gated context lenses', async ({ p
       await expect(page.locator('.process-list > li')).toHaveCount(5);
       await expect(page.locator('.industry-solution-card')).toHaveCount(4);
       await expect(page.locator('.module-card')).toHaveCount(4);
-      await expect(page.locator('a[href="/workforce/"]').first()).toBeVisible();
+      await expect(page.locator('a[href="/contact/"]').first()).toBeVisible();
     });
   }
 });

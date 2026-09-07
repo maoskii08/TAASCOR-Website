@@ -18,8 +18,8 @@ taascor_page_start([
                 <h1 id="solutions-title">Turn workforce complexity into a <em>clear operating brief.</em></h1>
                 <p class="hero-lede">Begin with the work, the site, the schedule, and the decisions that need owners. TAASCOR structures the conversation so service scope can be evaluated without hiding assumptions.</p>
                 <div class="hero-actions">
-                    <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Shape a workforce brief</a>
-                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Review the proof standard</a>
+                    <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Start a workforce conversation</a>
+                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/about/')) ?>">How TAASCOR works</a>
                 </div>
                 <p class="hero-note">Engagement scope, geography, controls, service levels, and legal responsibilities are confirmed in signed documentation.</p>
             </div>
@@ -194,7 +194,7 @@ taascor_page_start([
                 <p class="section-copy">Include the role family, estimated headcount, location, shift pattern, desired timing, and the operational constraint you are trying to solve. Estimates remain non-binding until reviewed.</p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Open the Workforce Planner</a>
+                <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Choose a workforce route</a>
                 <a class="button button-outline" href="/contact/">Choose a contact route</a>
             </div>
         </div>

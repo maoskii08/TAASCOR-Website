@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
+import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -225,9 +226,51 @@ test('sitemap defaults empty and emits the governed public set only when explici
     '/solutions/hris-enabled-operations/', '/industries/',
     '/industries/production-throughput/', '/industries/distribution-fulfilment/',
     '/industries/office-service-support/', '/industries/facilities-site-support/',
-    '/platform/', '/proof/',
-    '/clients/', '/case-studies/', '/about/', '/leadership/', '/locations/',
-    '/contact/', '/insights/', '/resources/', '/jobs/',
+    '/clients/', '/about/', '/leadership/', '/locations/',
+    '/contact/', '/jobs/',
   ]));
   assert.equal(new Set(locations).size, locations.length, 'Enabled sitemap routes must be unique');
+});
+
+test('primary discovery surfaces promote only current public journeys', () => {
+  const discoveryFiles = [
+    'site/bootstrap.php', 'index.html', 'solutions/index.php', 'solutions/_detail.php',
+    'industries/index.php', 'industries/_detail.php', 'clients/index.php',
+    'locations/index.php', 'contact/index.php',
+  ];
+  const hiddenDestinations = [
+    '/workforce/', '/platform/', '/proof/', '/case-studies/', '/insights/', '/resources/',
+    '/legal/privacy/', '/legal/terms/',
+  ];
+
+  for (const relativePath of discoveryFiles) {
+    const source = readFileSync(path.join(projectRoot, relativePath), 'utf8');
+    for (const destination of hiddenDestinations) {
+      assert.doesNotMatch(
+        source,
+        new RegExp(`href=["'](?:<\\?=[^>]+>\\s*)?${destination.replaceAll('/', '\\/')}`),
+        `${relativePath} must not promote hidden or approval-gated route ${destination}`,
+      );
+    }
+  }
+});
+
+test('production access pages hide unavailable applicant and staff front doors', () => {
+  const environment = productionEnvironment();
+  const portal = runPhpFile('portal/index.php', environment);
+  const staffLogin = runPhpFile('staff/login.php', environment);
+  const applicantLogin = runPhpFile('account/login.php', environment);
+
+  for (const result of [portal, staffLogin, applicantLogin]) {
+    assert.equal(result.status, 0, result.stderr);
+  }
+
+  assert.doesNotMatch(portal.stdout, /href="\/account\/login\.php"/);
+  assert.doesNotMatch(portal.stdout, /href="\/staff\/login\.php"/);
+  assert.match(portal.stdout, /Applications currently unavailable/);
+  assert.match(portal.stdout, /Staff workspace unavailable/);
+  assert.doesNotMatch(staffLogin.stdout, /<form\b/);
+  assert.match(staffLogin.stdout, /Staff access is not active/);
+  assert.doesNotMatch(applicantLogin.stdout, /href="\/account\/register\.php/);
+  assert.match(applicantLogin.stdout, /New applications paused/);
 });

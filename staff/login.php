@@ -4,13 +4,15 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../app/bootstrap.php';
 
+$staffWorkspaceAvailable = staff_workflows_are_enabled();
+
 if ($existingUser = auth_user()) {
     redirect_to($existingUser['role'] === 'staff' ? '/staff/' : '/applicant/');
 }
 
 $email = trim((string) ($_POST['email'] ?? ''));
 $errors = [];
-if (is_post()) {
+if (is_post() && $staffWorkspaceAvailable) {
     verify_csrf();
     try {
         $user = authenticate_user($email, (string) ($_POST['password'] ?? ''), 'staff');
@@ -36,19 +38,26 @@ require __DIR__ . '/../app/views/header.php';
 ?>
 <div class="portal-grid portal-grid-auth">
     <section class="portal-card">
-        <?php if ($errors): ?><div class="alert alert-error" role="alert"><?= e(implode(' ', $errors)) ?></div><?php endif; ?>
-        <form method="post" class="portal-form">
-            <?= csrf_field() ?>
-            <label>
-                <span>Staff email</span>
-                <input type="email" name="email" value="<?= e($email) ?>" autocomplete="username" maxlength="190" required autofocus>
-            </label>
-            <label>
-                <span>Password</span>
-                <input type="password" name="password" autocomplete="current-password" maxlength="128" required>
-            </label>
-            <button class="button button-primary" type="submit">Enter staff workspace</button>
-        </form>
+        <?php if ($staffWorkspaceAvailable): ?>
+            <?php if ($errors): ?><div class="alert alert-error" role="alert"><?= e(implode(' ', $errors)) ?></div><?php endif; ?>
+            <form method="post" class="portal-form">
+                <?= csrf_field() ?>
+                <label>
+                    <span>Staff email</span>
+                    <input type="email" name="email" value="<?= e($email) ?>" autocomplete="username" maxlength="190" required autofocus>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" name="password" autocomplete="current-password" maxlength="128" required>
+                </label>
+                <button class="button button-primary" type="submit">Enter staff workspace</button>
+            </form>
+        <?php else: ?>
+            <p class="kicker">Workspace unavailable</p>
+            <h2>Staff access is not active on this release.</h2>
+            <p>The public site does not expose a staff sign-in until the recruitment workspace and its operating controls are approved.</p>
+            <a class="button button-secondary" href="/portal/">Return to access options</a>
+        <?php endif; ?>
     </section>
     <aside class="portal-card portal-card-soft">
         <p class="kicker">Access control</p>

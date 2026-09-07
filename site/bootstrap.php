@@ -182,10 +182,10 @@ function taascor_page_start(array $page): void
                 <div class="nav-links">
                     <?= taascor_nav_link('/solutions/', 'Solutions', 'solutions', $activePage) ?>
                     <?= taascor_nav_link('/industries/', 'Industries', 'industries', $activePage) ?>
-                    <?= taascor_nav_link('/jobs/', 'Jobs & Apply', 'jobs', $activePage) ?>
-                    <?= taascor_nav_link('/platform/', 'Platform', 'platform', $activePage) ?>
-                    <?= taascor_nav_link('/proof/', 'Proof', 'proof', $activePage) ?>
+                    <?= taascor_nav_link('/clients/', 'Clients', 'clients', $activePage) ?>
                     <?= taascor_nav_link('/about/', 'About', 'about', $activePage) ?>
+                    <?= taascor_nav_link('/jobs/', 'Careers', 'jobs', $activePage) ?>
+                    <?= taascor_nav_link('/contact/', 'Contact', 'contact', $activePage) ?>
                 </div>
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Use dark theme" aria-pressed="false">
                     <span aria-hidden="true">◐</span><span data-theme-label>Light</span>
@@ -211,7 +211,8 @@ function taascor_page_end(): void
             </div>
             <nav aria-label="Workforce journeys">
                 <h2>Journeys</h2>
-                <a href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Build a workforce</a>
+                <a href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Workforce solutions</a>
+                <a href="<?= taascor_escape(taascor_url('/industries/')) ?>">Industries</a>
                 <a href="<?= taascor_escape(taascor_url('/jobs/')) ?>">Find work</a>
                 <a href="<?= taascor_escape(taascor_url('/portal/')) ?>">Access TAASCOR</a>
             </nav>
@@ -220,25 +221,18 @@ function taascor_page_end(): void
                 <a href="<?= taascor_escape(taascor_url('/about/')) ?>">About</a>
                 <a href="<?= taascor_escape(taascor_url('/leadership/')) ?>">Leadership</a>
                 <a href="<?= taascor_escape(taascor_url('/locations/')) ?>">Locations</a>
-                <a href="<?= taascor_escape(taascor_url('/contact/')) ?>">Contact routes</a>
+                <a href="<?= taascor_escape(taascor_url('/clients/')) ?>">Clients</a>
             </nav>
-            <nav aria-label="Evidence and resources">
-                <h2>Explore</h2>
-                <a href="<?= taascor_escape(taascor_url('/proof/')) ?>">Proof and compliance</a>
-                <a href="<?= taascor_escape(taascor_url('/insights/')) ?>">Insights</a>
-                <a href="<?= taascor_escape(taascor_url('/resources/')) ?>">Resources</a>
-                <a href="<?= taascor_escape(taascor_url('/clients/')) ?>">Client relationships</a>
-                <a href="<?= taascor_escape(taascor_url('/case-studies/')) ?>">Case studies</a>
+            <nav aria-label="Support and trust">
+                <h2>Support</h2>
+                <a href="<?= taascor_escape(taascor_url('/contact/')) ?>">Contact routes</a>
                 <a href="<?= taascor_escape(taascor_url('/legal/anti-fraud/')) ?>">Recruitment safety</a>
+                <a href="<?= taascor_escape(taascor_url('/legal/accessibility/')) ?>">Accessibility</a>
             </nav>
         </div>
         <div class="shell footer-base">
             <p>&copy; <span data-current-year>2026</span> TAASCOR · Workforce services, recruitment, and workforce technology.</p>
-            <nav aria-label="Legal information">
-                <a href="<?= taascor_escape(taascor_url('/legal/privacy/')) ?>">Privacy</a>
-                <a href="<?= taascor_escape(taascor_url('/legal/terms/')) ?>">Terms</a>
-                <a href="<?= taascor_escape(taascor_url('/legal/accessibility/')) ?>">Accessibility</a>
-            </nav>
+            <p>Privacy and website terms will be published after legal-owner approval.</p>
         </div>
     </footer>
 </body>
@@ -259,8 +253,6 @@ function taascor_status_tag(string $label, string $tone = 'neutral'): string
 function taascor_legal_navigation(string $activePage): void
 {
     $items = [
-        'privacy' => ['/legal/privacy/', 'Privacy framework'],
-        'terms' => ['/legal/terms/', 'Website terms'],
         'accessibility' => ['/legal/accessibility/', 'Accessibility'],
         'anti-fraud' => ['/legal/anti-fraud/', 'Recruitment safety'],
     ];

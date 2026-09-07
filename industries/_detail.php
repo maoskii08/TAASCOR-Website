@@ -209,7 +209,7 @@ function taascor_render_industry_detail(string $slug): void
                 <h1 id="<?= taascor_escape($sectionPrefix) ?>-title"><?= taascor_escape((string) $industry['hero_before']) ?><em><?= taascor_escape((string) $industry['hero_emphasis']) ?></em></h1>
                 <p class="hero-lede"><?= taascor_escape((string) $industry['lede']) ?></p>
                 <div class="hero-actions">
-                    <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Shape a workforce brief</a>
+                    <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Discuss this workforce context</a>
                     <a class="button button-outline" href="<?= taascor_escape(taascor_url('/industries/')) ?>">View all industry contexts</a>
                 </div>
                 <p class="hero-note">Discovery context only. Exact scope, capability, geography, capacity, controls, availability, and terms require current evidence and accountable-owner approval.</p>
@@ -321,8 +321,8 @@ function taascor_render_industry_detail(string $slug): void
                 <p class="section-copy"><?= taascor_escape((string) $industry['planner_copy']) ?></p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Open the Workforce Planner</a>
-                <a class="button button-outline" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Review the proof standard</a>
+                <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Choose a workforce route</a>
+                <a class="button button-outline" href="<?= taascor_escape(taascor_url('/clients/')) ?>">Explore client relationships</a>
             </div>
         </div>
     </section>

@@ -18,8 +18,8 @@ taascor_page_start([
                 <h1 id="industries-title">Start with the operating environment. <em>Verify the fit.</em></h1>
                 <p class="hero-lede">Industry labels alone do not define a workable service. The worksite, task boundaries, schedule, safety interfaces, volume pattern, and accountable owners do.</p>
                 <div class="hero-actions">
-                    <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Describe your workforce need</a>
-                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/proof/')) ?>">Review the proof standard</a>
+                    <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Discuss your workforce context</a>
+                    <a class="button button-outline" href="<?= taascor_escape(taascor_url('/clients/')) ?>">Explore client relationships</a>
                 </div>
                 <p class="hero-note">Industry fit, geographic coverage, capacity, timing, controls, and commercial scope must be confirmed for each enquiry.</p>
             </div>
@@ -116,8 +116,8 @@ taascor_page_start([
             <div class="notice-panel" role="note">
                 <?= taascor_status_tag('Industry register awaiting approval', 'review') ?>
                 <h3>Publication remains intentionally limited</h3>
-                <p>No client name, logo, location, outcome, capacity, or availability is inferred from a generic industry category. Until the content owner approves a canonical register, enquiries move through the Workforce Planner for specific assessment.</p>
-                <a class="text-link" href="<?= taascor_escape(taascor_url('/proof/')) ?>">See how claims are released</a>
+                <p>No client name, logo, location, outcome, capacity, or availability is inferred from a generic industry category. Current relationships are presented separately from service outcomes and availability.</p>
+                <a class="text-link" href="<?= taascor_escape(taascor_url('/clients/')) ?>">Review the client portfolio</a>
             </div>
         </div>
     </section>
@@ -130,7 +130,7 @@ taascor_page_start([
                 <p class="section-copy">Bring the role family, worksite, scale, shifts, timing, operating constraints, and the service boundary you want TAASCOR to evaluate.</p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="<?= taascor_escape(taascor_url('/workforce/')) ?>">Open the Workforce Planner</a>
+                <a class="button" href="<?= taascor_escape(taascor_url('/contact/')) ?>">Choose a workforce route</a>
                 <a class="button button-outline" href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Explore solution lenses</a>
             </div>
         </div>

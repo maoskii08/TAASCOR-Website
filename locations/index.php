@@ -70,7 +70,7 @@ taascor_page_start([
                 <p class="section-copy">A corporate meeting, workforce discussion, application, employee concern, and client request should not all enter through the same door.</p>
             </div>
             <ol class="process-list">
-                <li><h3>Employer or workforce enquiry</h3><p>Start with the worksite, roles, schedule, headcount, target date, and operating constraints through the Workforce Planner.</p><a class="text-link" href="/workforce/">Shape a workforce brief</a></li>
+                <li><h3>Employer or workforce enquiry</h3><p>Start with the worksite, roles, schedule, headcount, target date, and operating constraints through the appropriate contact route.</p><a class="text-link" href="/contact/">Choose a workforce route</a></li>
                 <li><h3>Applicant or job enquiry</h3><p>Use the published job record for the role and location, and verify recruitment messages against TAASCOR’s safety guidance.</p><a class="text-link" href="/jobs/">View current opportunities</a></li>
                 <li><h3>Existing applicant, employee, or client</h3><p>Use the relevant authenticated workspace so personal, employment, or client information stays out of public enquiries.</p><a class="text-link" href="/portal/">Choose your portal</a></li>
                 <li><h3>Corporate or office visit</h3><p>Confirm the receiving team, appointment time, access instructions, and exact destination before travelling.</p><a class="text-link" href="/contact/">Review contact routes</a></li>
@@ -86,7 +86,7 @@ taascor_page_start([
                 <p class="section-copy">Tell TAASCOR what you need, where the work happens, and who the request concerns. The right team can then confirm the destination and next step.</p>
             </div>
             <div class="hero-actions">
-                <a class="button" href="/workforce/">Plan a workforce</a>
+                <a class="button" href="/contact/">Start a workforce conversation</a>
                 <a class="button button-outline" href="/portal/">Access TAASCOR</a>
             </div>
         </div>

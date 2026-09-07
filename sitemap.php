@@ -27,16 +27,11 @@ $routes = filter_var(getenv('PUBLIC_INDEXING_ENABLED') ?: 'false', FILTER_VALIDA
     '/industries/distribution-fulfilment/' => __DIR__ . '/industries/distribution-fulfilment/index.php',
     '/industries/office-service-support/' => __DIR__ . '/industries/office-service-support/index.php',
     '/industries/facilities-site-support/' => __DIR__ . '/industries/facilities-site-support/index.php',
-    '/platform/' => __DIR__ . '/platform/index.php',
-    '/proof/' => __DIR__ . '/proof/index.php',
     '/clients/' => __DIR__ . '/clients/index.php',
-    '/case-studies/' => __DIR__ . '/case-studies/index.php',
     '/about/' => __DIR__ . '/about/index.php',
     '/leadership/' => __DIR__ . '/leadership/index.php',
     '/locations/' => __DIR__ . '/locations/index.php',
     '/contact/' => __DIR__ . '/contact/index.php',
-    '/insights/' => __DIR__ . '/insights/index.php',
-    '/resources/' => __DIR__ . '/resources/index.php',
     '/jobs/' => __DIR__ . '/careers/index.php',
 ] : [];
 
