@@ -52,6 +52,9 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 
 ## G5 — Commit-specific release
 
+- [x] Application commit `1e0ac3feb935c790ec0ce332895c403149b38a37` passed 14/14 static controls, 33/33 Playwright tests, and exact-package verification before the 2026-09-07 release.
+- [x] Package SHA-256, 14 changed-file hashes, public asset hashes, and release evidence are recorded in `PRODUCTION_RELEASE_2026-09-07.md`.
+
 - [x] Explicit paths for commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` were reviewed and staged without unrelated changes.
 - [x] Commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` contains no backup/archive/editor-swap, runtime database/upload, dependency-tree, or release-package artifact.
 - [x] The exact feature commit `5c6fdde3edb2caa63b8f20c921b98bfa9089f379` was reviewed and pushed to GitHub.
@@ -61,6 +64,9 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 - [ ] Release, Product, Recruitment, Security, DPO/Legal, and data owners approve the exact candidate.
 
 ## G6 — Manual deployment and live smoke
+
+- [x] The requesting user explicitly approved commit, push, and deployment of the streamlined portfolio release on 2026-09-07.
+- [x] Commit `1e0ac3feb935c790ec0ce332895c403149b38a37` was activated through an immutable release after file/database backup, remote validation, atomic switch, and desktop/mobile live smoke.
 
 - [x] The requesting user explicitly approved commit, push, and production deployment in the current Codex task on 2026-09-02 and supplied the exact Hostinger target evidence.
 - [x] The previous document root and pre-migration database were backed up remotely and downloaded locally; the rollback directory is verified.
@@ -73,4 +79,4 @@ No checkbox below authorizes another checkbox. Record the exact owner, evidence 
 
 ## Current decision
 
-**GO for the deployed fail-closed public experience at commit `8d5e929822d85d75f7c2fd1aae28e5d0ac3820d3`. NO-GO for enabling governed data workflows.** The public release, package, backups, MySQL schema, deployment target, parity checks, and live responsive/theme smoke are recorded in `PRODUCTION_RELEASE_2026-09-02.md`. Applicant/workforce collection, uploads, staff workflows, job publication, and indexing remain disabled until their unchecked legal, privacy, security, content, accessibility, recovery, and business gates close.
+**GO for the deployed fail-closed public portfolio experience at commit `1e0ac3feb935c790ec0ce332895c403149b38a37`. NO-GO for enabling governed data workflows.** The current public release, package, backups, schema verification, target, parity checks, and live responsive/theme smoke are recorded in `PRODUCTION_RELEASE_2026-09-07.md`. Applicant/workforce collection, uploads, staff workflows, job publication, and indexing remain disabled until their unchecked legal, privacy, security, content, accessibility, recovery, and business gates close.

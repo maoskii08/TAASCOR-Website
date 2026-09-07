@@ -4,11 +4,11 @@ TAASCOR Management & General Services Corp. public website, workforce-planning e
 
 ## Current status
 
-The audited cinematic baseline remains preserved on `main` and `origin/main` at commit `e7299f42908fd2e31b91067d79b433c14a713231`. The integrated experience is maintained on `origin/feature/integrated-experience`. Its light-first responsive release, commit `8d5e929822d85d75f7c2fd1aae28e5d0ac3820d3`, was packaged from Git, deployed to `https://taascor.com/` through the verified Hostinger SSH target, migrated, hash-checked, and externally smoke-tested on 2026-09-02.
+The audited cinematic baseline remains preserved on `main` and `origin/main` at commit `e7299f42908fd2e31b91067d79b433c14a713231`. The integrated experience is maintained on `origin/feature/integrated-experience`. Its light-first streamlined portfolio release, commit `1e0ac3feb935c790ec0ce332895c403149b38a37`, was packaged from Git, deployed to `https://taascor.com/` through the verified Hostinger SSH target, hash-checked, and externally smoke-tested on 2026-09-07.
 
 **Public-experience release gate: PASSED. Governed data-workflow gate: NO-GO.** The public site is live with light mode as the default, an optional persistent dark mode, and responsive desktop/tablet/mobile behavior. Applicant collection, workforce collection, resume upload, staff workflows, job publication, and indexing remain disabled in production until their separate privacy, security, content, accessibility, retention, and business-ownership gates close.
 
-The 2026-09-02 local release run passed 12/12 static checks and 26/26 Playwright tests. Production qualification additionally passed SSH host verification, PHP 8.5/MySQL preflight, pre-migration file and database backups, MySQL migration, package/readback hashing, public-route and denial-route checks, static-asset parity, and live desktop/mobile light/dark browser smoke. See `docs/release/PRODUCTION_RELEASE_2026-09-02.md` for the release evidence and `docs/release/LOCAL_READINESS_2026-09-02.md` for the broader evidence boundary.
+The 2026-09-07 release run passed 14/14 static checks and 33/33 Playwright tests. Production qualification additionally passed SSH host verification, PHP 8.5/MySQL preflight, file and database backups, read-only schema verification, package/readback hashing, public-route and denial-route checks, changed-file and static-asset parity, and live desktop/mobile light/dark browser smoke. See `docs/release/PRODUCTION_RELEASE_2026-09-07.md` for current release evidence and `docs/release/LOCAL_READINESS_2026-09-02.md` for the broader evidence boundary.
 
 ## What is implemented locally
 
