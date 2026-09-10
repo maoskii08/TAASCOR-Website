@@ -75,6 +75,7 @@ if ($candidate !== false && ($normalizedCandidate === $normalizedRoot || str_sta
         'about', 'account', 'applicant', 'apply', 'careers', 'case-studies', 'clients',
         'contact', 'industries', 'insights', 'leadership', 'legal', 'locations', 'login', 'platform',
         'portal', 'proof', 'resources', 'solutions', 'staff', 'workforce', 'jobs',
+        'recruitment',
     ];
     $allowed = false;
 

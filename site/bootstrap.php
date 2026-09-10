@@ -214,6 +214,7 @@ function taascor_page_end(): void
                 <a href="<?= taascor_escape(taascor_url('/solutions/')) ?>">Workforce solutions</a>
                 <a href="<?= taascor_escape(taascor_url('/industries/')) ?>">Industries</a>
                 <a href="<?= taascor_escape(taascor_url('/jobs/')) ?>">Find work</a>
+                <a href="<?= taascor_escape(taascor_url('/recruitment/guide/')) ?>">Recruitment guide</a>
                 <a href="<?= taascor_escape(taascor_url('/portal/')) ?>">Access TAASCOR</a>
             </nav>
             <nav aria-label="Company and trust">
@@ -227,6 +228,7 @@ function taascor_page_end(): void
                 <h2>Support</h2>
                 <a href="<?= taascor_escape(taascor_url('/contact/')) ?>">Contact routes</a>
                 <a href="<?= taascor_escape(taascor_url('/legal/anti-fraud/')) ?>">Recruitment safety</a>
+                <a href="<?= taascor_escape(taascor_url('/recruitment/guide/')) ?>">Recruitment and onboarding guide</a>
                 <a href="<?= taascor_escape(taascor_url('/legal/accessibility/')) ?>">Accessibility</a>
             </nav>
         </div>

@@ -137,6 +137,26 @@ test('about page presents the supplied mission, vision, and five core values', a
   }
 });
 
+test('recruitment guide keeps candidate journeys same-origin and searchable', async ({ page }) => {
+  await page.goto('/recruitment/guide/');
+
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Know what happens next');
+  await expect(page.getByText('taascor.com', { exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Open TAASCOR HRIS' }))
+    .toHaveAttribute('href', 'https://taascor.visiotechsolutions.com/hris/login/');
+
+  const search = page.getByRole('searchbox', { name: 'Search topics and steps' });
+  await search.fill('documents');
+  await expect(page.locator('[data-guide-search-result]')).toContainText('matched');
+  await expect(page.locator('details#documents')).toBeVisible();
+  await expect(page.locator('details#offers')).toBeHidden();
+
+  const externalCandidateLinks = await page.locator('a').evaluateAll((links) => links
+    .map((link) => link.href)
+    .filter((href) => href.includes('taascor.visiotechsolutions.com') && !href.endsWith('/hris/login/')));
+  expect(externalCandidateLinks).toEqual([]);
+});
+
 test('legacy company portfolio content is integrated across the immersive public experience', async ({ page }) => {
   await page.goto('/');
   await expect(page.locator('#company')).toBeVisible();

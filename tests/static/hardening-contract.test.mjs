@@ -227,7 +227,7 @@ test('sitemap defaults empty and emits the governed public set only when explici
     '/industries/production-throughput/', '/industries/distribution-fulfilment/',
     '/industries/office-service-support/', '/industries/facilities-site-support/',
     '/clients/', '/about/', '/leadership/', '/locations/',
-    '/contact/', '/jobs/',
+    '/contact/', '/jobs/', '/recruitment/guide/',
   ]));
   assert.equal(new Set(locations).size, locations.length, 'Enabled sitemap routes must be unique');
 });
@@ -252,6 +252,30 @@ test('primary discovery surfaces promote only current public journeys', () => {
         `${relativePath} must not promote hidden or approval-gated route ${destination}`,
       );
     }
+  }
+});
+
+test('candidate-facing routes remain on taascor.com and HRIS links are staff-only', () => {
+  const candidateFiles = [
+    'app/hris_jobs.php', 'careers/index.php', 'careers/job.php',
+    'account/login.php', 'account/register.php', 'account/settings.php',
+    'applicant/index.php', 'apply/index.php', 'apply/step2.php',
+    'app/views/header.php', 'app/views/footer.php',
+  ];
+  for (const relativePath of candidateFiles) {
+    const source = readFileSync(path.join(projectRoot, relativePath), 'utf8');
+    assert.doesNotMatch(
+      source,
+      /taascor\.visiotechsolutions\.com|\/hris\/recruitment\/candidate\//i,
+      `${relativePath} must not expose an HRIS candidate destination`,
+    );
+  }
+
+  const allowedHrisLogin = 'https://taascor.visiotechsolutions.com/hris/login/';
+  for (const relativePath of ['portal/index.php', 'recruitment/guide/index.php']) {
+    const source = readFileSync(path.join(projectRoot, relativePath), 'utf8');
+    const hostReferences = source.match(/https:\/\/taascor\.visiotechsolutions\.com[^"']*/g) ?? [];
+    assert.deepEqual(hostReferences, [allowedHrisLogin], `${relativePath} may link only to the staff HRIS login`);
   }
 });
 

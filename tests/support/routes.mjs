@@ -30,6 +30,7 @@ export const publicExperienceRoutes = [
   '/resources/',
   '/workforce/',
   '/portal/',
+  '/recruitment/guide/',
   '/legal/privacy/',
   '/legal/terms/',
   '/legal/accessibility/',

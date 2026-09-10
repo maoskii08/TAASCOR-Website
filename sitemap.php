@@ -33,6 +33,7 @@ $routes = filter_var(getenv('PUBLIC_INDEXING_ENABLED') ?: 'false', FILTER_VALIDA
     '/locations/' => __DIR__ . '/locations/index.php',
     '/contact/' => __DIR__ . '/contact/index.php',
     '/jobs/' => __DIR__ . '/careers/index.php',
+    '/recruitment/guide/' => __DIR__ . '/recruitment/guide/index.php',
 ] : [];
 
 if ($routes !== []) {

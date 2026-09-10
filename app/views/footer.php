@@ -9,6 +9,7 @@ declare(strict_types=1);
         <?php if (privacy_collection_is_enabled('applicant') && !privacy_notice_is_draft('applicant')): ?>
             <a href="/apply/privacy.php">Applicant privacy notice</a> ·
         <?php endif; ?>
+        <a href="/recruitment/guide/">Recruitment guide</a> ·
         <a href="/">Corporate site</a>
     </p>
 </footer>

@@ -270,6 +270,7 @@ taascor_page_start([
                 <li><h3>Share only what this stage needs</h3><p>Initial application data is intentionally limited. Later requirements appear as owned tasks with a clear purpose.</p></li>
                 <li><h3>Track the next action</h3><p>Status and applicant-visible notes make pending steps explicit without exposing internal or other candidates’ data.</p></li>
             </ol>
+            <div class="hero-actions"><a class="button button-outline" href="/recruitment/guide/">Open the recruitment and onboarding guide</a></div>
         </div>
     </section>
 

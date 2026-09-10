@@ -32,6 +32,7 @@ $navigationUser = auth_user();
     </a>
     <nav class="portal-nav" aria-label="Portal navigation">
         <a href="/jobs/">Careers</a>
+        <a href="/recruitment/guide/">Guide</a>
         <?php if ($navigationUser && $navigationUser['role'] === 'applicant'): ?>
             <a href="/applicant/">My applications</a>
             <a href="/account/settings.php">Account</a>

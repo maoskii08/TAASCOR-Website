@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__.'/hris_jobs.php';
+
 const APPLICATION_STATUSES = [
     'draft',
     'submitted',
@@ -52,6 +54,9 @@ function allowed_staff_status_transitions(string $currentStatus): array
 /** @return list<array<string, mixed>> */
 function list_published_jobs(): array
 {
+    if (hris_jobs_feed_enabled()) {
+        return hris_published_jobs();
+    }
     if (!job_publication_is_enabled()) {
         return [];
     }
@@ -69,6 +74,14 @@ function list_published_jobs(): array
 /** @return array<string, mixed>|null */
 function find_published_job_by_slug(string $slug): ?array
 {
+    if (hris_jobs_feed_enabled()) {
+        foreach (hris_published_jobs() as $job) {
+            if (hash_equals((string) $job['slug'], trim($slug))) {
+                return $job;
+            }
+        }
+        return null;
+    }
     if (!job_publication_is_enabled()) {
         return null;
     }
@@ -88,6 +101,13 @@ function find_published_job_by_slug(string $slug): ?array
 /** @return list<array<string, mixed>> */
 function related_published_jobs(int $jobId, string $functionArea, int $limit = 3): array
 {
+    if (hris_jobs_feed_enabled()) {
+        $relatedJobs = array_values(array_filter(
+            hris_published_jobs(),
+            static fn (array $job): bool => (int) $job['id'] !== $jobId
+        ));
+        return array_slice($relatedJobs, 0, max(1, min($limit, 6)));
+    }
     if (!job_publication_is_enabled()) {
         return [];
     }

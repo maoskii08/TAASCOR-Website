@@ -1,0 +1,133 @@
+.guide-page { overflow: clip; }
+
+.guide-hero {
+  position: relative;
+  padding: clamp(6rem, 12vw, 10rem) 0 clamp(4.5rem, 8vw, 7rem);
+}
+
+.guide-hero::before {
+  position: absolute;
+  inset: 8% -15% auto 48%;
+  height: 30rem;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(247, 162, 15, 0.16), rgba(191, 30, 44, 0.08) 38%, transparent 70%);
+  filter: blur(1rem);
+}
+
+.guide-hero-grid,
+.guide-help-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(20rem, 0.82fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: center;
+}
+
+.guide-hero h1 {
+  max-width: 13ch;
+  margin: 1rem 0 1.5rem;
+  font-size: clamp(3.1rem, 7.8vw, 7.2rem);
+  line-height: 0.91;
+  letter-spacing: -0.065em;
+}
+
+.guide-hero .hero-lede { max-width: 43rem; }
+
+.guide-boundary {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.guide-boundary > p { margin: 0; padding: 1.4rem 1.5rem; border-bottom: 1px solid var(--line); }
+.guide-boundary > div { display: grid; gap: 0.35rem; padding: 1.5rem; }
+.guide-boundary > div + div { border-top: 1px solid var(--line); }
+.guide-boundary span,
+.guide-boundary small { color: var(--paper-muted); }
+.guide-boundary span { font: 700 0.69rem/1.4 var(--font-mono); letter-spacing: 0.12em; text-transform: uppercase; }
+.guide-boundary strong { font-size: clamp(1.35rem, 3vw, 2.2rem); }
+.guide-boundary small { font-size: 0.86rem; }
+
+.guide-status-band { border-block: 1px solid var(--line); background: rgba(247, 162, 15, 0.06); }
+.guide-status-band .shell { display: grid; grid-template-columns: minmax(10rem, 0.32fr) 1fr; gap: 2rem; padding-block: 1.4rem; }
+.guide-status-band strong { color: var(--gold-pale); }
+.guide-status-band p { max-width: 70rem; margin: 0; color: var(--paper-muted); }
+
+.guide-search-section { padding: clamp(4rem, 8vw, 7rem) 0 2rem; }
+.guide-search-grid { display: grid; grid-template-columns: 0.65fr 1fr; gap: 3rem; align-items: end; }
+.guide-search-grid h2,
+.guide-section-heading h2,
+.guide-help h2 { margin: 0.45rem 0 0; font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: 0.98; letter-spacing: -0.05em; }
+.guide-search { display: grid; gap: 0.55rem; }
+.guide-search span { color: var(--paper-muted); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.guide-search input { width: 100%; min-height: 3.6rem; padding: 0.8rem 1rem; color: var(--paper); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 0.8rem; }
+.guide-search-result { min-height: 1.6rem; margin-top: 0.75rem; color: var(--paper-muted); }
+
+.guide-section { padding: clamp(4rem, 9vw, 8rem) 0; }
+.guide-section[hidden],
+[data-guide-item][hidden] { display: none !important; }
+.guide-section-operations { border-block: 1px solid var(--line); background: linear-gradient(135deg, rgba(191, 30, 44, 0.05), rgba(247, 162, 15, 0.04)); }
+.guide-section-heading { display: grid; grid-template-columns: 1fr minmax(18rem, 0.62fr); gap: 3rem; align-items: end; margin-bottom: clamp(2.5rem, 6vw, 5rem); }
+.guide-section-heading > p { margin: 0; color: var(--paper-muted); }
+
+.journey-timeline { position: relative; display: grid; gap: 0; margin: 0; padding: 0; list-style: none; counter-reset: journey; }
+.journey-timeline::before { position: absolute; top: 1.4rem; bottom: 1.4rem; left: 2.1rem; width: 1px; content: ""; background: linear-gradient(var(--gold), var(--crimson), var(--cyan)); }
+.journey-timeline li { position: relative; display: grid; grid-template-columns: 4.2rem 1fr; gap: 1.6rem; padding: 0 0 2.5rem; }
+.journey-number { z-index: 1; display: grid; place-items: center; width: 4.2rem; height: 4.2rem; color: var(--ink-950); background: var(--gold); border: 0.45rem solid var(--ink-950); border-radius: 50%; font: 800 0.8rem/1 var(--font-mono); }
+.journey-timeline li:nth-child(n+4) .journey-number { color: white; background: var(--crimson); }
+.journey-timeline li:nth-child(n+8) .journey-number { color: var(--ink-950); background: var(--cyan); }
+.journey-timeline h3 { margin: 0.25rem 0 0.4rem; font-size: clamp(1.4rem, 2.5vw, 2rem); }
+.journey-timeline p { max-width: 60rem; margin: 0 0 0.55rem; color: var(--paper-muted); }
+
+.operations-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.operations-grid article { min-height: 16rem; padding: 1.4rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+.operations-grid article span { color: var(--gold-pale); font: 800 0.72rem/1 var(--font-mono); }
+.operations-grid article h3 { margin: 3rem 0 0.6rem; font-size: 1.35rem; }
+.operations-grid article p { margin: 0; color: var(--paper-muted); }
+.guide-staff-entry { display: flex; justify-content: space-between; gap: 2rem; align-items: center; margin-top: 1rem; padding: 1.6rem; border: 1px solid var(--line-strong); border-radius: var(--radius-md); background: var(--surface-solid); }
+.guide-staff-entry h3 { margin: 0.4rem 0; }
+.guide-staff-entry p { max-width: 44rem; margin: 0; color: var(--paper-muted); }
+
+.guide-topic-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.guide-topic-grid details { padding: 1.2rem 1.35rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--surface); }
+.guide-topic-grid summary { display: flex; justify-content: space-between; gap: 1rem; cursor: pointer; font-size: 1.08rem; font-weight: 800; }
+.guide-topic-grid summary::marker { content: ""; }
+.guide-topic-grid details[open] summary span:last-child { transform: rotate(45deg); }
+.guide-topic-grid p { margin: 1rem 0 0; color: var(--paper-muted); }
+
+.guide-help { padding: clamp(4rem, 9vw, 8rem) 0; border-top: 1px solid var(--line); }
+.guide-help-grid { align-items: end; }
+.guide-help-grid > div:first-child p:last-child { max-width: 48rem; color: var(--paper-muted); }
+.guide-help .hero-actions { justify-content: flex-end; }
+
+@media (max-width: 880px) {
+  .guide-hero-grid,
+  .guide-help-grid,
+  .guide-search-grid,
+  .guide-section-heading { grid-template-columns: 1fr; gap: 1.5rem; }
+  .operations-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .guide-help .hero-actions { justify-content: flex-start; }
+}
+
+@media (max-width: 620px) {
+  .guide-hero { padding-top: 4.5rem; }
+  .guide-hero h1 { font-size: clamp(3rem, 17vw, 4.6rem); }
+  .guide-status-band .shell,
+  .operations-grid,
+  .guide-topic-grid { grid-template-columns: 1fr; }
+  .journey-timeline::before { left: 1.45rem; }
+  .journey-timeline li { grid-template-columns: 2.9rem 1fr; gap: 1rem; }
+  .journey-number { width: 2.9rem; height: 2.9rem; border-width: 0.3rem; }
+  .journey-timeline h3 { margin-top: 0; }
+  .operations-grid article { min-height: 13rem; }
+  .guide-staff-entry { align-items: flex-start; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guide-topic-grid details[open] summary span:last-child { transform: none; }
+}

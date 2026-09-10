@@ -166,8 +166,10 @@ taascor_page_start([
                 <span class="apply-code">ROLE / <?= str_pad((string) $job['id'], 4, '0', STR_PAD_LEFT) ?></span>
                 <h2>Carry this exact role into your application.</h2>
                 <p>You will not be asked to choose the company or position again.</p>
-                <a class="button" href="/apply/<?= rawurlencode((string) $job['slug']) ?>/">Start application</a>
-                <a class="button button-outline" href="/account/login.php?next=<?= rawurlencode('/apply/' . (string) $job['slug'] . '/') ?>">Sign in to continue</a>
+                <?php $applicationPath = (string) ($job['apply_url'] ?? ('/apply/' . rawurlencode((string) $job['slug']) . '/')); ?>
+                <a class="button" href="<?= taascor_escape($applicationPath) ?>">Start application</a>
+                <a class="button button-outline" href="/account/login.php?next=<?= rawurlencode($applicationPath) ?>">Sign in to continue</a>
+                <a class="text-link" href="/recruitment/guide/">Understand the complete recruitment journey</a>
                 <p class="rail-note">Application data is handled under the applicant privacy notice. Demonstration submissions remain local and synthetic.</p>
             </aside>
         </div>
